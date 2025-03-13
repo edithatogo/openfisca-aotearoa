@@ -1,153 +1,167 @@
 ---
 
 - name: Child disability allowance
-  period: 2018-08
+  period: 2018-W32
   absolute_error_margin: 0
   input:
     persons:
       Mama:
-        social_security__is_ordinarily_resident_in_new_zealand: true
-        is_resident: true
+        social_security__ordinarily_resident_in_new_zealand: true
+        immigration__resident: true
+        social_security__principal_caregiver:
+          month:2018-08:01: true
       Papa:
-        social_security__is_ordinarily_resident_in_new_zealand: true
-        is_resident: true
+        social_security__ordinarily_resident_in_new_zealand: true
+        immigration__resident: true
       Tama_disabled_child:
         age:
-          "2018-08-01": 5
-        social_security__child_with_serious_disability: true
-        social_security__is_ordinarily_resident_in_new_zealand: true
-        social_security__medical_certification_months: 12
-        social_security__requires_constant_care_and_attention: true
+          day:2018-08-01:31: 5
+        child_disability_allowance__child_with_serious_disability: true
+        child_disability_allowance__constant_care_exceeding_12_months: true
+        social_security__ordinarily_resident_in_new_zealand: true
       Tamahine_able_bodied_teenager:
         age:
-          "2018-08-01": 19
+          day:2018-08-01:31: 19
     families:
       Whanau_tahi:
-        principal_caregiver: Mama
+        principal: Mama
         children: [ Tama_disabled_child, Tamahine_able_bodied_teenager]
         others: Papa
   output:
-    social_security__eligible_for_child_disability_allowance:
+    child_disability_allowance__allowance_criteria:
+      - false  # mama (principal carer)
+      - false  # papa
+      - true  # Tama (disabled child)
+      - false  # tamahine (able bodied)
+    child_disability_allowance__child_with_serious_disability:
+      - false  # mama (principal carer)
+      - false  # papa
+      - true  # Tama (disabled child)
+      - false  # tamahine (able bodied)
+    child_disability_allowance__constant_care_exceeding_12_months:
+      - false  # mama (principal carer)
+      - false  # papa
+      - true  # Tama (disabled child)
+      - false  # tamahine (able bodied)
+    child_disability_allowance__family_has_eligible_child:
+      - true
+    social_security__principal_caregiver:
+      month:2018-08:
+        - true  # mama (principal carer)
+        - false  # papa
+        - false  # Tama (disabled child)
+        - false  # tamahine (able bodied)
+    child_disability_allowance__eligible:
       - true  # mama (principal carer)
       - false  # papa
       - false  # Tama (disabled child)
       - false  # tamahine (able bodied)
 
 - name: Child Disability Allowance, eligible
-  period: 2018-08
+  period: 2018-W32
   absolute_error_margin: 0
   input:
     persons:
       Koro:
-        is_resident: true
-        social_security__is_ordinarily_resident_in_new_zealand: true
+        immigration__resident: true
+        social_security__ordinarily_resident_in_new_zealand: true
+        social_security__principal_caregiver:
+          month:2018-08: true
       Tama_disabled_child:
         age:
-          "2018-08-01": 17
-        social_security__child_with_serious_disability: true
-        social_security__is_ordinarily_resident_in_new_zealand: true
-        social_security__medical_certification_months: 12
-        social_security__requires_constant_care_and_attention: true
+          day:2018-08-01:31: 17
+        child_disability_allowance__child_with_serious_disability: true
+        social_security__ordinarily_resident_in_new_zealand: true
+        child_disability_allowance__constant_care_exceeding_12_months: true
     families:
       Whanau:
         children: [Tama_disabled_child]
-        principal_caregiver: Koro
+        principal: Koro
   output:
-    social_security__eligible_for_child_disability_allowance:
+    social_security__principal_caregiver:
+      month:2018-08:
+        - true
+        - false
+    child_disability_allowance__allowance_criteria:
+      - false
+      - true
+    child_disability_allowance__family_has_eligible_child:
+      - true
+    child_disability_allowance__eligible:
       - true # Koro
       - false # Tama
 
 - name: Child disability allowance - constant care not needed
-  period: 2018-08
+  period: 2018-W31
   absolute_error_margin: 0
   input:
     persons:
       Koro:
-        is_resident: true
-        social_security__is_ordinarily_resident_in_new_zealand: true
+        immigration__resident: true
+        social_security__ordinarily_resident_in_new_zealand: true
+        social_security__principal_caregiver:
+          month:2018-07:2: true
       Tama_disabled_child:
         age:
-          "2018-08-01": 17
-        social_security__child_with_serious_disability: true
-        social_security__is_ordinarily_resident_in_new_zealand: true
-        social_security__medical_certification_months: 12
-        social_security__requires_constant_care_and_attention: false
+          day:2018-07-30:7: 17
+        has_disability:
+          month:2018-07:2: true
+        social_security__ordinarily_resident_in_new_zealand: true
+        child_disability_allowance__constant_care_exceeding_12_months: false
+        social_security__financially_independent: false
     families:
       Whanau:
-        principal_caregiver: Koro
+        principal: Koro
         children: [Tama_disabled_child]
   output:
-    social_security__eligible_for_child_disability_allowance:
+    child_disability_allowance__eligible:
       - false # Koro
       - false # Tama
 
 
 - name: Child disability allowance - no principal carer
-  period: 2018-08
+  period: 2018-W31
   absolute_error_margin: 0
   input:
     persons:
       Koro:
-        is_resident: true
-        social_security__is_ordinarily_resident_in_new_zealand: true
+        immigration__resident: true
+        social_security__ordinarily_resident_in_new_zealand: true
       Tama_disabled_child:
         age:
-          "2018-08-01": 5
-        social_security__child_with_serious_disability: true
-        social_security__requires_constant_care_and_attention: true
-        social_security__medical_certification_months: 12
+          day:2018-07-30:7: 5
+        child_disability_allowance__child_with_serious_disability: true
+        child_disability_allowance__constant_care_exceeding_12_months: true
     families:
       Whanau:
         children: [Tama_disabled_child]
         others: [Koro]
   output:
-    social_security__eligible_for_child_disability_allowance:
+    child_disability_allowance__eligible:
       - false # Koro
       - false # Tama
 
 - name: Child disability allowance - child too old
-  period: 2018-08
+  period: 2018-W31
   absolute_error_margin: 0
   input:
     persons:
       Koro:
-        is_resident: true
-        social_security__is_ordinarily_resident_in_new_zealand: true
+        immigration__resident: true
+        social_security__ordinarily_resident_in_new_zealand: true
+        social_security__principal_caregiver:
+          month:2018-07:2: true
       Tama_disabled_child:
         age:
-          "2018-08-01": 19
-        social_security__child_with_serious_disability: true
-        social_security__requires_constant_care_and_attention: true
-        social_security__medical_certification_months: 12
+          day:2018-07-30:7: 19
+        has_disability:
+          month:2018-07:2: true
+        child_disability_allowance__constant_care_exceeding_12_months: true
     families:
       Whanau:
         children: [Tama_disabled_child]
-        principal_caregiver: Koro
+        principal: Koro
   output:
-    social_security__eligible_for_child_disability_allowance:
-      - false # Koro
-      - false # Tama
-
-
-- name: Child disability allowance - Disabled for less than 12 months
-  period: 2018-08
-  absolute_error_margin: 0
-  input:
-    persons:
-      Koro:
-        is_resident: true
-        social_security__is_ordinarily_resident_in_new_zealand: true
-      Tama_disabled_child:
-        age:
-          "2018-08-01": 17
-        social_security__child_with_serious_disability: true
-        social_security__requires_constant_care_and_attention: true
-        social_security__medical_certification_months: 11
-    families:
-      Whanau:
-        children: [Tama_disabled_child]
-        principal_caregiver: Koro
-  output:
-    social_security__eligible_for_child_disability_allowance:
+    child_disability_allowance__eligible:
       - false # Koro
       - false # Tama

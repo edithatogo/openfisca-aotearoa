@@ -1,0 +1,112 @@
+[project]
+name = "openfisca-aotearoa"
+version = "22.0.0"
+dependencies = [
+    "openfisca-core[web-api] >=41.4.5, <42",
+    "pandas>=2.2.1",
+]
+requires-python = ">=3.9"
+authors = [
+    { name = "Asghar Hussain Kazi <https://github.com/asgharkazi>" },
+    { name = "Brenda Wallace <https://github.com/Br3nda>" },
+    { name = "Hamish Fraser <https://hamish.dev>" },
+    { name = "Jonah Duckles <https://github.com/jduckles>" },
+    { name = "Mark Calvert <https://github.com/MarkCalvert>" },
+    { name = "Mauko Quiroga Alvarado <https://mauko.me>" },
+    { name = "Merrin Macleod <https://github.com/mermop>" },
+    { name = "Pia Andrews <https://github.com/piacandrews>" }
+]
+maintainers = [
+    { name = "Hamish Fraser <https://hamish.dev>" },
+    { name = "Jonah Duckles <https://github.com/jduckles>" },
+]
+description = "OpenFisca Rules As Code model for Aotearoa."
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["microsimulation", "tax", "benefit", "rac", "rules-as-code"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Operating System :: POSIX",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+# Required to copy openfisca_aotearoa/situation_examples/*.json files
+[tool.setuptools.package-data]
+'*' = ['*.json']
+
+[project.optional-dependencies]
+dev = [
+    "autopep8 >=2.0.4",
+    "flake8 >=7.0.0",
+    "isort >=5.13.2",
+    "pylint >=3.1.0",
+    "pyupgrade >=3.15.1",
+    "yamllint >=1.35.1"
+]
+
+[project.urls]
+Homepage = "https://github.com/digitalaotearoa/openfisca-aotearoa"
+Repository = "https://github.com/digitalaotearoa/openfisca-aotearoa"
+Documentation = "https://openfisca.org/doc"
+Issues = "https://github.com/digitalaotearoa/openfisca-aotearoa/issues"
+Changelog = "https://github.com/digitalaotearoa/openfisca-aotearoa/blob/main/CHANGELOG.md"
+
+[tool.pytest.ini_options]
+addopts = "--showlocals --doctest-modules"
+testpaths = [ "openfisca_aotearoa/tests" ]
+python_files = "**/*.py"
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    'ignore:function ham\(\) is deprecated:DeprecationWarning'
+]
+
+[tool.pylint.messages_control]
+disable = [
+    "invalid-name",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "line-too-long",
+    "no-self-argument",
+    "invalid-enum-extension",
+    "no-member",
+    "not-callable",
+    "duplicate-code",
+    "too-many-locals",
+    "fixme",
+    "unused-argument",
+    "redefined-outer-name"
+]
+score = "no"
+
+[tool.isort]
+case_sensitive = "true"
+force_alphabetical_sort_within_sections = "false"
+group_by_package = "true"
+include_trailing_comma = "true"
+multi_line_output = "8"
+py_version = "311"
+known_first_party = "openfisca_aotearoa"
+known_openfisca = [
+    "openfisca_core",
+    "openfisca_aotearoa"
+]
+known_typing = [
+    "mypy*",
+    "*types*",
+    "*typing*"
+]
+sections = [
+    "FUTURE",
+    "TYPING",
+    "STDLIB",
+    "THIRDPARTY",
+    "OPENFISCA",
+    "FIRSTPARTY",
+    "LOCALFOLDER"
+]

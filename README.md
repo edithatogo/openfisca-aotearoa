@@ -1,62 +1,105 @@
 # OpenFisca Aotearoa
 
-[![CircleCI](https://circleci.com/gh/ServiceInnovationLab/openfisca-aotearoa/tree/master.svg?style=svg)](https://circleci.com/gh/ServiceInnovationLab/openfisca-aotearoa/tree/master)
+The OpenFisca Aotearoa project is an Open Source project dedicated to providing computational models of New Zealand's legislation, regulation, and government policy. 
 
-## Writing the Legislation
+It is a New Zealand specific Rules-as-Code project implemented in [OpenFisca](https://openfisca.org). 
 
-This is an experiment. We've coded large swathes of New Zealand's legislation, regulation, and some government policy into rules that run in the Open Fisca calculation engine. We've released all the code here, for anyone to use.
+> The codebase was originally started in 2018 within the "Service Innovation Lab", a New Zealand government initative that was tasked with looking at whole-of-government approaches to service innovation. The Lab was hosted within the Department of Internal Affairs (DIA) as no "whole of government" entity existed. The work included service design approaches based on life events such as the birth of a child and the idea that one service could avoid parents having to contact multiple government departments (see https://smartstart.services.govt.nz/). The Lab's eventual closure came about due to internal DIA funding priorities.
 
-From late January 2018, the Service Innovation Lab (LabPlus) facilitated a cross-agency and multidisciplinary team in a 3 week Discovery Sprint exploring the challenges and opportunities of developing human and machine consumable legislation for effective and efficient service delivery.
+This project was continued initially by former members of the Lab and the code base, contributors and uses have widened through a number of citizen led initiatives.
 
-Please also read [the wiki](https://github.com/ServiceInnovationLab/openfisca-aotearoa/wiki) as a way of introduction.
 
-### The Lab Team's server
+## Minimal Installation - for users running the rules
 
-An instance of Open Fisca is running at
-[http://api.rules.nz/](http://api.rules.nz/)
-
-and an app called "Rapu Ture" is available to explore which variables exist
-[https://www.rules.nz/](http://www.rules.nz/)
-
+This section will be available again in the near term, once a stable release strategy has been reimplemented which will see the resumption of releases on [PyPI](https://pypi.org/).
 
 ## Install Instructions for Users and Contributors
 
-This package requires [Python 3](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installing/) .
+This package requires Python 3.11. These installation instructions assume python3.11 is installed and accessible via the command line [with the alias](https://www.askpython.com/python/examples/python3-alias-as-python) `python3.11`.
 
-## Installing this Country Package (Aotearoa New Zealand)
+All platforms that can execute Python are supported, which includes GNU/Linux, macOS and Microsoft Windows.
 
-Supported platforms:
-- GNU/Linux distributions (in particular Debian and Ubuntu);
-- Mac OS X;
-- Microsoft Windows (we recommend using [ConEmu](https://conemu.github.io/) instead of the default console).
+There are a number of methodologies to setting up an development environment, the following is the most generic, other options are listed after.
 
-Other OS should work if they can execute Python and NumPy.
+### Clone the repository
 
-Pick option (A) or (B)
+Via the terminal, clone the repository and `cd openfisca-aotearoa` into the project directory.
 
+### Setting-up a Virtual Environment with venv
 
-### A. Minimal Installation - for users running the rules
+In order to limit dependency conflicts, it is recommended utilising a [virtual environment](https://www.python.org/dev/peps/pep-0405/) with [venv](https://docs.python.org/3/library/venv.html).
 
-Follow this installation if you wish to:
-  - run calculations on a large population;
-  - run your own instance of OpenFisca-Aotearoa
-  - run your own instance of the OpenFisca-Aotearoa rules package, as an OpenFisca Web API.
-  - **not** modify the rules
+- A [venv](https://docs.python.org/3/library/venv.html) is a project specific environment created to suit the needs of the project being worked on.
 
-There are 3 documented ways to do this - Pick your tech:
-  * [Run in docker](SETUP-docker.md) to run on an instance or your laptop
-  * [Setup pew and install from pip](SETUP-pew.md) to manage virtualenvs
-  * [Run on heroku's PaaS cloud](https://heroku.com/deploy)
+To create a virtual environment, ensuring the terminal is in the root of the openfisca-aotearoa directory (you need to have cloned this repository), then follow these instructions:
 
-### B. Advanced Installation - for devs, modifying the rules and code
+```sh
+# Only required if the appropriate package is not installed (Ubuntu 22+)
+sudo apt install python3.11-venv
+# Create a new virtual environment in the “.venv” folder, which will contain all dependencies
+python3.11 -m venv .venv 
+# The following will activate the virtual environment.
+source .venv/bin/activate 
+```
 
-Follow this tutorial if you wish to change the OpenFisca-Aotearoa rules or contribute to the source code.
+The venv is now active and ready for installing the OpenFisca-Aotearoa dependancies.
 
-Read the [Setup Aotearoa Open Fisca in pyenv](SETUP-pyenv.md) instructions to manage python runtimes and eggs
+You can deactivate that venv at any time with the following command: 
 
-`pyenv` is simular to rbenv/rvm (for ruby) and nvm (for nodejs).
+```sh
+deactivate
+```
+
+(and then delete the .venv directory to completely reset the environment to restart these instructions).
+
+### Installing the dependancies in the virtual environment
+
+Ensuring the virtual directory is active, run the following command:
+
+```sh
+make install
+```
+
+## Testing
+
+Ensuring the virtual directory is active and the dependancies are install in the last step run:
+
+```sh
+make test
+```
+This should successfully run the full OpenFisca Aotearoa test suite if everything has installed properly.
+
+## Web API
+
+Ensuring the virtual directory is active, to serve an instance of the OpenFisca Aotearoa web API run:
+
+```sh
+make serve
+```
+
+You can make sure that your instance of the API is working by requesting:
+
+```sh
+curl "http://localhost:5000/spec"
+```
+
+To read more about the `openfisca serve` command, check out its [documentation](https://openfisca.readthedocs.io/en/latest/openfisca_serve.html).
+
+Depending on your environment, this will allow for access to the web API at [http://localhost:5000](http://localhost:5000).
+
+# Alternatives
+
+- [Run OpenFisca Aotearoa in vscode with devcontainer](docs/devcontainer.md). Creates a development environment in Visual Studio Code using the VSCode Development container approach. Requires Docker.
+
+- [Setup your virtual environment with Pew](docs/pew.md)
+
+- [Setup your virtual environment with pyenv](docs/pyenv.md)
+
+- [Build a docker image and run the OpenFisca web API with it](docs/docker.md)
+
 
 ## Next Steps
 
 - To write new legislation, read [the wiki](https://github.com/ServiceInnovationLab/openfisca-aotearoa/wiki) along with the OpenFisca [Coding the legislation](https://openfisca.org/doc/coding-the-legislation/index.html) section.
 - To contribute to the code, read our [contribution doc](https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/CONTRIBUTING.md).
+

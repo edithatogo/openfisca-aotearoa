@@ -4,11 +4,14 @@
 *.pyc
 build
 dist
+.venv
 
 # Editors
 
+.idea
 .project
 .pydevproject
+.python-version
 .settings
 .spyderproject
 .vscode

@@ -1,35 +1,51 @@
 - name: Relationship status
-  period: "2018-10"
+  period: "2018-W40"
   absolute_error_margin: 0
   input:
     persons:
-      Mama:
-        age:
-          "2018-10-01": 30
-      Papa:
-        age:
-          "2018-10-01": 30
-      Bob:
-        age:
-          "2018-10-01": 30
-      Fred:
-        age:
-          "2018-10-01": 30
-      Mary:
-        age:
-          "2018-10-01": 30
-    families:
-      One:
-        principal_caregiver: Mama
-        partners: Papa
-      Two:
-        partners: [Bob, Fred]
-      Three:
-        principal_caregiver: Mary
+      Mama: {}
+      Papa: {}
+      Bob: {}
+      Fred: {}
+      Mary: {}
+    family:
+      principal: Mama
+      partners: [Papa]
+      others: [Bob, Fred, Mary]
   output:
-    has_a_partner:
-      - true # mama
-      - true # papa
-      - true # Bob
-      - true # Fred
-      - false # Mary
+    social_security__in_a_relationship: [true, false, false, false, false]
+
+
+- name: Relationship status
+  period: "2018-W40"
+  absolute_error_margin: 0
+  input:
+    persons:
+      Mama: {}
+      Papa: {}
+      Bob: {}
+      Fred: {}
+      Mary: {}
+    family:
+      principal: Bob
+      partners: [Fred]
+      others: [Mama, Papa, Mary]
+  output:
+    social_security__in_a_relationship: [false, false, true, false, false]
+
+
+- name: Relationship status
+  period: "2018-W40"
+  absolute_error_margin: 0
+  input:
+    persons:
+      Mama: {}
+      Papa: {}
+      Bob: {}
+      Fred: {}
+      Mary: {}
+    family:
+      principal: Mary
+      others: [Mama, Papa, Bob, Fred]
+  output:
+    social_security__in_a_relationship: False

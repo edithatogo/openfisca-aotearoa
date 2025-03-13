@@ -1,38 +1,60 @@
-# -*- coding: utf-8 -*-
+"""TODO: Add missing doctring."""
 
-from openfisca_core.model_api import *
-from openfisca_aotearoa.entities import Person
+import numpy
+
+from openfisca_core import periods, variables
+
+from openfisca_aotearoa import entities
 
 
-class super___eligibility_age(Variable):
+class super___eligibility_age(variables.Variable):
     value_type = int
-    entity = Person
-    definition_period = ETERNITY
-    label = u"The age the applicant will be eligible for NZ Super."
+    entity = entities.Person
+    definition_period = periods.DateUnit.ETERNITY
+    label = "The age the applicant will be eligible for NZ Super."
     reference = "http://www.legislation.govt.nz/act/public/2001/0084/latest/DLM114223.html"
 
     def formula(persons, period, parameters):
-        return persons('super__eligibility', period) * parameters(period).entitlements.superannuation.age_qualification
+        return persons("super__entitled", period) * parameters(period).entitlements.superannuation.age_qualification
 
 
-class super__eligibility(Variable):
+class super__entitled(variables.Variable):
     value_type = bool
-    entity = Person
-    definition_period = MONTH
-    label = u"Classified as eligible for NZ Super"
+    entity = entities.Person
+    definition_period = periods.DateUnit.MONTH
+    label = "Classified as eligible for NZ Super"
     reference = "http://www.legislation.govt.nz/act/public/2001/0084/latest/DLM113987.html"
 
     def formula(persons, period, parameters):
-        return persons('is_citizen_or_resident', period) *\
-            not_((persons('total_number_of_years_lived_in_nz_since_age_20', period) < 10)) *\
-            not_((persons('total_number_of_years_lived_in_nz_since_age_50', period) < 5)) *\
-            not_(persons('acc__is_receiving_compensation', period)) +\
+        return persons("immigration__citizen_or_resident", period) *\
+            numpy.logical_not(persons("total_number_of_years_lived_in_nz_since_age_20", period) < 10) *\
+            numpy.logical_not(persons("total_number_of_years_lived_in_nz_since_age_50", period) < 5) *\
+            numpy.logical_not(persons("acc__receiving_compensation", period)) +\
             persons(
-                'veterans_support__is_entitled_to_be_paid_veterans_pension', period)
+                "veterans_support__entitled", period)
 
 
-class super__is_being_paid_nz_superannuation(Variable):
+class super__receiving(variables.Variable):
+    label = "TODO"
+    reference = "TODO"
+    documentation = """TODO"""
+    entity = entities.Person
     value_type = bool
-    entity = Person
+    default_value = False
+    definition_period = periods.DateUnit.WEEK
+
+
+class super__base(variables.Variable):
+    value_type = float
+    default_value = 0
+    entity = entities.Person
+    label = "TODO"
+    definition_period = periods.DateUnit.WEEK
+    reference = "TODO"
+
+
+class super__being_paid_nz_superannuation(variables.Variable):
+    value_type = bool
+    entity = entities.Person
     label = "New Zealand superannuation"
-    definition_period = MONTH
+    definition_period = periods.DateUnit.MONTH

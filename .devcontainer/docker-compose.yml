@@ -1,0 +1,10 @@
+services:
+  openfisca-aotearoa:
+    build:
+      context: .
+    container_name: openfisca_aotearoa_dev
+    working_dir: /openfisca
+    ports:
+    - '5000:5000'
+    volumes:
+    - ../:/openfisca

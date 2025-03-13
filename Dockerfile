@@ -1,10 +1,10 @@
-FROM python:3-stretch
+FROM python:3.11
+
 COPY . /openfisca
 WORKDIR /openfisca
 
 RUN pip install --upgrade pip && \
-    pip install -e . && \
-    pip install -r requirements.txt
+    pip install --upgrade .
 
 EXPOSE 5000
 

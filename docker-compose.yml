@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  openfisca:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    labels:
+      lagoon.type: basic
+      lagoon.service.port: 5000
+    networks:
+      - web
+    volumes:
+      - .:/openfisca
+
+networks:
+  web:
+    external: true
