@@ -67,4 +67,22 @@
     income_tax__taxable_income: 100000
   output:
     income_tax__individual_income_tax: 22878
-
+- name: individual income tax calculation 2024 transitional rates (50k taxable income)
+  period: 2024
+  absolute_error_margin: 1
+  input:
+    income_tax__taxable_income: 50000
+  output:
+    # IRD rates for 1 April 2024 to 31 March 2025:
+    # 10.5% to 14,000; 12.82% to 15,600; 17.5% to 48,000;
+    # 21.64% to 53,500.
+    income_tax__individual_income_tax: 7778
+- name: individual income tax calculation 2024 transitional rates (100k taxable income)
+  period: 2024
+  absolute_error_margin: 1
+  input:
+    income_tax__taxable_income: 100000
+  output:
+    # IRD rates for 1 April 2024 to 31 March 2025 include transitional
+    # 12.82%, 21.64%, and 30.99% bands.
+    income_tax__individual_income_tax: 23222

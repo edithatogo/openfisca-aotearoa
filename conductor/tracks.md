@@ -16,7 +16,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 ---
 
 ## [x] Track 3: Integrate and Map Historical/Current Tax Rules from nztaxmicrosim
-*Link: [./conductor/tracks/integrate_nztaxmicrosim_20260615/](./conductor/tracks/integrate_nztaxmicrosim_20260615/)*
+*Archived: [./conductor/archive/integrate_nztaxmicrosim_20260615/](./conductor/archive/integrate_nztaxmicrosim_20260615/)*
 *Description:* Import and map all existing historical tax rules and brackets from `nztaxmicrosim` into OpenFisca Aotearoa parameters, and update with newer NZ tax rules.
 
 ---
