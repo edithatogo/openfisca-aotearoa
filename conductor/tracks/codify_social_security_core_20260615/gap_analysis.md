@@ -1,0 +1,177 @@
+# Gap Analysis: Social Security Act 2018 -- Audit & Mapping Report
+
+**Track:** `codify_social_security_core_20260615`  
+**Date:** 2026-06-15  
+**Status:** Phase 1 -- Audit Complete
+
+---
+
+## 1. Act Structure Overview
+
+| Part | Title | Sections |
+|------|-------|----------|
+| 1 | Preliminary | ss1-19 |
+| 2 | Main Benefits | ss20-199 |
+| 3 | Supplementary Assistance | |
+| 4-6 | General, Admin, Transitional | |
+| | Schedules 1-9 | Sch 1-9 |
+
+---
+
+## 2. Existing Code to Act Mapping
+
+### 2.1 Part 1 -- Preliminary (ss1-19)
+
+| Section | Description | Coverage |
+|---------|-------------|----------|
+| s16 | Residential requirement | COVERED |
+| s19 | General limitation | COVERED |
+
+**Interpretation (Sch 2):** All key concepts covered
+
+### 2.2 Part 2 -- Main Benefits
+
+#### Subpart 1 -- Jobseeker Support (ss20-28)
+
+| Section | Coverage | Notes |
+|---------|----------|-------|
+| ss20-24 | COVERED | Work gap, available, age, residence, income |
+| ss25-28 | MISSING | Hardship, ineligibility, medical |
+| Benefit calc | COVERED | `jobseeker_support__benefit.py` |
+| Sch 4 Pt 1 | COVERED | All clauses 1a-1j |
+| Sch 4 Pts 2-7 | MISSING | Housekeeper, exceptions, childcare, etc |
+
+#### Subpart 2 -- Sole Parent Support (ss29-33)
+
+Sections s29, s30, s32: COVERED. s31, s33: MISSING. Benefit calc: COVERED.
+
+#### Subpart 3 -- Supported Living Payment (ss34-42)
+
+s34, s36, s40: COVERED. s35, s37-39, s41-42: MISSING.
+Benefit calc: COVERED (complex). Sch 4 Pt 3: COVERED.
+
+#### Subparts 4-5 -- Youth Payment / Young Parent Payment
+
+Youth Payment (ss43-53): MOSTLY MISSING -- only stubs exist
+Young Parent Payment (ss54-63): PARTIAL -- 1964 Act logic, needs 2018 update
+
+#### Subpart 6 -- Stand-down Periods (ss64-74)
+
+**COMPLETELY MISSING.** No code exists.
+
+#### Subparts 7-8 -- Orphan's Benefit / Unsupported Child's Benefit
+
+Entitlement: COVERED (1964 Act). 2018 Act and rates: MISSING.
+
+#### Subparts 9-11 -- CDA, DA, Emergency Benefit
+
+CDA (ss80-84): COVERED. DA (ss85-91): COVERED.
+Emergency Benefit (ss92-99): STUB only.
+
+### 2.3 Part 3 -- Supplementary Assistance
+
+Accommodation Supplement: FULLY COVERED (8 modules)
+
+---
+
+## 3. Schedule Coverage
+
+| Schedule Part | Coverage |
+|---------------|----------|
+| Sch 4 Pt 1 (JS) | COVERED |
+| Sch 4 Pt 2 (Housekeeper) | MISSING |
+| Sch 4 Pt 3 (SLP) | COVERED |
+| Sch 4 Pt 4 (OB/USB) | MISSING |
+| Sch 4 Pt 5 (DA limits) | COVERED |
+| Sch 4 Pt 6 (CDA) | COVERED |
+| Sch 4 Pt 7 (Accom Supp) | COVERED |
+| Sch 4 Pt 8 (Childcare) | Params only |
+| Sch 5 Income Tests | Covered (Test 3a orphaned) |
+
+---
+
+## 4. Missing Rules -- Prioritised
+
+### P0 -- Critical
+1. Stand-down periods (ss64-74)
+2. Asset tests for main benefits
+3. OB/USB benefit rates (Sch 4 Pt 4)
+4. Youth Payment entitlement + rates
+5. Income Test 3a (orphaned)
+
+### P1 -- High
+6. Young Parent Payment 2018 Act update
+7. Emergency Benefit entitlement + rate
+8. JS Sch 4 Pt 3 exceptions
+9. JS s26 ineligibility (student)
+10. JS Part 7 OB/USB child count
+
+### P2 -- Medium
+11. SLP s35 (work capacity)
+12. Housekeeper increases (Sch 4 Pt 2)
+13. $20 childcare disregard (Sch 4 Pt 5)
+14. Part 6 imprisonment (Sch 4 Pt 6)
+15-16. OB/USB 2018 Act updates
+
+### P3 -- Low
+17. Childcare Assistance variables
+18-21. JS s25, s27-28, SLP s37-s42, IT 3a docs
+
+---
+
+## 5. Income Test Mapping
+
+| Test | Thr.1 | Rate1 | Thr.2 | Rate2 | Used By |
+|------|-------|-------|-------|-------|---------|
+| 1 | $0-100 | 0% | $100-200 | 30/70% | JS(c,e,f), SPS, SLP |
+| 2 | $0-100 | 0% | $100-200 | 15/35% | SLP (relat) |
+| 3a | $0-100 | 0% | $100+ | 70% | **UNUSED** |
+| 3b | $0-80 | 0% | $80+ | 70% | JS(a,b,d,i,j) |
+| 4 | $0-80 | 0% | $80+ | 35% | JS(g,h) |
+
+---
+
+## 6. Parameter Inventory
+
+Existing: 22 parameter files. All income tests, JS/SPS/SLP/CDA/DA rates, and Accommodation Supplement.
+
+Missing params:
+- `orphans_benefit/base.yaml` (P0)
+- `unsupported_child/base.yaml` (P0)
+- `youth_payment/base.yaml` (P0)
+- `young_parent_payment/base.yaml` (P1)
+- `emergency_benefit/base.yaml` (P1)
+- `stand_down/` directory (P0)
+- `asset_test/` directory (P0)
+
+---
+
+## 7. Summary
+
+| Metric | Value |
+|--------|-------|
+| Existing variable modules | 10 benefit types |
+| Variable files | 37 |
+| Parameter files | 22 |
+| Missing subparts (entirely) | 3 |
+| Missing Schedule parts | 2 |
+| Missing benefit rates | 4 |
+| Income test issues | 1 (Test 3a) |
+| 2018 Act updates needed | 3 (YPP, OB, USB) |
+| P0 / P1 / P2 / P3 items | 5 / 5 / 6 / 5 |
+
+---
+
+## 8. Phase 2 File Roadmap
+
+New vars: stand_down, asset_test, schedule_4/part2+4, youth_payment,
+emergency_benefit, orphans_benefit_benefit, unsupported_child_benefit.
+
+New params: 10 files across stand_down/, asset_test/, orphans_benefit/,
+unsupported_child/, youth_payment/, emergency_benefit/.
+
+Updates: 8 files (JS, SPS, SLP, YPP x4, OB, USB, resident).
+
+---
+
+*Report generated by `codify_social_security_core_20260615` track.*
