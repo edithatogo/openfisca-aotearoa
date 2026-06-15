@@ -1,0 +1,8 @@
+{
+  "track_id": "modernize_tooling_20260615",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-15T20:00:00Z",
+  "updated_at": "2026-06-15T20:00:00Z",
+  "description": "Migrate project configuration to UV Workspaces and Una monorepo manager, consolidate code formatting and linting under ruff, and set up basedpyright for strict typing"
+}

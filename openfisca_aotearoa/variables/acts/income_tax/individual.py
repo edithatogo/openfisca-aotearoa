@@ -86,3 +86,17 @@ class income_tax__taxable_income(Variable):
         return (
             taxable_income * (taxable_income > 0)
             )
+
+
+class income_tax__individual_income_tax(Variable):
+    value_type = float
+    entity = Person
+    definition_period = YEAR
+    label = "A person's individual income tax calculated using progressive tax rates"
+    reference = "https://www.legislation.govt.nz/act/public/2007/0097/latest/DLM1512301.html"
+
+    def formula(person, period, parameters):
+        taxable_income = person("income_tax__taxable_income", period)
+        rate_scale = parameters(period).taxes.income_tax.individual_income_tax_rate
+        return rate_scale.calc(taxable_income)
+

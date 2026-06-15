@@ -1,0 +1,16 @@
+description: ACC Earners' Levy rates and maximum liable income limits
+reference: https://www.legislation.govt.nz/regulation/public/2023/0017/latest/whole.html
+rate:
+  2020-04-01:
+    value: 0.0139
+  2022-04-01:
+    value: 0.0146
+  2023-04-01:
+    value: 0.0153
+max_threshold:
+  2020-04-01:
+    value: 130911
+  2022-04-01:
+    value: 136544
+  2023-04-01:
+    value: 139384

@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Install Python
+        run: uv python install 3.12
+
+      - name: Run Ruff Lint & Format Checks
+        uses: astral-sh/ruff-action@v1
+        with:
+          args: "check --output-format=github"
+
+      - name: Strict Type Check with Basedpyright
+        run: |
+          uv pip install basedpyright
+          uv run basedpyright openfisca_aotearoa
+
+      - name: Check Cognitive Complexity with Complexipy
+        run: |
+          uv pip install complexipy
+          uv run complexipy openfisca_aotearoa --max-complexity 15
+
+      - name: Run Test Suite
+        run: |
+          uv pip install pytest pytest-cov pytest-gremlins hypothesis
+          uv run pytest --cov=openfisca_aotearoa --cov-report=xml --strict-markers --strict-config -W error
+
+      - name: Upload Coverage
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -1,0 +1,8 @@
+{
+  "track_id": "integrate_nztaxmicrosim_20260615",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-15T19:52:00Z",
+  "updated_at": "2026-06-15T19:52:00Z",
+  "description": "Integrate and Map Historical/Current Tax Rules from nztaxmicrosim"
+}

@@ -1,0 +1,8 @@
+{
+  "track_id": "modernize_tooling_20260615",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-15T18:27:00Z",
+  "updated_at": "2026-06-15T20:30:00Z",
+  "description": "Migrate project configuration to UV-compatible pyproject metadata, consolidate linting under Ruff, and set up a passable Basedpyright baseline"
+}

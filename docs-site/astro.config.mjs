@@ -13,7 +13,7 @@ export default defineConfig({
       title: 'OpenFisca Aotearoa',
       description: 'Legal NZ documentation portal for OpenFisca Aotearoa.',
       sidebar: [
-        { label: 'Start', items: ['index', 'docs-tooling-audit'] },
+        { label: 'Start', items: ['index', 'docs-tooling-audit', 'explorer'] },
       ],
     }),
   ],

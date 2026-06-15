@@ -46,3 +46,25 @@
     income_tax__available_tax_loss: 72000
   output:
     income_tax__taxable_income: 0
+- name: individual income tax calculation 2022 (50k taxable income)
+  period: 2022
+  absolute_error_margin: 1
+  input:
+    income_tax__taxable_income: 50000
+  output:
+    income_tax__individual_income_tax: 8020
+- name: individual income tax calculation 2022 (15k taxable income)
+  period: 2022
+  absolute_error_margin: 1
+  input:
+    income_tax__taxable_income: 15000
+  output:
+    income_tax__individual_income_tax: 1645
+- name: individual income tax calculation 2025 (100k taxable income)
+  period: 2025
+  absolute_error_margin: 1
+  input:
+    income_tax__taxable_income: 100000
+  output:
+    income_tax__individual_income_tax: 22878
+

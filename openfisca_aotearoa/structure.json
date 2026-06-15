@@ -286,6 +286,24 @@
             "Prefix": "veterans_support",
             "Type": "Act",
             "Reference": "http://www.legislation.govt.nz/act/public/2014/0056/latest/DLM5537774.html"
+        },
+        {
+            "Title": "Pae Ora (Healthy Futures) Act 2022",
+            "Prefix": "pae_ora",
+            "Type": "Act",
+            "Reference": "https://www.legislation.govt.nz/act/public/2022/0030/latest/whole.html"
+        },
+        {
+            "Title": "Housing Restructuring and Tenancy Matters Act 1992",
+            "Prefix": "housing_restructuring",
+            "Type": "Act",
+            "Reference": "https://www.legislation.govt.nz/act/public/1992/0076/latest/whole.html"
+        },
+        {
+            "Title": "Tax Administration Act 1994",
+            "Prefix": "tax_admin",
+            "Type": "Act",
+            "Reference": "https://www.legislation.govt.nz/act/public/1994/0166/latest/whole.html"
         }
     ]
 }

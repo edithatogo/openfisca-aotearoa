@@ -1,0 +1,74 @@
+# Project Tracks
+
+This file tracks all major tracks for the project. Each track has its own detailed plan in its respective folder.
+
+---
+
+## [x] Track 1: Migrate project configuration to UV-compatible pyproject metadata, consolidate linting under Ruff, and set up a passable Basedpyright baseline
+*Archived: [./conductor/archive/modernize_tooling_20260615/](./conductor/archive/modernize_tooling_20260615/)*
+
+---
+
+## [x] Track 2: Upstream Governance Alignment and Active Fork Designation
+*Archived: [./conductor/archive/upstream_governance_20260615/](./conductor/archive/upstream_governance_20260615/)*
+*Description:* Document status of this repository as the definitive active fork of OpenFisca Aotearoa, updating README files to reference legacy repos (`BetterRules` / `digitalaotearoa`) as dormant upstream references.
+
+---
+
+## [x] Track 3: Integrate and Map Historical/Current Tax Rules from nztaxmicrosim
+*Link: [./conductor/tracks/integrate_nztaxmicrosim_20260615/](./conductor/tracks/integrate_nztaxmicrosim_20260615/)*
+*Description:* Import and map all existing historical tax rules and brackets from `nztaxmicrosim` into OpenFisca Aotearoa parameters, and update with newer NZ tax rules.
+
+---
+
+## [x] Track 4: Target Legislation Audit and New Legislation Track Scaffolding
+*Link: [./conductor/tracks/legislation_audit_20260615/](./conductor/tracks/legislation_audit_20260615/)*
+*Description:* Map and audit target NZ legislation using the `nz-legislation` CLI tool, identify gaps, and automatically generate individual feature tracks to explore and codify each target Act/Regulation.
+
+---
+
+## [x] Track 5: GitHub CI/CD Automation & Multi-Tier Testing
+*Link: [./conductor/tracks/github_actions_20260615/](./conductor/tracks/github_actions_20260615/)*
+*Description:* Scaffold GitHub Actions workflows to automate Ruff linting via `ruff-action`, Basedpyright strict checks, and Pytest coverage checks across Unit, Integration, E2E, and Smoke tests. Integrate `hypothesis` fuzzing, `pytest-gremlins` mutation testing, strict warnings-as-errors settings, `scalene` profiling, and `TestSprite` AI test agent automation.
+
+---
+
+## [x] Track 6: Automated Documentation and Exploration Publishing via Astro on GitHub Pages
+*Link: [./conductor/tracks/github_pages_20260615/](./conductor/tracks/github_pages_20260615/)*
+*Description:* Deploy an automated documentation page and parameter explorer built with **Astro** to GitHub Pages, ensuring policy analysts can search laws and parameter changes visually.
+
+---
+
+## [x] Track 7: Release, Tagging, and Dependency Lifecycle Automation
+*Link: [./conductor/tracks/release_lifecycle_20260615/](./conductor/tracks/release_lifecycle_20260615/)*
+*Description:* Configure Dependabot to maintain bleeding-edge Rust tooling, and configure `hatch-vcs` for dynamic semantic tagging and auto-release builds.
+
+---
+
+## [x] Track 8: Decisional Simulation Analytics & Policy Diffusion
+*Link: [./conductor/tracks/simulation_analytics_20260615/](./conductor/tracks/simulation_analytics_20260615/)*
+*Description:* Implement simulation analytics using `voiage` (Value of Information), `mars` regression, and `innovate` (policy diffusion and uptake modelling) over `open_social_data`.
+
+---
+
+## [ ] Track 9: Codify Pae Ora (Healthy Futures) Act 2022 (Primary Care Funding Integration)
+*Link: [./conductor/tracks/codify_pae_ora_20260615/](./conductor/tracks/codify_pae_ora_20260615/)*
+*Description:* Explores and codifies primary care funding structures under the Pae Ora (Healthy Futures) Act 2022, integrating parameters and logic derived from `gtpcnz`.
+
+---
+
+## [x] Track 10: Codify Housing Restructuring and Tenancy Matters Act 1992
+*Link: [./conductor/tracks/codify_housing_restructuring_20260615/](./conductor/tracks/codify_housing_restructuring_20260615/)*
+*Description:* Codify social housing income-related rent calculators governed under the Housing Restructuring and Tenancy Matters Act 1992.
+
+---
+
+## [x] Track 11: Codify Tax Administration Act 1994 & WFF amendments
+*Link: [./conductor/tracks/codify_tax_admin_20260615/](./conductor/tracks/codify_tax_admin_20260615/)*
+*Description:* Codify WFF adjustments and administrative compliance timelines under the Tax Administration Act 1994.
+
+---
+
+## [x] Track 12: Codify ACC Earners' Levy Regulations
+*Link: [./conductor/tracks/codify_acc_levy_regs_20260615/](./conductor/tracks/codify_acc_levy_regs_20260615/)*
+*Description:* Codify Acc Earner's Levy rate changes and maximum caps under the Accident Compensation (Earners' Levy) Regulations.
