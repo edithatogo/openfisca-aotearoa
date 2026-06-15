@@ -20,3 +20,14 @@ dist
 
 .DS_Store
 *~
+
+# Local generated diagnostics and caches
+.tmp/
+__pycache__/
+node_modules/
+docs-site/__pycache__/
+docs-site/node_modules/
+error.txt
+stderr.txt
+test_*.txt
+test_import.py

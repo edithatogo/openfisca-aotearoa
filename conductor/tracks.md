@@ -22,14 +22,14 @@ This file tracks all major tracks for the project. Each track has its own detail
 ---
 
 ## [x] Track 4: Target Legislation Audit and New Legislation Track Scaffolding
-*Link: [./conductor/tracks/legislation_audit_20260615/](./conductor/tracks/legislation_audit_20260615/)*
+*Archived: [./conductor/archive/legislation_audit_20260615/](./conductor/archive/legislation_audit_20260615/)*
 *Description:* Map and audit target NZ legislation using the `nz-legislation` CLI tool, identify gaps, and automatically generate individual feature tracks to explore and codify each target Act/Regulation.
 
 ---
 
 ## [x] Track 5: GitHub CI/CD Automation & Multi-Tier Testing
-*Link: [./conductor/tracks/github_actions_20260615/](./conductor/tracks/github_actions_20260615/)*
-*Description:* Scaffold GitHub Actions workflows to automate Ruff linting via `ruff-action`, Basedpyright strict checks, and Pytest coverage checks across Unit, Integration, E2E, and Smoke tests. Integrate `hypothesis` fuzzing, `pytest-gremlins` mutation testing, strict warnings-as-errors settings, `scalene` profiling, and `TestSprite` AI test agent automation.
+*Archived: [./conductor/archive/github_actions_20260615/](./conductor/archive/github_actions_20260615/)*
+*Description:* Scaffold GitHub Actions workflows to install project dependencies with `uv`, automate Ruff linting via `ruff-action`, run the current Basedpyright baseline, enforce Complexipy complexity checks, and run Pytest coverage checks with warnings-as-errors and Hypothesis-backed property tests.
 
 ---
 
@@ -72,3 +72,15 @@ This file tracks all major tracks for the project. Each track has its own detail
 ## [x] Track 12: Codify ACC Earners' Levy Regulations
 *Link: [./conductor/tracks/codify_acc_levy_regs_20260615/](./conductor/tracks/codify_acc_levy_regs_20260615/)*
 *Description:* Codify Acc Earner's Levy rate changes and maximum caps under the Accident Compensation (Earners' Levy) Regulations.
+
+---
+
+## [ ] Track 13: Codify Social Security Act 2018 Core Entitlements and Income Tests
+*Link: [./conductor/tracks/codify_social_security_core_20260615/](./conductor/tracks/codify_social_security_core_20260615/)*
+*Description:* Audit and codify missing Social Security Act 2018 entitlement, income-test, and assistance rules, reconciling existing benefit modules with current legislative structure.
+
+---
+
+## [ ] Track 14: Codify Income Tax Act 2007 Core Tax and Family Scheme Rules
+*Link: [./conductor/tracks/codify_income_tax_core_20260615/](./conductor/tracks/codify_income_tax_core_20260615/)*
+*Description:* Audit and codify missing Income Tax Act 2007 core tax, family scheme, and Working for Families rules, separating core Act coverage from Tax Administration Act compliance work.

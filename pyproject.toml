@@ -13,7 +13,6 @@ dependencies = [
     "loguru>=0.7.0",
     "orjson>=3.9.0",
     "numpy>=2.0.0",
-    "faer>=0.1.0",
     "safetensors>=0.4.0",
     "ty>=0.0.1",
 ]

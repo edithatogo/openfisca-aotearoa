@@ -19,27 +19,24 @@ jobs:
           enable-cache: true
 
       - name: Install Python
-        run: uv python install 3.12
+        run: uv python install 3.11
 
-      - name: Run Ruff Lint & Format Checks
+      - name: Install Dependencies
+        run: uv sync --extra dev
+
+      - name: Run Ruff Lint Checks
         uses: astral-sh/ruff-action@v1
         with:
-          args: "check --output-format=github"
+          args: "check --output-format=github ."
 
-      - name: Strict Type Check with Basedpyright
-        run: |
-          uv pip install basedpyright
-          uv run basedpyright openfisca_aotearoa
+      - name: Type Check with Basedpyright
+        run: uv run basedpyright openfisca_aotearoa
 
       - name: Check Cognitive Complexity with Complexipy
-        run: |
-          uv pip install complexipy
-          uv run complexipy openfisca_aotearoa --max-complexity 15
+        run: uv run complexipy openfisca_aotearoa --max-complexity 15
 
       - name: Run Test Suite
-        run: |
-          uv pip install pytest pytest-cov pytest-gremlins hypothesis
-          uv run pytest --cov=openfisca_aotearoa --cov-report=xml --strict-markers --strict-config -W error
+        run: uv run pytest --cov=openfisca_aotearoa --cov-report=xml --strict-markers --strict-config -W error
 
       - name: Upload Coverage
         uses: codecov/codecov-action@v4
