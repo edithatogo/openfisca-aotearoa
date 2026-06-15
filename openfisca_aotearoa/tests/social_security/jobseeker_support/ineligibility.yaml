@@ -1,0 +1,55 @@
+- name: Social Security Act 2018 — Jobseeker Support — s26 Ineligibility — Not ineligible when none apply
+  period: 2019-W05
+  input:
+    jobseeker_support__work_gap: true
+    jobseeker_support__available_for_work: true
+    jobseeker_support__age_requirement: true
+    social_security__residential_requirement: true
+    jobseeker_support__minimum_income: true
+    jobseeker_support__full_time_student: false
+    jobseeker_support__strike_action: false
+    jobseeker_support__employment_training: false
+  output:
+    jobseeker_support__entitled: true
+
+- name: Social Security Act 2018 — Jobseeker Support — s26(a) full-time student ineligible
+  period: 2019-W05
+  input:
+    jobseeker_support__work_gap: true
+    jobseeker_support__available_for_work: true
+    jobseeker_support__age_requirement: true
+    social_security__residential_requirement: true
+    jobseeker_support__minimum_income: true
+    jobseeker_support__full_time_student: true
+    jobseeker_support__strike_action: false
+    jobseeker_support__employment_training: false
+  output:
+    jobseeker_support__entitled: false
+
+- name: Social Security Act 2018 — Jobseeker Support — s26(b) strike action ineligible
+  period: 2019-W05
+  input:
+    jobseeker_support__work_gap: true
+    jobseeker_support__available_for_work: true
+    jobseeker_support__age_requirement: true
+    social_security__residential_requirement: true
+    jobseeker_support__minimum_income: true
+    jobseeker_support__full_time_student: false
+    jobseeker_support__strike_action: true
+    jobseeker_support__employment_training: false
+  output:
+    jobseeker_support__entitled: false
+
+- name: Social Security Act 2018 — Jobseeker Support — s26(c) employment training ineligible
+  period: 2019-W05
+  input:
+    jobseeker_support__work_gap: true
+    jobseeker_support__available_for_work: true
+    jobseeker_support__age_requirement: true
+    social_security__residential_requirement: true
+    jobseeker_support__minimum_income: true
+    jobseeker_support__full_time_student: false
+    jobseeker_support__strike_action: false
+    jobseeker_support__employment_training: true
+  output:
+    jobseeker_support__entitled: false

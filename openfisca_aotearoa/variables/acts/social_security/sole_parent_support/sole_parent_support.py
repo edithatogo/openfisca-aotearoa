@@ -103,6 +103,21 @@ class sole_parent_support__meets_relationship_qualification(variables.Variable):
         return no_partners + not_supported
 
 
+class sole_parent_support__expired(variables.Variable):
+    value_type = bool
+    default_value = False
+    entity = entities.Person
+    definition_period = periods.WEEK
+    label = "Sole Parent Support has expired because the youngest dependent child has turned 14 years old (s33)"
+    reference = "https://www.legislation.govt.nz/act/public/2018/0032/latest/whole.html#DLM6783171"
+
+    def formula_2018_11_26(persons, period, parameters):
+        child_age_threshold = parameters(period).social_security.sole_parent_support.child_age_threshold
+        youngest_child_age = persons.family("age_of_youngest", period.start)
+        no_dependent_children = persons("social_security__dependent_children", period) == 0
+        return no_dependent_children + (youngest_child_age >= child_age_threshold)
+
+
 class sole_parent_support__family_has_child_under_age_limit(variables.Variable):
     value_type = bool
     entity = entities.Family

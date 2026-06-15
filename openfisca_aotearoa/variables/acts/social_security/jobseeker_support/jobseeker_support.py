@@ -91,13 +91,17 @@ class jobseeker_support__entitled(variables.Variable):
 
         # See ssa2018_25 - hardship grant (MSD may grant)
         # See ssa2018_26 - ineligibility
-        # See ssa2018_26_a - TODO full time student
-        # See ssa2018_26_b - TODO union strike
-        # See ssa2018_26_c - TODO msd believes leave for employment related training
+        # See ssa2018_26_a - full time student
+        # See ssa2018_26_b - union strike
+        # See ssa2018_26_c - msd believes leave for employment related training
         # See ssa2018_27 - need for certificate with application if jobseeker_support__limited_in_capacity is true
         # See ssa2018_28 - MSD may at any time require applicant to undergo an examination by a prescribed health practitioner
 
-        return ssa20_a * ssa20_b * ssa20_c * ssa20_d * ssa20_e
+        ssa26_a = numpy.logical_not(persons("jobseeker_support__full_time_student", period))
+        ssa26_b = numpy.logical_not(persons("jobseeker_support__strike_action", period))
+        ssa26_c = numpy.logical_not(persons("jobseeker_support__employment_training", period))
+
+        return ssa20_a * ssa20_b * ssa20_c * ssa20_d * ssa20_e * ssa26_a * ssa26_b * ssa26_c
 
 
 class jobseeker_support__work_gap(variables.Variable):
