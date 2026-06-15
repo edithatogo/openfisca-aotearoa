@@ -13,8 +13,4 @@ class schedule_4__part5_1(variables.Variable):
     label = "Part 5 Unsupported Child's Benefit - Clause 1 (eligible caregiver)"
 
     def formula_2018_11_26(persons, period, parameters):
-        is_principal_caregiver = persons("social_security__principal_caregiver", period)
-        is_carer_for_one_year = persons("social_security__principal_carer_for_one_year_from_application_date", period)
-        has_unsupported_child = persons.family("unsupported_child__unsupported_child_in_family", period)
-
-        return is_principal_caregiver * is_carer_for_one_year * has_unsupported_child
+        return persons("unsupported_child__entitled", period)
