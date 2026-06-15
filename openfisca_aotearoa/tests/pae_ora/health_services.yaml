@@ -1,0 +1,30 @@
+---
+- name: "Eligible person receives the standard copayment subsidy"
+  period: 2023-06
+  absolute_error_margin: 0
+  input:
+    persons:
+      Eligible_Person:
+        pae_ora__primary_health_organization_eligible: true
+  output:
+    pae_ora__primary_care_copayment_subsidy: 15.0
+
+- name: "Ineligible person receives zero subsidy"
+  period: 2023-06
+  absolute_error_margin: 0
+  input:
+    persons:
+      Ineligible_Person:
+        pae_ora__primary_health_organization_eligible: false
+  output:
+    pae_ora__primary_care_copayment_subsidy: 0
+
+- name: "Subsidy reflects parameter amount for the period"
+  period: 2022-07
+  absolute_error_margin: 0
+  input:
+    persons:
+      Person_After_Commencement:
+        pae_ora__primary_health_organization_eligible: true
+  output:
+    pae_ora__primary_care_copayment_subsidy: 15.0

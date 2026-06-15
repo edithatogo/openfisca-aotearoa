@@ -23,6 +23,6 @@ class pae_ora__primary_care_copayment_subsidy(Variable):
     reference = "https://www.legislation.govt.nz/act/public/2022/0030/latest/LMS521034.html"
 
     def formula(person, period, parameters):
-        # Simplistic mapping: eligible persons receive a standard primary care subsidy
         eligible = person("pae_ora__primary_health_organization_eligible", period)
-        return eligible * 15.0
+        subsidy_amount = parameters(period).entitlements.health.pae_ora.primary_care_copayment_amount
+        return eligible * subsidy_amount
