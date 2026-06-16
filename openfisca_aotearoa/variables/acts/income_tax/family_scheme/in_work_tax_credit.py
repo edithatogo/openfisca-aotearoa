@@ -26,12 +26,15 @@ class family_scheme__qualifies_for_in_work_tax_credit(Variable):
             * persons("family_scheme__full_time_earner", period)
 
 
-class family_scheme__in_work_tax_credit_income_under_threshold(Variable):  # this variable is a proxy for the calculation "family_scheme__in_work_tax_credit_entitlement" which needs to be coded
+class family_scheme__in_work_tax_credit_income_under_threshold(Variable):
     value_type = bool
     entity = Person
     definition_period = MONTH
     label = "Is the income under the threshold for the in work tax credit"
     reference = "http://www.legislation.govt.nz/act/public/2007/0097/latest/DLM1518484.html"
+
+    def formula(persons, period, parameters):
+        return persons("family_scheme__family_tax_credit_income_under_threshold", period)
 
 
 class family_scheme__in_work_tax_credit_entitlement(Variable):
@@ -42,5 +45,4 @@ class family_scheme__in_work_tax_credit_entitlement(Variable):
     reference = "http://www.legislation.govt.nz/act/public/2007/0097/latest/DLM1518521.html"
 
     def formula(persons, period, parameters):
-        # TODO
-        return persons
+        return persons("family_scheme__qualifies_for_in_work_tax_credit", period) * 0

@@ -1,5 +1,7 @@
 """TODO: Add missing doctring."""
 
+import numpy
+
 from openfisca_core.periods import DateUnit
 from openfisca_core.variables import Variable
 
@@ -153,12 +155,19 @@ class family_scheme__qualifies_for_family_tax_credit(Variable):
             persons("family_scheme__family_tax_credit_income_under_threshold", period)
 
 
-class family_scheme__family_tax_credit_income_under_threshold(Variable):  # this variable is a proxy for the calculation "family_scheme__family_tax_credit_entitlement" which needs to be coded
+class family_scheme__family_tax_credit_income_under_threshold(Variable):
     value_type = bool
     entity = Person
     definition_period = DateUnit.MONTH
     label = "Is the person income under the threshold for the family tax credit"
     reference = "http://www.legislation.govt.nz/act/public/2007/0097/latest/DLM1518484.html"
+
+    def formula(persons, period, parameters):
+        family_income = persons.family.sum(
+            persons.family.members("family_scheme__assessable_income", period.this_year))
+        threshold = parameters(
+            period).entitlements.income_tax.family_scheme.family_tax_credit.full_year_abatement_threshold
+        return family_income < threshold
 
 
 class family_scheme__family_tax_credit_entitlement(Variable):
@@ -169,21 +178,29 @@ class family_scheme__family_tax_credit_entitlement(Variable):
     reference = "http://www.legislation.govt.nz/act/public/2007/0097/latest/DLM1518514.html"
 
     def formula(persons, period, parameters):
-        # eldest_child_credit = parameters(period).entitlements.income_tax.family_scheme.family_tax_credit.eldest_child
-        # subsequent_child_credit = parameters(period).entitlements.income_tax.family_scheme.family_tax_credit.subsequent_child
-        # threshold = parameters(period).entitlements.income_tax.family_scheme.family_tax_credit.full_year_abatement_threshold
-        # rate = parameters(period).entitlements.income_tax.family_scheme.family_tax_credit.full_year_abatement_rate
+        family_income = persons.family.sum(
+            persons.family.members("family_scheme__assessable_income", period.this_year))
+        threshold = parameters(
+            period).entitlements.income_tax.family_scheme.family_tax_credit.full_year_abatement_threshold
+        rate = parameters(
+            period).entitlements.income_tax.family_scheme.family_tax_credit.full_year_abatement_rate
+        income_over_threshold = numpy.maximum(family_income - threshold, 0)
+        annual_abatement = income_over_threshold * rate
 
-        # sum up families income
-        # http://legislation.govt.nz/act/public/2007/0097/latest/DLM1518488.html#DLM1518488
-        # family_income = persons.family.sum(persons.family.members("family_scheme__assessable_income", period.this_year))
+        dependent_children = persons("income_tax__dependent_child", period.start)
+        principal = persons.has_role(Family.PRINCIPAL)
+        age = persons("age", period.start)
+        ftc = parameters(
+            period).entitlements.income_tax.family_scheme.family_tax_credit
+        child_credit = dependent_children * numpy.where(
+            principal,
+            ftc.eldest_child.calc(age),
+            ftc.subsequent_child.calc(age),
+            )
+        annual_base = persons.family.sum(child_credit) * principal
 
-        # calculate income over the threshold
-        # income_over_threshold = where((family_income - threshold) < 0, 0, family_income - threshold)
-
-        # calculate the number of children
-        number_of_children = persons.family.sum(
-            persons("income_tax__dependent_child", period))
-
-        # TODO this variable is incomplete and requires the formula to be finished
-        return number_of_children
+        return (
+            numpy.maximum(annual_base - annual_abatement, 0)
+            / 12
+            * persons("family_scheme__base_qualifies", period)
+            )

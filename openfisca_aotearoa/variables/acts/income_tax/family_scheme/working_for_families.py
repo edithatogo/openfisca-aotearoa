@@ -33,6 +33,11 @@ class family_scheme__working_for_families_entitlement(Variable):
         family_tax_credit = persons("family_scheme__family_tax_credit_entitlement", period)
         in_work_tax_credit = persons("family_scheme__in_work_tax_credit_entitlement", period)
         child_tax_credit = persons("family_scheme__child_tax_credit_entitlement", period)
-        parental_tax_credit_entitlement = persons("family_scheme__parental_tax_credit_entitlement", period)
-        credit_abatement = 5 * -1  # TODO need to insert abatement calculation
-        return family_tax_credit + (in_work_tax_credit or child_tax_credit) + parental_tax_credit_entitlement + credit_abatement
+        parental_tax_credit_entitlement = persons(
+            "family_scheme__parental_tax_credit_entitlement", period)
+        return (
+            family_tax_credit
+            + in_work_tax_credit
+            + child_tax_credit
+            + parental_tax_credit_entitlement
+            )

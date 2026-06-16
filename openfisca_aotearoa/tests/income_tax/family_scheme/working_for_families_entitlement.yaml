@@ -1,0 +1,53 @@
+- name: Family tax credit entitlement below abatement threshold
+  period: 2018-08
+  absolute_error_margin: 0.005
+  input:
+    persons:
+      Papatuanuku:
+        date_of_birth: 1999-01-01
+        income_tax__principal_caregiver: true
+        income_tax__residence: true
+        family_scheme__assessable_income:
+          2018: 30000
+      Tane:
+        date_of_birth: 2005-01-24
+      Rongo:
+        date_of_birth: 2007-03-08
+      Ikatere:
+        date_of_birth: 2012-03-08
+    families:
+      Whanau:
+        principal: Papatuanuku
+        children: [Tane, Rongo, Ikatere]
+  output:
+    family_scheme__qualifies_for_family_tax_credit: [true, false, false, false]
+    family_scheme__family_tax_credit_income_under_threshold: [true, true, true, true]
+    family_scheme__family_tax_credit_entitlement: [11862.5, 0, 0, 0]
+    family_scheme__working_for_families_entitlement: [11862.5, 0, 0, 0]
+
+- name: Family tax credit entitlement with abatement
+  period: 2018-08
+  absolute_error_margin: 0.005
+  input:
+    persons:
+      Papatuanuku:
+        date_of_birth: 1999-01-01
+        income_tax__principal_caregiver: true
+        income_tax__residence: true
+        family_scheme__assessable_income:
+          2018: 52700
+      Tane:
+        date_of_birth: 2005-01-24
+      Rongo:
+        date_of_birth: 2007-03-08
+      Ikatere:
+        date_of_birth: 2012-03-08
+    families:
+      Whanau:
+        principal: Papatuanuku
+        children: [Tane, Rongo, Ikatere]
+  output:
+    family_scheme__qualifies_for_family_tax_credit: [false, false, false, false]
+    family_scheme__family_tax_credit_income_under_threshold: [false, false, false, false]
+    family_scheme__family_tax_credit_entitlement: [11654.167, 0, 0, 0]
+    family_scheme__working_for_families_entitlement: [11654.167, 0, 0, 0]

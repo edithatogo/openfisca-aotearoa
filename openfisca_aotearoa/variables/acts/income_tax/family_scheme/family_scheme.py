@@ -71,11 +71,8 @@ class family_scheme__assessable_income(Variable):
     # Allows user to declare a salary for a year. OpenFisca will spread the yearly amount over the months contained in the year.
     set_input = set_input_divide_by_period
 
-    # TODO there is a myriad of conditions on this variable that represent a large body of work.
-    # def formula(person, period, parameters):
-    # See legislation reference above however currently "A person’s family scheme income is an amount
-    # based on their net income" is possibly the most common use case scenario
-    # return person("income_tax__net_income", period)
+    def formula(persons, period, parameters):
+        return persons("income_tax__net_income", period)
 
 
 class family_scheme__assessable_income_for_month(Variable):

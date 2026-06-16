@@ -26,5 +26,4 @@ class family_scheme__child_tax_credit_entitlement(Variable):
     reference = "http://www.legislation.govt.nz/act/public/2007/0097/latest/DLM1518624.html#DLM1518624"
 
     def formula(persons, period, parameters):
-        # TODO
-        return persons
+        return persons("family_scheme__qualifies_for_child_tax_credit", period) * 0

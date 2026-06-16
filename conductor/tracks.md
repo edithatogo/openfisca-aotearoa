@@ -51,7 +51,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 9: Codify Pae Ora (Healthy Futures) Act 2022 (Primary Care Funding Integration)
+## [x] Track 9: Codify Pae Ora (Healthy Futures) Act 2022 (Primary Care Funding Integration)
 *Link: [./conductor/tracks/codify_pae_ora_20260615/](./conductor/tracks/codify_pae_ora_20260615/)*
 *Description:* Explores and codifies primary care funding structures under the Pae Ora (Healthy Futures) Act 2022, integrating parameters and logic derived from `gtpcnz`.
 
@@ -81,6 +81,6 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 14: Codify Income Tax Act 2007 Core Tax and Family Scheme Rules
+## [~] Track 14: Codify Income Tax Act 2007 Core Tax and Family Scheme Rules
 *Link: [./conductor/tracks/codify_income_tax_core_20260615/](./conductor/tracks/codify_income_tax_core_20260615/)*
 *Description:* Audit and codify missing Income Tax Act 2007 core tax, family scheme, and Working for Families rules, separating core Act coverage from Tax Administration Act compliance work.

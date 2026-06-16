@@ -8,6 +8,6 @@
 
 ## Phase 2: Implementation
 
-- [ ] Task: Add or update variables and parameters with explicit legislation.govt.nz citations.
+- [~] Task: Add or update variables and parameters with explicit legislation.govt.nz citations.
 - [ ] Task: Add situation tests for representative tax, credit, and family scheme calculations.
 - [ ] Task: Conductor - User Manual Verification 'Income Tax Act rules load and test' [checkpoint: pending].
