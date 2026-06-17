@@ -1,0 +1,1 @@
+Track 14 plan checkpoint: marked core Income Tax Act variable/parameter implementation and representative tests complete against a518c75. Manual rules-load checkpoint remains pending because full income_tax/family_scheme YAML collection fails on existing UTF-8 files decoded as cp1252 on Windows; focused validation passed 14 tests.
