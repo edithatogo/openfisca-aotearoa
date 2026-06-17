@@ -10,7 +10,7 @@
 ## Phase 2: Server Implementation
 
 - [x] Task: Add selected runtime dependency and minimal application module. (`0b53edf`)
-- [~] Task: Implement health and metadata endpoints without loading unnecessary state.
+- [x] Task: Implement health and metadata endpoints without loading unnecessary state. (`33775d4`)
 - [ ] Task: Implement calculation endpoint using the OpenFisca tax-benefit system.
 - [ ] Task: Implement parameter inspection endpoint with bounded output and clear errors.
 - [ ] Task: Add non-interactive local run command and environment configuration.
