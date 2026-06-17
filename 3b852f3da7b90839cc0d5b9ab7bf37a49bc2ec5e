@@ -1,0 +1,6 @@
+Track 15 OpenFisca Core v44 compatibility evidence:
+- Checked official OpenFisca Core changelog at https://raw.githubusercontent.com/openfisca/openfisca-core/master/CHANGELOG.md.
+- v44 release line is technical: conditional NumPy dependency and openfisca test parallel execution.
+- Local runtime remains on openfisca-core 44.7.0.
+- Identified inherited v43 enum validation as the active compatibility issue for v44.7.0 YAML failures.
+- Required changes documented: enum outputs, family_tax_credit__eldest option handling, UTF-8 YAML runner, YAML-only target.
