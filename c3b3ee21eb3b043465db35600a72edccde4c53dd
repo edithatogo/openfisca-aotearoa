@@ -1,0 +1,1 @@
+Track 16 smoke validation evidence: uv run --extra dev python scripts/smoke_workspace.py passed; uv run ruff check scripts/smoke_workspace.py passed; git diff --check passed. Script covers uv lock --check, una CLI availability, package import, parent uv --directory cwd resolution, and parent una CLI availability.
