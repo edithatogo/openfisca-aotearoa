@@ -46,7 +46,15 @@ uv run pytest
 
 ## Web API
 
-To serve an instance of the OpenFisca Aotearoa web API:
+To serve the high-performance OpenFisca Aotearoa ASGI API with Granian:
+```sh
+uv run openfisca-aotearoa-api
+```
+
+Granian reads non-interactive runtime configuration from environment variables
+such as `GRANIAN_HOST`, `GRANIAN_PORT`, and `GRANIAN_WORKERS`.
+
+To serve an instance of the legacy OpenFisca web API:
 ```sh
 uv run openfisca serve
 ```

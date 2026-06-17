@@ -80,6 +80,9 @@ Documentation = "https://openfisca.org/doc"
 Issues = "https://github.com/edithatogo/openfisca-aotearoa/issues"
 Changelog = "https://github.com/edithatogo/openfisca-aotearoa/blob/main/CHANGELOG.md"
 
+[project.scripts]
+openfisca-aotearoa-api = "openfisca_aotearoa.api.cli:main"
+
 [tool.pytest.ini_options]
 addopts = "--showlocals --doctest-modules --strict-markers --strict-config -p no:cacheprovider"
 testpaths = [ "openfisca_aotearoa/tests" ]
