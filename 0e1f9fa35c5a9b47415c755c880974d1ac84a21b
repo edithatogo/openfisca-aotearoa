@@ -1,0 +1,5 @@
+Track 16 metadata task validation:
+- uv lock --check
+- git diff --check
+- uv run --extra dev una --help
+- uv run --extra dev python -c " import importlib.metadata as m
