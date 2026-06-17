@@ -77,3 +77,71 @@ def test_metadata_returns_package_and_model_details() -> None:
     assert response["body"]["model"] == "AotearoaLegislationModel"
     assert response["body"]["api_version"] == "1"
     assert response["body"]["openfisca_core_version"]
+
+
+def test_calculate_returns_openfisca_results() -> None:
+    response = asyncio.run(
+        call_app(
+            "POST",
+            "/calculate",
+            orjson.dumps(
+                {
+                    "period": "2025-01-01",
+                    "variables": ["age"],
+                    "persons": [
+                        {
+                            "id": "person_a",
+                            "date_of_birth": {"ETERNITY": "1995-01-01"},
+                        },
+                    ],
+                },
+            ),
+        ),
+    )
+
+    assert response == {
+        "status": 200,
+        "body": {
+            "period": "2025-01-01",
+            "results": [{"id": "person_a", "age": 30}],
+        },
+    }
+
+
+def test_calculate_returns_validation_error() -> None:
+    response = asyncio.run(
+        call_app(
+            "POST",
+            "/calculate",
+            orjson.dumps(
+                {
+                    "period": "2025",
+                    "variables": [],
+                    "persons": [{"id": "person_a"}],
+                },
+            ),
+        ),
+    )
+
+    assert response["status"] == 422
+    assert response["body"]["error"]["code"] == "validation_error"
+    assert response["body"]["error"]["details"]
+
+
+def test_calculate_returns_calculation_error() -> None:
+    response = asyncio.run(
+        call_app(
+            "POST",
+            "/calculate",
+            orjson.dumps(
+                {
+                    "period": "2025",
+                    "variables": ["missing_variable"],
+                    "persons": [{"id": "person_a"}],
+                },
+            ),
+        ),
+    )
+
+    assert response["status"] == 400
+    assert response["body"]["error"]["code"] == "calculation_error"
