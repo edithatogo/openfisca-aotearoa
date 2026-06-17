@@ -2,7 +2,7 @@
 
 ## Phase 1: Workspace Boundary Audit
 
-- [ ] Task: Inspect current package metadata, lockfiles, `.python-version`, Make targets, and CI install commands.
+- [~] Task: Inspect current package metadata, lockfiles, `.python-version`, Make targets, and CI install commands.
 - [ ] Task: Inspect parent `legal-nz` workspace expectations without modifying parent files from this nested repo.
 - [ ] Task: Decide the minimum safe `una` integration surface for this repository.
 - [ ] Task: Conductor - User Manual Verification 'Workspace boundary and Una design review' [checkpoint: pending].
