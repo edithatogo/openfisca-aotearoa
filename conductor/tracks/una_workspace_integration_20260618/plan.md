@@ -12,7 +12,7 @@
 - [x] Task: Add or update workspace metadata for `uv` and `una` while preserving package build metadata. (`0e1f9fa`)
 - [x] Task: Add documented commands for standalone and parent-workspace install, lint, tests, docs, and build. (`ee4fb84`)
 - [x] Task: Add smoke validation for local path resolution and workspace command execution. (`c3b3ee2`)
-- [ ] Task: Keep generated or machine-local workspace artifacts out of version control unless required.
+- [~] Task: Keep generated or machine-local workspace artifacts out of version control unless required.
 
 ## Phase 3: Validation and Documentation
 

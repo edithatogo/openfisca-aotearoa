@@ -26,6 +26,7 @@ dist
 __pycache__/
 node_modules/
 docs-site/__pycache__/
+docs-site/.astro/
 docs-site/node_modules/
 error.txt
 stderr.txt
