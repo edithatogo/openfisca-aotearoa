@@ -3,7 +3,7 @@
 ## Phase 1: Audit and Baseline
 
 - [x] Task: Inventory current dependency pins, OpenFisca Core version, and API usage across variables, parameters, tests, and docs. (94b5ec8)
-- [~] Task: Run the current quality gate set and capture baseline failures for `ruff`, `basedpyright`, `complexipy`, coverage, and OpenFisca YAML tests.
+- [x] Task: Run the current quality gate set and capture baseline failures for `ruff`, `basedpyright`, `complexipy`, coverage, and OpenFisca YAML tests. (41aa259)
 - [ ] Task: Compare current OpenFisca Core usage against v44+ migration requirements and list required code changes.
 - [ ] Task: Conductor - User Manual Verification 'Core upgrade and quality baseline review' [checkpoint: pending].
 
