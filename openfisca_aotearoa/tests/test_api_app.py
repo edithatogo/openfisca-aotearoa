@@ -55,3 +55,25 @@ def test_unknown_route_returns_json_error() -> None:
             },
         },
     }
+
+
+def test_health_returns_liveness_payload() -> None:
+    response = asyncio.run(call_app("GET", "/health"))
+
+    assert response == {
+        "status": 200,
+        "body": {
+            "status": "ok",
+            "service": "openfisca-aotearoa-api",
+        },
+    }
+
+
+def test_metadata_returns_package_and_model_details() -> None:
+    response = asyncio.run(call_app("GET", "/metadata"))
+
+    assert response["status"] == 200
+    assert response["body"]["country_package"] == "openfisca-aotearoa"
+    assert response["body"]["model"] == "AotearoaLegislationModel"
+    assert response["body"]["api_version"] == "1"
+    assert response["body"]["openfisca_core_version"]
