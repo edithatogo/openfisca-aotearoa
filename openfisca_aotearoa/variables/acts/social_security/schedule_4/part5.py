@@ -13,4 +13,4 @@ class schedule_4__part5_1(variables.Variable):
     label = "Part 5 Unsupported Child's Benefit - Clause 1 (eligible caregiver)"
 
     def formula_2018_11_26(persons, period, parameters):
-        return persons("unsupported_child__entitled", period)
+        return persons("unsupported_child__entitled", period.first_month)

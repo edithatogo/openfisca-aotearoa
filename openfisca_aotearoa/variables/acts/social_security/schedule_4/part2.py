@@ -17,7 +17,12 @@ class schedule_4__part2_1(variables.Variable):
     def formula_2018_11_26(persons, period, parameters):
         single = numpy.logical_not(persons("social_security__in_a_relationship", period))
         has_dependent_children = persons("social_security__dependent_children", period) > 0
-        principal_caregiver = persons("social_security__principal_caregiver", period)
-        is_parent = persons.has_role(entities.Family.PARENT)
+        principal_caregiver = persons(
+            "social_security__principal_caregiver",
+            period.first_month,
+        )
+        is_parent_or_principal = persons.has_role(entities.Family.PARENT) + persons.has_role(
+            entities.Family.PRINCIPAL,
+        )
 
-        return single * has_dependent_children * (principal_caregiver + is_parent)
+        return single * has_dependent_children * (principal_caregiver + is_parent_or_principal)

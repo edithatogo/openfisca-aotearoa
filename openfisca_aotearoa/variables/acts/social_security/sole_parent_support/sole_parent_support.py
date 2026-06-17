@@ -13,7 +13,7 @@ You may get Sole Parent Support if you are:
 
 from numpy import logical_not
 
-from openfisca_core import holders, periods, variables
+from openfisca_core import holders, periods, populations, variables
 
 from openfisca_aotearoa import entities
 
@@ -165,7 +165,11 @@ class sole_parent_support__requirement(variables.Variable):
 
     def formula_2018_11_26(persons, period, parameters):
 
-        ssa30_dependent_child_under_14 = persons("sole_parent_support__dependent_child_requirement", period, "add")
+        ssa30_dependent_child_under_14 = persons(
+            "sole_parent_support__dependent_child_requirement",
+            period,
+            [populations.ADD],
+        )
         # ssa30 = ssa30_person_is_parent * ssa30_person_has_dependent_child * ssa30_dependent_child_under_14
 
         ssa30_a = logical_not(persons("social_security__in_a_relationship", period))

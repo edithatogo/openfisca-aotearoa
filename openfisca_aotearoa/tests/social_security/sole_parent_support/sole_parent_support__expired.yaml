@@ -1,50 +1,68 @@
-- name: Social Security Act 2018 — Sole Parent Support — s33 Expiry — Not expired when youngest child is under 14
+- name: Social Security Act 2018 - Sole Parent Support - s33 Expiry - Not expired when youngest child is under 14
   period: 2019-W05
   input:
-    person:
-      age:
-        2019-01-01: 35
-    family:
-      parent:
-        - person
+    persons:
+      person:
+        age:
+          2019-01-28: 35
+        social_security__dependent_children: 1
       child:
-        - child
-    child:
-      age:
-        2019-01-01: 10
+        age:
+          2019-01-28: 10
+        social_security__dependent_children: 1
+    families:
+      family:
+        parents:
+          - person
+        children:
+          - child
   output:
-    sole_parent_support__expired: false
+    sole_parent_support__expired:
+      - false
+      - false
 
-- name: Social Security Act 2018 — Sole Parent Support — s33 Expiry — Expired when youngest child turns 14
+- name: Social Security Act 2018 - Sole Parent Support - s33 Expiry - Expired when youngest child turns 14
   period: 2019-W05
   input:
-    person:
-      age:
-        2019-01-01: 35
-    family:
-      parent:
-        - person
+    persons:
+      person:
+        age:
+          2019-01-28: 35
+        social_security__dependent_children: 1
       child:
-        - child
-    child:
-      age:
-        2019-01-01: 14
+        age:
+          2019-01-28: 14
+        social_security__dependent_children: 1
+    families:
+      family:
+        parents:
+          - person
+        children:
+          - child
   output:
-    sole_parent_support__expired: true
+    sole_parent_support__expired:
+      - true
+      - true
 
-- name: Social Security Act 2018 — Sole Parent Support — s33 Expiry — Expired when youngest child is over 14
+- name: Social Security Act 2018 - Sole Parent Support - s33 Expiry - Expired when youngest child is over 14
   period: 2019-W05
   input:
-    person:
-      age:
-        2019-01-01: 35
-    family:
-      parent:
-        - person
+    persons:
+      person:
+        age:
+          2019-01-28: 35
+        social_security__dependent_children: 1
       child:
-        - child
-    child:
-      age:
-        2019-01-01: 16
+        age:
+          2019-01-28: 16
+        social_security__dependent_children: 1
+    families:
+      family:
+        parents:
+          - person
+        children:
+          - child
   output:
-    sole_parent_support__expired: true
+    sole_parent_support__expired:
+      - true
+      - true

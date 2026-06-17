@@ -1,0 +1,62 @@
+- name: Social Security Act 2018 - Schedule 4 Part 4 - Orphan's Benefit follows entitlement
+  period: 2019-W05
+  input:
+    orphans_benefit__entitled:
+      2019-01: true
+  output:
+    schedule_4__part4_1: true
+
+- name: Social Security Act 2018 - Schedule 4 Part 5 - Unsupported Child's Benefit follows entitlement
+  period: 2019-W05
+  input:
+    unsupported_child__entitled:
+      2019-01: true
+  output:
+    schedule_4__part5_1: true
+
+- name: Social Security Act 2018 - Schedule 4 Part 6 - Youth Payment distinguishes living with parent
+  period: 2019-W05
+  input:
+    age:
+      2019-01-28: 17
+    social_security__in_a_relationship: false
+    jobseeker_support__living_with_parent: true
+  output:
+    schedule_4__part6_1_a: true
+    schedule_4__part6_1_b: false
+
+- name: Social Security Act 2018 - Schedule 4 Part 6 - Youth Payment not living with parent
+  period: 2019-W05
+  input:
+    age:
+      2019-01-28: 17
+    social_security__in_a_relationship: false
+    jobseeker_support__living_with_parent: false
+  output:
+    schedule_4__part6_1_a: false
+    schedule_4__part6_1_b: true
+
+- name: Social Security Act 2018 - Schedule 4 Part 7 - Young Parent Payment single with dependent children
+  period: 2019-W05
+  input:
+    social_security__in_a_relationship: false
+    social_security__dependent_children: 1
+  output:
+    schedule_4__part7_1_a: true
+    schedule_4__part7_1_b: false
+
+- name: Social Security Act 2018 - Schedule 4 Part 7 - Young Parent Payment in relationship
+  period: 2019-W05
+  input:
+    social_security__in_a_relationship: true
+    social_security__dependent_children: 1
+  output:
+    schedule_4__part7_1_a: false
+    schedule_4__part7_1_b: true
+
+- name: Social Security Act 2018 - Schedule 4 Part 8 - Emergency Benefit follows granted state
+  period: 2019-W05
+  input:
+    emergency_benefit__granted: true
+  output:
+    schedule_4__part8_1: true

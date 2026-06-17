@@ -13,4 +13,4 @@ class schedule_4__part4_1(variables.Variable):
     label = "Part 4 Orphan's Benefit - Clause 1 (eligible caregiver)"
 
     def formula_2018_11_26(persons, period, parameters):
-        return persons("orphans_benefit__entitled", period)
+        return persons("orphans_benefit__entitled", period.first_month)
