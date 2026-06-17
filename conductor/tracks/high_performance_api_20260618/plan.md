@@ -3,7 +3,7 @@
 ## Phase 1: Runtime Selection and API Contract
 
 - [x] Task: Compare Granian and Robyn against project requirements, Windows support, dependency size, and CI behaviour. (`c4aae06`)
-- [ ] Task: Define endpoint contract for `/health`, `/metadata`, `/calculate`, and `/parameters`.
+- [~] Task: Define endpoint contract for `/health`, `/metadata`, `/calculate`, and `/parameters`.
 - [ ] Task: Create Pydantic request and response schemas for calculation requests and validation errors.
 - [ ] Task: Conductor - User Manual Verification 'API runtime and contract review' [checkpoint: pending].
 
