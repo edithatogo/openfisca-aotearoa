@@ -1,0 +1,1 @@
+Track 17 run command evidence: uv run openfisca-aotearoa-api --help passed after package-level BLAS thread defaults; uv run ruff check openfisca_aotearoa/api openfisca_aotearoa/__init__.py README.md passed; git diff --check passed.
