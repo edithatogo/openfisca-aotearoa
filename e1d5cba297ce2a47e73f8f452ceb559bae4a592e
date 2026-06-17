@@ -1,0 +1,1 @@
+Track 16 generated artifact evidence: docs-site/.astro appeared after Astro docs checks; .gitignore now ignores docs-site/.astro/; git status --short --ignored=matching confirms it is ignored; git diff --check passed.
