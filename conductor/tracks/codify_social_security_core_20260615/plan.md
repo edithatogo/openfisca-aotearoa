@@ -10,5 +10,5 @@
 
 - [x] Task: Add or update variables and parameters with explicit legislation.govt.nz citations.
   - Implemented: s26 ineligibility vars, s33 SPS expiry, Schedule 4 Parts 2,4,5,6,7,8
-- [ ] Task: Add situation tests for representative eligibility, income-test, and payment-rate cases.
-- [ ] Task: Conductor - User Manual Verification 'Social Security Act rules load and test' [checkpoint: pending].
+- [x] Task: Add situation tests for representative eligibility, income-test, and payment-rate cases. (817ccda)
+- [x] Task: Conductor - User Manual Verification 'Social Security Act rules load and test' [checkpoint: work_done]. (817ccda; 27 focused Social Security tests passed)
