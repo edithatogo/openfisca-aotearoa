@@ -4,7 +4,7 @@
 
 - [x] Task: Inspect current package metadata, lockfiles, `.python-version`, Make targets, and CI install commands. (0f370f6)
 - [x] Task: Inspect parent `legal-nz` workspace expectations without modifying parent files from this nested repo. (d6e0b66)
-- [~] Task: Decide the minimum safe `una` integration surface for this repository.
+- [x] Task: Decide the minimum safe `una` integration surface for this repository. (15dce7d)
 - [ ] Task: Conductor - User Manual Verification 'Workspace boundary and Una design review' [checkpoint: pending].
 
 ## Phase 2: Metadata and Command Implementation
