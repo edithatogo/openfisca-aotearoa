@@ -24,6 +24,8 @@ This package requires Python 3.11+. These installation instructions assume pytho
 All platforms that can execute Python are supported, which includes GNU/Linux, macOS and Microsoft Windows.
 
 We use **UV Workspaces** to manage the project environment and dependencies.
+See [UV and una workspace commands](docs/workspace.md) for the full standalone
+and parent-repository command set.
 
 ### Clone the repository
 

@@ -10,7 +10,7 @@
 ## Phase 2: Metadata and Command Implementation
 
 - [x] Task: Add or update workspace metadata for `uv` and `una` while preserving package build metadata. (`0e1f9fa`)
-- [ ] Task: Add documented commands for standalone and parent-workspace install, lint, tests, docs, and build.
+- [~] Task: Add documented commands for standalone and parent-workspace install, lint, tests, docs, and build.
 - [ ] Task: Add smoke validation for local path resolution and workspace command execution.
 - [ ] Task: Keep generated or machine-local workspace artifacts out of version control unless required.
 

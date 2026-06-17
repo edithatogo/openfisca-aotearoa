@@ -19,7 +19,7 @@ Do add minimal, standalone-safe workspace metadata and documentation inside this
 repository so it can:
 
 1. Continue to behave as an independent package with its own `uv.lock`.
-2. Be invoked from the parent workspace with explicit `uv --project
+2. Be invoked from the parent workspace with explicit `uv --directory
    openfisca-aotearoa ...` commands.
 3. Be ready for a later parent-owned `legal-nz` uv workspace or Una rollout
    without forcing parent files to change from this nested repository.
@@ -63,14 +63,20 @@ Track 16 should implement the following nested-repo changes:
 
 - Add developer docs for:
   - Standalone commands from this repository.
-  - Parent-invoked commands using `uv --project openfisca-aotearoa`.
+  - Parent-invoked commands using `uv --directory openfisca-aotearoa`.
   - Explicit parent follow-up items.
 
 - Add smoke validation that checks:
   - `uv lock --check`.
   - `uv run --extra dev una --help`.
-  - A parent-style `uv --project . run python -c ...` path-resolution command
-    from this repository, and document parent-root execution separately.
+  - A parent-style `uv --directory openfisca-aotearoa ...` path-resolution
+    command from the parent repository root.
+
+`una==0.7.0` package graph commands (`una tree` and `una sync`) are not enabled
+for the current flat package layout because they expect workspace members to be
+package directories. This track installs and configures the CLI for future local
+member integration while keeping uv responsible for the current self-workspace
+workflow.
 
 ## Deferred Parent-Owned Decisions
 

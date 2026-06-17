@@ -120,3 +120,6 @@ max_cognitive_complexity = 15
 
 [tool.uv.workspace]
 members = ["."]
+
+[tool.una]
+namespace = "openfisca_aotearoa"
