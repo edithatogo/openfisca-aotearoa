@@ -1,0 +1,24 @@
+# Plan: High-Performance Web API Serving
+
+## Phase 1: Runtime Selection and API Contract
+
+- [ ] Task: Compare Granian and Robyn against project requirements, Windows support, dependency size, and CI behaviour.
+- [ ] Task: Define endpoint contract for `/health`, `/metadata`, `/calculate`, and `/parameters`.
+- [ ] Task: Create Pydantic request and response schemas for calculation requests and validation errors.
+- [ ] Task: Conductor - User Manual Verification 'API runtime and contract review' [checkpoint: pending].
+
+## Phase 2: Server Implementation
+
+- [ ] Task: Add selected runtime dependency and minimal application module.
+- [ ] Task: Implement health and metadata endpoints without loading unnecessary state.
+- [ ] Task: Implement calculation endpoint using the OpenFisca tax-benefit system.
+- [ ] Task: Implement parameter inspection endpoint with bounded output and clear errors.
+- [ ] Task: Add non-interactive local run command and environment configuration.
+
+## Phase 3: Tests, Smoke Checks, and Docs
+
+- [ ] Task: Add unit tests for Pydantic models and validation errors.
+- [ ] Task: Add API smoke tests for health, metadata, and a representative calculation.
+- [ ] Task: Add CI-safe server startup/shutdown validation.
+- [ ] Task: Document API usage, example payloads, and limitations.
+- [ ] Task: Conductor - User Manual Verification 'High-performance API smoke test' [checkpoint: pending].

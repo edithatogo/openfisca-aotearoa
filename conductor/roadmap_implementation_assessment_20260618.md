@@ -72,9 +72,12 @@ pass:
   rules.
 - Complete Track 14 implementation, tests, and manual verification for Income
   Tax Act core rules.
-- Create follow-up integration tracks for `open_social_data`, `voiage`, `mars`,
-  `innovate`, `sourceright`, `nlp-policy-nz`, and `fyi-cli` if those remain
-  in scope.
-- Decide whether the roadmap's strict typing, `una`, high-performance web
-  server, and TestSprite requirements are still required or should be demoted to
-  explicit future work.
+- Track 15: Upgrade OpenFisca Core compatibility and strict quality gates.
+- Track 16: Add `una` and `uv` workspace integration.
+- Track 17: Add high-performance Web API serving with Granian or Robyn.
+- Track 18: Integrate microsimulation data and analytics adapters for
+  `open_social_data`, `voiage`, `mars`, and `innovate`.
+- Track 19: Integrate the legislation evidence pipeline for `nz-legislation`,
+  `sourceright`, `nlp-policy-nz`, and `fyi-cli`.
+- Track 20: Add AI-assisted test automation with safe review gates.
+- Track 21: Create legal audit and publish readiness gates.

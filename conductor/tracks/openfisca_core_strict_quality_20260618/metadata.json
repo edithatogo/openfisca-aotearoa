@@ -1,0 +1,8 @@
+{
+  "track_id": "openfisca_core_strict_quality_20260618",
+  "type": "feature",
+  "status": "pending",
+  "created_at": "2026-06-18T00:00:00Z",
+  "updated_at": "2026-06-18T00:00:00Z",
+  "description": "Upgrade OpenFisca core compatibility and tighten strict typing and quality gates"
+}

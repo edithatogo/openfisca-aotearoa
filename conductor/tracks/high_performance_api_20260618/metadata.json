@@ -1,0 +1,8 @@
+{
+  "track_id": "high_performance_api_20260618",
+  "type": "feature",
+  "status": "pending",
+  "created_at": "2026-06-18T00:00:00Z",
+  "updated_at": "2026-06-18T00:00:00Z",
+  "description": "Add high-performance OpenFisca API serving with Granian or Robyn"
+}
