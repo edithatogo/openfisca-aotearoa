@@ -4,7 +4,7 @@
 
 - [x] Task: Compare Granian and Robyn against project requirements, Windows support, dependency size, and CI behaviour. (`c4aae06`)
 - [x] Task: Define endpoint contract for `/health`, `/metadata`, `/calculate`, and `/parameters`. (`62d62c7`)
-- [~] Task: Create Pydantic request and response schemas for calculation requests and validation errors.
+- [x] Task: Create Pydantic request and response schemas for calculation requests and validation errors. (`64e451f`)
 - [ ] Task: Conductor - User Manual Verification 'API runtime and contract review' [checkpoint: pending].
 
 ## Phase 2: Server Implementation
