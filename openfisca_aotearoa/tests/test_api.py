@@ -3,6 +3,7 @@
 import json
 import random
 import subprocess
+import sys
 from subprocess import SubprocessError, TimeoutExpired
 from urllib import request
 
@@ -84,6 +85,10 @@ def server(host, port, pipe, timeout):
             raise SubprocessError(f"Failed to start!\n{out.decode()}")
 
 
+@pytest.mark.skipif(
+    sys.platform == "win32",
+    reason="OpenFisca Web API uses Gunicorn, which requires Unix modules.",
+)
 def test_openfisca_server(server, payload):
     """Test the OpenFisca API serves the /spec endpoint."""
 
