@@ -13,7 +13,7 @@
 - [x] Task: Implement health and metadata endpoints without loading unnecessary state. (`33775d4`)
 - [x] Task: Implement calculation endpoint using the OpenFisca tax-benefit system. (`90b45a8`)
 - [x] Task: Implement parameter inspection endpoint with bounded output and clear errors. (`fc3c232`)
-- [~] Task: Add non-interactive local run command and environment configuration.
+- [x] Task: Add non-interactive local run command and environment configuration. (`b7f8f0c`)
 
 ## Phase 3: Tests, Smoke Checks, and Docs
 
