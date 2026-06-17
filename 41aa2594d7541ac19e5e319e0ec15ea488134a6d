@@ -1,0 +1,6 @@
+Track 15 quality baseline evidence:
+- Fixed Windows dev-extra install by marking scalene non-Windows.
+- Fixed CI Complexipy flag to --max-complexity-allowed.
+- Skipped OpenFisca Web API smoke on Windows because gunicorn imports Unix-only grp.
+- Passing gates after fixes: uv --no-cache run ruff check .; uv --no-cache run basedpyright openfisca_aotearoa; PYTHONIOENCODING=utf-8 complexipy --max-complexity-allowed 15; uv --no-cache run --extra dev pytest --cov=openfisca_aotearoa --cov-report=term-missing --strict-markers --strict-config -W error.
+- Remaining YAML baseline: default Windows encoding fails 6 family-scheme files under cp1252; PYTHONUTF8=1 reaches execution and reports 25 YAML failures, 325 passed, 1 Windows API-test error when Python tests are included by the OpenFisca runner.
