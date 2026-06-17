@@ -7,7 +7,12 @@ import orjson
 from openfisca_aotearoa.api.app import app
 
 
-async def call_app(method: str, path: str, body: bytes = b"") -> dict:
+async def call_app(
+    method: str,
+    path: str,
+    body: bytes = b"",
+    query_string: bytes = b"",
+) -> dict:
     """Call the ASGI app in-process and return status/body data."""
     messages = []
     request_sent = False
@@ -27,7 +32,7 @@ async def call_app(method: str, path: str, body: bytes = b"") -> dict:
             "type": "http",
             "method": method,
             "path": path,
-            "query_string": b"",
+            "query_string": query_string,
             "headers": [],
         },
         receive,
@@ -145,3 +150,41 @@ def test_calculate_returns_calculation_error() -> None:
 
     assert response["status"] == 400
     assert response["body"]["error"]["code"] == "calculation_error"
+
+
+def test_parameters_returns_root_children() -> None:
+    response = asyncio.run(call_app("GET", "/parameters"))
+
+    assert response["status"] == 200
+    assert response["body"]["path"] == "root"
+    assert "taxes" in response["body"]["children"]
+    assert response["body"]["truncated"] is False
+
+
+def test_parameters_returns_nested_children() -> None:
+    response = asyncio.run(
+        call_app("GET", "/parameters", query_string=b"path=taxes"),
+    )
+
+    assert response["status"] == 200
+    assert response["body"]["path"] == "taxes"
+    assert "income_tax" in response["body"]["children"]
+
+
+def test_parameters_applies_limit() -> None:
+    response = asyncio.run(
+        call_app("GET", "/parameters", query_string=b"limit=1"),
+    )
+
+    assert response["status"] == 200
+    assert len(response["body"]["children"]) == 1
+    assert response["body"]["truncated"] is True
+
+
+def test_parameters_returns_not_found_for_missing_path() -> None:
+    response = asyncio.run(
+        call_app("GET", "/parameters", query_string=b"path=missing.path"),
+    )
+
+    assert response["status"] == 404
+    assert response["body"]["error"]["code"] == "parameter_not_found"
