@@ -16,7 +16,7 @@
 
 ## Phase 3: Validation and Documentation
 
-- [~] Task: Run standalone `uv sync`, focused tests, and package build checks.
+- [x] Task: Run standalone `uv sync`, focused tests, and package build checks. (`a0c5978`)
 - [ ] Task: Run parent-workspace command checks where safe and document any parent-repo-only follow-up.
 - [ ] Task: Update README or developer docs with supported workspace workflows.
 - [ ] Task: Conductor - User Manual Verification 'Una workspace commands pass' [checkpoint: pending].
