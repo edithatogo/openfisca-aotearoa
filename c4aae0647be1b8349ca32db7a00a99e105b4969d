@@ -1,0 +1,1 @@
+Track 17 runtime selection: compared Granian and Robyn against Rust runtime, Windows/Python support, packaging impact, CI behaviour, and endpoint fit. Selected Granian because it serves standard ASGI with lower coupling and explicit Windows/Python 3.11+ PyPI support. Sources: Granian PyPI/GitHub and Robyn PyPI/docs.
