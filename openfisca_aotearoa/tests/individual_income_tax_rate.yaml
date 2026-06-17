@@ -86,3 +86,20 @@
     # IRD rates for 1 April 2024 to 31 March 2025 include transitional
     # 12.82%, 21.64%, and 30.99% bands.
     income_tax__individual_income_tax: 23222
+
+- name: Income Tax Act 2007 core income and deduction components flow to individual tax
+  period: 2022
+  absolute_error_margin: 1
+  input:
+    income_tax__employment_income: 52000
+    income_tax__business_income: 8000
+    income_tax__investment_income: 2000
+    income_tax__employment_related_deduction: 7000
+    income_tax__business_deduction: 3000
+    income_tax__charitable_donation_deduction: 1000
+  output:
+    income_tax__annual_gross_income: 62000
+    income_tax__annual_total_deduction: 11000
+    income_tax__net_income: 51000
+    income_tax__taxable_income: 51000
+    income_tax__individual_income_tax: 8320

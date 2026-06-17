@@ -26,6 +26,14 @@ class income_tax__annual_gross_income(Variable):
     label = "Annual gross income"
     reference = "http://www.legislation.govt.nz/act/public/2007/0097/latest/DLM1512333.html"
 
+    def formula(person, period, parameters):
+        return (
+            person("income_tax__employment_income", period)
+            + person("income_tax__business_income", period)
+            + person("income_tax__investment_income", period)
+            + person("income_tax__other_income", period)
+            )
+
 
 class income_tax__annual_total_deduction(Variable):
     value_type = float
@@ -33,6 +41,78 @@ class income_tax__annual_total_deduction(Variable):
     definition_period = YEAR
     label = "Annual total deduction"
     reference = "http://www.legislation.govt.nz/act/public/2007/0097/latest/DLM1512336.html"
+
+    def formula(person, period, parameters):
+        return (
+            person("income_tax__employment_related_deduction", period)
+            + person("income_tax__business_deduction", period)
+            + person("income_tax__charitable_donation_deduction", period)
+            + person("income_tax__other_deduction", period)
+            )
+
+
+class income_tax__employment_income(Variable):
+    value_type = float
+    entity = Person
+    definition_period = YEAR
+    label = "Employment income included in annual gross income"
+    reference = "https://www.legislation.govt.nz/act/public/2007/0097/latest/whole.html#DLM1513419"
+
+
+class income_tax__business_income(Variable):
+    value_type = float
+    entity = Person
+    definition_period = YEAR
+    label = "Business income included in annual gross income"
+    reference = "https://www.legislation.govt.nz/act/public/2007/0097/latest/whole.html#DLM1512443"
+
+
+class income_tax__investment_income(Variable):
+    value_type = float
+    entity = Person
+    definition_period = YEAR
+    label = "Investment income included in annual gross income"
+    reference = "https://www.legislation.govt.nz/act/public/2007/0097/latest/whole.html#DLM1512659"
+
+
+class income_tax__other_income(Variable):
+    value_type = float
+    entity = Person
+    definition_period = YEAR
+    label = "Other income included in annual gross income"
+    reference = "https://www.legislation.govt.nz/act/public/2007/0097/latest/whole.html#DLM1513173"
+
+
+class income_tax__employment_related_deduction(Variable):
+    value_type = float
+    entity = Person
+    definition_period = YEAR
+    label = "Employment-related deduction included in annual total deductions"
+    reference = "https://www.legislation.govt.nz/act/public/2007/0097/latest/whole.html#DLM1513974"
+
+
+class income_tax__business_deduction(Variable):
+    value_type = float
+    entity = Person
+    definition_period = YEAR
+    label = "Business deduction included in annual total deductions"
+    reference = "https://www.legislation.govt.nz/act/public/2007/0097/latest/whole.html#DLM1513974"
+
+
+class income_tax__charitable_donation_deduction(Variable):
+    value_type = float
+    entity = Person
+    definition_period = YEAR
+    label = "Charitable donation deduction included in annual total deductions"
+    reference = "https://www.legislation.govt.nz/act/public/2007/0097/latest/whole.html#DLM1514779"
+
+
+class income_tax__other_deduction(Variable):
+    value_type = float
+    entity = Person
+    definition_period = YEAR
+    label = "Other deduction included in annual total deductions"
+    reference = "https://www.legislation.govt.nz/act/public/2007/0097/latest/whole.html#DLM1513974"
 
 
 class income_tax__net_income(Variable):
@@ -99,4 +179,3 @@ class income_tax__individual_income_tax(Variable):
         taxable_income = person("income_tax__taxable_income", period)
         rate_scale = parameters(period).taxes.income_tax.individual_income_tax_rate
         return rate_scale.calc(taxable_income)
-
