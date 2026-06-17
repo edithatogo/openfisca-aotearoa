@@ -7,8 +7,6 @@ export default defineConfig({
   site: 'https://edithatogo.github.io',
   base: '/openfisca-aotearoa/',
   integrations: [
-    mdx(),
-    sitemap(),
     starlight({
       title: 'OpenFisca Aotearoa',
       description: 'Legal NZ documentation portal for OpenFisca Aotearoa.',
@@ -16,5 +14,7 @@ export default defineConfig({
         { label: 'Start', items: ['index', 'docs-tooling-audit', 'explorer'] },
       ],
     }),
+    mdx(),
+    sitemap(),
   ],
 });

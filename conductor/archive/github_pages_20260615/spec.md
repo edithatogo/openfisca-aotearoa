@@ -8,3 +8,4 @@ Scaffold and integrate an interactive Policy Parameter Explorer into the Astro-b
 - Create a user-friendly parameters browser under `/explorer` in Astro Starlight using modern CSS styling.
 - Integrate search functionality allowing query matching on parameter names, descriptions, or paths.
 - Automatically compile and render progressive tax rate details and thresholds dynamically from the parameters database.
+- Publish the generated Astro documentation site to GitHub Pages from the docs workflow.

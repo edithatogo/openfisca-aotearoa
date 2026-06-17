@@ -1,12 +1,20 @@
 #! /usr/bin/env bash
 
+set -euo pipefail
+
 IGNORE_DIFF_ON="README.md CONTRIBUTING.md Makefile .gitignore .github/*"
 
-last_tagged_commit=`git describe --tags --abbrev=0 --first-parent`  # --first-parent ensures we don't follow tags not published in main through an unlikely intermediary merge commit
-
-if git diff-index --name-only --exit-code $last_tagged_commit -- . `echo " $IGNORE_DIFF_ON" | sed 's/ / :(exclude)/g'`  # Check if any file that has not be listed in IGNORE_DIFF_ON has changed since the last tag was published.
+if last_tagged_commit=$(git describe --tags --abbrev=0 --first-parent 2>/dev/null)
 then
-  echo "No functional changes detected."
-  exit 1
-else echo "The functional files above were changed."
+    diff_base=$last_tagged_commit
+else
+    diff_base=$(git rev-list --max-parents=0 HEAD)
+fi
+
+if git diff-index --name-only --exit-code "$diff_base" -- . $(echo " $IGNORE_DIFF_ON" | sed 's/ / :(exclude)/g')
+then
+    echo "No functional changes detected."
+    exit 1
+else
+    echo "The functional files above were changed."
 fi

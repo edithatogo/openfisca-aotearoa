@@ -34,19 +34,19 @@ This file tracks all major tracks for the project. Each track has its own detail
 ---
 
 ## [x] Track 6: Automated Documentation and Exploration Publishing via Astro on GitHub Pages
-*Link: [./conductor/tracks/github_pages_20260615/](./conductor/tracks/github_pages_20260615/)*
+*Archived: [./conductor/archive/github_pages_20260615/](./conductor/archive/github_pages_20260615/)*
 *Description:* Deploy an automated documentation page and parameter explorer built with **Astro** to GitHub Pages, ensuring policy analysts can search laws and parameter changes visually.
 
 ---
 
 ## [x] Track 7: Release, Tagging, and Dependency Lifecycle Automation
-*Link: [./conductor/tracks/release_lifecycle_20260615/](./conductor/tracks/release_lifecycle_20260615/)*
+*Archived: [./conductor/archive/release_lifecycle_20260615/](./conductor/archive/release_lifecycle_20260615/)*
 *Description:* Configure Dependabot to maintain bleeding-edge Rust tooling, and configure `hatch-vcs` for dynamic semantic tagging and auto-release builds.
 
 ---
 
 ## [x] Track 8: Decisional Simulation Analytics & Policy Diffusion
-*Link: [./conductor/tracks/simulation_analytics_20260615/](./conductor/tracks/simulation_analytics_20260615/)*
+*Archived: [./conductor/archive/simulation_analytics_20260615/](./conductor/archive/simulation_analytics_20260615/)*
 *Description:* Implement simulation analytics using `voiage` (Value of Information), `mars` regression, and `innovate` (policy diffusion and uptake modelling) over `open_social_data`.
 
 ---

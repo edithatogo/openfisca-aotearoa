@@ -3,11 +3,18 @@ title: Policy Parameters Explorer
 description: Interactive exploration and search of New Zealand tax and benefit parameters.
 ---
 
-Explore and search policy parameters from the OpenFisca Aotearoa engine, including tax brackets, income thresholds, and historical rates.
+Explore and search policy parameters from the OpenFisca Aotearoa engine,
+including tax brackets, income thresholds, historical rates, and legislative
+references.
 
 <div class="explorer-container">
   <div class="search-box-container">
-    <input type="text" id="param-search" placeholder="🔍 Search parameters (e.g. income tax, family tax credit)..." class="premium-search-input" />
+    <input
+      type="text"
+      id="param-search"
+      placeholder="Search parameters (e.g. income tax, family tax credit)"
+      class="premium-search-input"
+    />
   </div>
 
   <div class="explorer-layout">
@@ -17,11 +24,12 @@ Explore and search policy parameters from the OpenFisca Aotearoa engine, includi
         <div class="loading">Loading parameters...</div>
       </div>
     </div>
-    
+
     <div class="param-details-pane">
       <h3>Parameter Details</h3>
       <div id="param-details" class="param-details-placeholder">
-        Select a parameter from the list to view its historical values, brackets, and legal citations.
+        Select a parameter from the list to view its historical values,
+        brackets, and legal citations.
       </div>
     </div>
   </div>
@@ -30,68 +38,63 @@ Explore and search policy parameters from the OpenFisca Aotearoa engine, includi
 <style>{`
   .explorer-container {
     margin-top: 1.5rem;
-    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+    font-family: Outfit, Inter, system-ui, sans-serif;
   }
-  
+
   .search-box-container {
     margin-bottom: 1.5rem;
   }
-  
+
   .premium-search-input {
     width: 100%;
     padding: 1rem 1.25rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    font-size: 1.1rem;
-    backdrop-filter: blur(8px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid var(--sl-color-gray-5);
+    background: var(--sl-color-bg);
+    color: var(--sl-color-white);
+    font-size: 1rem;
   }
-  
+
   .premium-search-input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 24px rgba(59, 130, 246, 0.2);
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
   }
-  
+
   .explorer-layout {
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
     gap: 1.5rem;
-    height: 600px;
+    min-height: 600px;
   }
-  
+
   @media (max-width: 768px) {
     .explorer-layout {
       grid-template-columns: 1fr;
-      height: auto;
+      min-height: auto;
     }
   }
-  
-  .params-list-pane {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 14px;
+
+  .params-list-pane,
+  .param-details-pane {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 8px;
     padding: 1rem;
+  }
+
+  .params-list-pane {
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
-  
-  .params-list-pane h3, .param-details-pane h3 {
+
+  .params-list-pane h3,
+  .param-details-pane h3 {
     margin-top: 0;
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--sl-color-gray-6);
     padding-bottom: 0.75rem;
     margin-bottom: 0.75rem;
-    color: #94a3b8;
   }
-  
+
   .params-list {
     flex: 1;
     overflow-y: auto;
@@ -99,147 +102,137 @@ Explore and search policy parameters from the OpenFisca Aotearoa engine, includi
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .param-item {
     padding: 0.75rem 1rem;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--sl-color-gray-6);
     cursor: pointer;
-    transition: all 0.2s ease;
     text-align: left;
   }
-  
-  .param-item:hover {
-    background: rgba(59, 130, 246, 0.08);
-    border-color: rgba(59, 130, 246, 0.3);
-  }
-  
+
+  .param-item:hover,
   .param-item.active {
-    background: #3b82f6;
-    border-color: #2563eb;
-    color: #fff;
+    border-color: var(--sl-color-accent);
+    background: var(--sl-color-accent-low);
   }
-  
+
   .param-item-name {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.95rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .param-item-path {
     font-size: 0.75rem;
-    opacity: 0.6;
+    opacity: 0.75;
     word-break: break-all;
   }
-  
+
   .param-details-pane {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 14px;
-    padding: 1.5rem;
     overflow-y: auto;
   }
-  
+
   .param-details-placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80%;
-    color: #64748b;
+    min-height: 320px;
+    color: var(--sl-color-gray-3);
     font-style: italic;
     text-align: center;
   }
-  
+
   .detail-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #fff;
     margin-bottom: 0.5rem;
   }
-  
+
   .detail-path {
-    font-family: monospace;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     font-size: 0.85rem;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--sl-color-gray-6);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
-    color: #60a5fa;
     display: inline-block;
     margin-bottom: 1rem;
   }
-  
+
   .detail-desc {
-    font-size: 1.05rem;
     line-height: 1.6;
-    color: #cbd5e1;
     margin-bottom: 1.5rem;
   }
-  
-  .detail-ref-link {
-    color: #3b82f6;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .detail-ref-link:hover {
-    text-decoration: underline;
-  }
-  
+
   .history-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    overflow: hidden;
   }
-  
-  .history-table th, .history-table td {
+
+  .history-table th,
+  .history-table td {
     padding: 0.75rem 1rem;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--sl-color-gray-6);
   }
-  
+
   .history-table th {
-    background: rgba(255, 255, 255, 0.05);
-    color: #94a3b8;
     font-weight: 600;
-    font-size: 0.9rem;
   }
-  
-  .history-table tr:last-child td {
-    border-bottom: none;
-  }
-  
+
   .bracket-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--sl-color-gray-6);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
   }
-  
+
   .bracket-card-title {
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #60a5fa;
+  }
+
+  .bracket-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .bracket-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .raw-param-json {
+    overflow-x: auto;
+    border: 1px solid var(--sl-color-gray-6);
+    border-radius: 8px;
+    padding: 1rem;
   }
 `}</style>
 
 <script>{`
   let parameters = [];
-  
+
   async function init() {
     try {
-      // Direct load of generated JSON
-      const res = await fetch('/openfisca-aotearoa/parameters.json');
-      parameters = await res.json();
+      const basePath = window.location.pathname.includes('/openfisca-aotearoa/')
+        ? '/openfisca-aotearoa/'
+        : '/';
+      const response = await fetch(\`\${basePath}parameters.json\`);
+      if (!response.ok) {
+        throw new Error(\`Parameter catalog returned \${response.status}\`);
+      }
+
+      parameters = await response.json();
       renderList(parameters);
       setupSearch();
-    } catch (e) {
-      console.error("Failed to load parameters:", e);
-      document.getElementById('params-list').innerHTML = '<div class="error">Failed to load parameters catalog.</div>';
+    } catch (error) {
+      console.error('Failed to load parameters:', error);
+      document.getElementById('params-list').innerHTML =
+        '<div class="error">Failed to load parameters catalog.</div>';
     }
   }
 
@@ -249,18 +242,19 @@ Explore and search policy parameters from the OpenFisca Aotearoa engine, includi
       listContainer.innerHTML = '<div class="no-results">No parameters found</div>';
       return;
     }
-    
+
     listContainer.innerHTML = list.map(param => \`
-      <div class="param-item" data-id="\${param.id}">
-        <div class="param-item-name">\${param.name}</div>
-        <div class="param-item-path">\${param.path}</div>
+      <div class="param-item" data-id="\${escapeHtml(param.id)}">
+        <div class="param-item-name">\${escapeHtml(param.name)}</div>
+        <div class="param-item-path">\${escapeHtml(param.path)}</div>
       </div>
     \`).join('');
-    
-    // Add click listeners
+
     listContainer.querySelectorAll('.param-item').forEach(item => {
       item.addEventListener('click', () => {
-        listContainer.querySelectorAll('.param-item').forEach(i => i.classList.remove('active'));
+        listContainer
+          .querySelectorAll('.param-item')
+          .forEach(candidate => candidate.classList.remove('active'));
         item.classList.add('active');
         showDetails(item.dataset.id);
       });
@@ -269,103 +263,138 @@ Explore and search policy parameters from the OpenFisca Aotearoa engine, includi
 
   function setupSearch() {
     const searchInput = document.getElementById('param-search');
-    searchInput.addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase();
-      const filtered = parameters.filter(p => 
-        p.name.toLowerCase().includes(query) || 
-        p.path.toLowerCase().includes(query) || 
-        p.description.toLowerCase().includes(query)
+    searchInput.addEventListener('input', event => {
+      const query = event.target.value.toLowerCase();
+      const filtered = parameters.filter(param =>
+        param.name.toLowerCase().includes(query) ||
+        param.path.toLowerCase().includes(query) ||
+        (param.description || '').toLowerCase().includes(query)
       );
       renderList(filtered);
     });
   }
 
   function showDetails(id) {
-    const param = parameters.find(p => p.id === id);
+    const param = parameters.find(candidate => candidate.id === id);
     const detailsContainer = document.getElementById('param-details');
-    if (!param) return;
-    
+    if (!param) {
+      return;
+    }
+
     let valuesHtml = '';
-    
+
     if (param.type === 'brackets') {
       valuesHtml = \`
         <h4>Tax Brackets & Rates</h4>
-        \${param.brackets.map((b, idx) => {
-          const ratesHtml = Object.entries(b.rate).map(([date, details]) => \`
-            <tr>
-              <td>\${date}</td>
-              <td>\${(details.value * 100).toFixed(2)}%</td>
-            </tr>
-          \`).join('');
-          
-          const threshHtml = Object.entries(b.threshold).map(([date, details]) => \`
-            <tr>
-              <td>\${date}</td>
-              <td>$\${details.value.toLocaleString()}</td>
-            </tr>
-          \`).join('');
-          
-          return \`
-            <div class="bracket-card">
-              <div class="bracket-card-title">Bracket \${idx + 1}</div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                <div>
-                  <h5>Rates</h5>
-                  <table class="history-table">
-                    <thead><tr><th>Effective Date</th><th>Rate</th></tr></thead>
-                    <tbody>\${ratesHtml}</tbody>
-                  </table>
-                </div>
-                <div>
-                  <h5>Thresholds</h5>
-                  <table class="history-table">
-                    <thead><tr><th>Effective Date</th><th>Threshold</th></tr></thead>
-                    <tbody>\${threshHtml}</tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          \`;
-        }).join('')}
+        \${param.brackets.map((bracket, index) => renderBracket(bracket, index)).join('')}
       \`;
     } else if (param.type === 'value') {
-      const historyHtml = Object.entries(param.values).map(([date, details]) => \`
-        <tr>
-          <td>\${date}</td>
-          <td>\${typeof details.value === 'number' ? '$' + details.value.toLocaleString() : details.value}</td>
-        </tr>
-      \`).join('');
-      
+      valuesHtml = renderValueHistory(param.values);
+    } else if (param.raw) {
       valuesHtml = \`
-        <h4>Value History</h4>
-        <table class="history-table">
-          <thead>
-            <tr><th>Effective Date</th><th>Value</th></tr>
-          </thead>
-          <tbody>
-            \${historyHtml}
-          </tbody>
-        </table>
+        <h4>Raw Parameter Data</h4>
+        <pre class="raw-param-json">\${escapeHtml(JSON.stringify(param.raw, null, 2))}</pre>
       \`;
     }
-    
+
     detailsContainer.className = 'param-details-content';
     detailsContainer.innerHTML = \`
-      <div class="detail-title">\${param.name}</div>
-      <div class="detail-path">\${param.path}</div>
-      <div class="detail-desc">\${param.description || 'No description provided.'}</div>
-      
+      <div class="detail-title">\${escapeHtml(param.name)}</div>
+      <div class="detail-path">\${escapeHtml(param.path)}</div>
+      <div class="detail-desc">\${escapeHtml(param.description || 'No description provided.')}</div>
+
       \${param.reference ? \`
         <div style="margin-bottom: 1.5rem;">
-          <strong>Legislation Reference:</strong> 
-          <a href="\${param.reference}" target="_blank" class="detail-ref-link">View Act/Regulations ↗</a>
+          <strong>Legislation Reference:</strong>
+          <a href="\${escapeHtml(param.reference)}" target="_blank" rel="noopener">View Act/Regulations</a>
         </div>
       \` : ''}
-      
+
       \${valuesHtml}
     \`;
   }
 
-  // Kick off initialization
+  function renderBracket(bracket, index) {
+    const ratesHtml = Object.entries(bracket.rate || {}).map(([date, details]) => \`
+      <tr>
+        <td>\${escapeHtml(date)}</td>
+        <td>\${formatPercent(details)}</td>
+      </tr>
+    \`).join('');
+
+    const thresholdHtml = Object.entries(bracket.threshold || {}).map(([date, details]) => \`
+      <tr>
+        <td>\${escapeHtml(date)}</td>
+        <td>\${formatValue(details)}</td>
+      </tr>
+    \`).join('');
+
+    return \`
+      <div class="bracket-card">
+        <div class="bracket-card-title">Bracket \${index + 1}</div>
+        <div class="bracket-grid">
+          <div>
+            <h5>Rates</h5>
+            <table class="history-table">
+              <thead><tr><th>Effective Date</th><th>Rate</th></tr></thead>
+              <tbody>\${ratesHtml}</tbody>
+            </table>
+          </div>
+          <div>
+            <h5>Thresholds</h5>
+            <table class="history-table">
+              <thead><tr><th>Effective Date</th><th>Threshold</th></tr></thead>
+              <tbody>\${thresholdHtml}</tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    \`;
+  }
+
+  function renderValueHistory(values) {
+    const historyHtml = Object.entries(values || {}).map(([date, details]) => \`
+      <tr>
+        <td>\${escapeHtml(date)}</td>
+        <td>\${formatValue(details)}</td>
+      </tr>
+    \`).join('');
+
+    return \`
+      <h4>Value History</h4>
+      <table class="history-table">
+        <thead>
+          <tr><th>Effective Date</th><th>Value</th></tr>
+        </thead>
+        <tbody>\${historyHtml}</tbody>
+      </table>
+    \`;
+  }
+
+  function extractValue(details) {
+    return details && typeof details === 'object' && 'value' in details
+      ? details.value
+      : details;
+  }
+
+  function formatPercent(details) {
+    const value = extractValue(details);
+    return typeof value === 'number' ? \`\${(value * 100).toFixed(2)}%\` : escapeHtml(String(value));
+  }
+
+  function formatValue(details) {
+    const value = extractValue(details);
+    return typeof value === 'number' ? value.toLocaleString() : escapeHtml(String(value));
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   init();
 `}</script>
