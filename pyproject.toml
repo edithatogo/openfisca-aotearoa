@@ -68,6 +68,7 @@ dev = [
     "hypothesis>=6.100.0",
     "mutmut>=2.4.0",
     "scalene>=1.5.0; sys_platform != 'win32'",
+    "una>=0.7.0",
     "vale>=2.30.0",
 ]
 
@@ -116,3 +117,6 @@ reportSelfClsParameterName = "none"
 
 [tool.complexipy]
 max_cognitive_complexity = 15
+
+[tool.uv.workspace]
+members = ["."]
