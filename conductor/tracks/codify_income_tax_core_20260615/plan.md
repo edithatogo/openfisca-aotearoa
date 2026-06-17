@@ -8,6 +8,9 @@
 
 ## Phase 2: Implementation
 
-- [~] Task: Add or update variables and parameters with explicit legislation.govt.nz citations.
-- [ ] Task: Add situation tests for representative tax, credit, and family scheme calculations.
+- [x] Task: Add or update variables and parameters with explicit legislation.govt.nz citations. (a518c75)
+  - Implemented: core Part C income component variables, Part D deduction component variables, and corrected Schedule 1 individual tax bracket activation.
+- [x] Task: Add situation tests for representative tax, credit, and family scheme calculations. (a518c75)
+  - Verified: individual tax component-to-tax flow plus existing Working for Families entitlement scenarios.
 - [ ] Task: Conductor - User Manual Verification 'Income Tax Act rules load and test' [checkpoint: pending].
+  - Pending: full `tests/income_tax/family_scheme` collection is blocked on Windows by existing UTF-8 YAML decoded as cp1252; focused Track 14 verification passed 14 tests.
