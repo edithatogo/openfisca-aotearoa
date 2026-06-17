@@ -46,6 +46,12 @@ uv run --extra dev una --help
 Use una package-management commands only after introducing real local package
 member directories and updating `[tool.uv.workspace].members` accordingly.
 
+### Smoke validation
+
+```sh
+uv run --extra dev python scripts/smoke_workspace.py
+```
+
 ### Lint and type-check
 
 ```sh

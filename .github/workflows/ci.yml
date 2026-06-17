@@ -24,6 +24,9 @@ jobs:
       - name: Install Dependencies
         run: uv sync --extra dev
 
+      - name: Check uv and una workspace integration
+        run: uv run --extra dev python scripts/smoke_workspace.py
+
       - name: Run Ruff Lint Checks
         uses: astral-sh/ruff-action@v1
         with:
