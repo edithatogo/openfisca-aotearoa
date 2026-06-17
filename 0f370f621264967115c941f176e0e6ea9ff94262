@@ -1,0 +1,6 @@
+Track 16 workspace metadata audit evidence:
+- Added conductor/tracks/una_workspace_integration_20260618/workspace_metadata_audit.md.
+- Inspected pyproject.toml, uv.lock, .gitignore, Makefile, README, and GitHub Actions workflows.
+- Confirmed no local .python-version, no [tool.uv] workspace metadata, and no [tool.una] config.
+- Confirmed current quality CI uses uv sync --extra dev, while reusable build/validate/deploy workflows still use Makefile legacy pip/flake8/pylint/yamllint paths.
+- Validation: git diff --check passed.
