@@ -8,3 +8,7 @@
 - [x] Task: Configure Astro Starlight sidebar to expose the explorer page
 - [x] Task: Configure GitHub Actions deployment to GitHub Pages
 - [x] Task: Conductor - User Manual Verification 'Verify explorer page loaded' [checkpoint: work_done]
+
+## Post-Review Checkpoint
+
+- [x] Checkpoint: Review fixes, validation, and archive recorded in commit `3b43e8b`.

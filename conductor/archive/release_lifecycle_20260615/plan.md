@@ -6,3 +6,7 @@
 - [x] Task: Make release helper scripts compatible with Hatch-VCS dynamic versions and first-tag repositories
 - [x] Task: Configure tag-driven release builds with full Git history for Hatch-VCS
 - [x] Task: Conductor - User Manual Verification 'Verify dependabot triggers' [checkpoint: work_done]
+
+## Post-Review Checkpoint
+
+- [x] Checkpoint: Review fixes, validation, and archive recorded in commit `3b43e8b`.
