@@ -1,0 +1,6 @@
+Track 15 inventory implementation evidence:
+- Added conductor/tracks/openfisca_core_strict_quality_20260618/dependency_api_inventory.md.
+- Confirmed openfisca-core package metadata version via uv: 44.7.0.
+- Confirmed uv.lock resolves openfisca-core to 44.7.0.
+- Counted current surfaces: 79 parameter files, 101 variable files, 523 relevant OpenFisca period/input/aggregation references.
+- Validation: git diff --check passed before commit.
