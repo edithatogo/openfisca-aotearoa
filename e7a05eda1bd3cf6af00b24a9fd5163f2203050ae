@@ -1,0 +1,11 @@
+Created granular Conductor follow-up tracks for remaining roadmap aspects beyond the original scheduled tracks:
+
+- Track 15: OpenFisca Core v44+ compatibility and strict quality gates.
+- Track 16: Una and uv workspace integration.
+- Track 17: High-performance Web API serving with Granian or Robyn.
+- Track 18: Microsimulation data and analytics adapters for open_social_data, voiage, mars, and innovate.
+- Track 19: Legislation evidence pipeline integrations for nz-legislation, sourceright, nlp-policy-nz, and fyi-cli.
+- Track 20: AI-assisted test automation with review gates.
+- Track 21: Legal audit and publish readiness gates.
+
+Updated conductor/tracks.md and roadmap_implementation_assessment_20260618.md to register the new work.
