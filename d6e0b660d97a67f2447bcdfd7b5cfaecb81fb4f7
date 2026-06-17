@@ -1,0 +1,7 @@
+Track 16 parent workspace audit evidence:
+- Added conductor/tracks/una_workspace_integration_20260618/parent_workspace_audit.md.
+- Inspected parent legal-nz root read-only; no parent files modified.
+- Confirmed parent has no root pyproject.toml, uv.lock, uv.toml, .python-version, or una config.
+- Confirmed openfisca-aotearoa is a parent submodule and parent pytest excludes submodule directories.
+- Confirmed parent status already has unrelated modified submodules, so parent cleanup is out of nested-repo scope.
+- Validation: git diff --check passed.
