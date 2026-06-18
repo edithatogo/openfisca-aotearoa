@@ -16,8 +16,8 @@
 
 ## Phase 3: Analytics Adapter Boundaries
 
-- [ ] Task: Add optional adapter interfaces for value-of-information analysis.
-- [ ] Task: Add optional adapter interfaces for spline-regression summaries.
-- [ ] Task: Add optional adapter interfaces for policy-diffusion modelling.
-- [ ] Task: Add tests that prove graceful skip or degradation when optional packages are absent.
+- [~] Task: Add optional adapter interfaces for value-of-information analysis.
+- [~] Task: Add optional adapter interfaces for spline-regression summaries.
+- [~] Task: Add optional adapter interfaces for policy-diffusion modelling.
+- [~] Task: Add tests that prove graceful skip or degradation when optional packages are absent.
 - [ ] Task: Conductor - User Manual Verification 'Analytics adapters smoke test' [checkpoint: pending].

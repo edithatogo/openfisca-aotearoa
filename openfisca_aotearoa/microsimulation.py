@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import importlib
+import importlib.util
 from pathlib import Path
 from typing import Any
 
@@ -91,6 +93,74 @@ class SimulationOutput(BaseModel):
 
 class MicrosimulationError(ValueError):
     """Raised when a bounded microsimulation request is invalid."""
+
+
+class MicrosimulationAdapterError(ImportError):
+    """Raised when an optional analytics adapter cannot be used."""
+
+
+class AdapterStatus(BaseModel):
+    """Availability status for an optional integration adapter."""
+
+    name: str
+    import_name: str
+    purpose: str
+    available: bool
+
+
+class OptionalDependency(BaseModel):
+    """Boundary for an optional microsimulation integration package."""
+
+    name: str
+    import_name: str
+    purpose: str
+
+    def status(self) -> AdapterStatus:
+        """Return current import availability for this dependency."""
+        return AdapterStatus(
+            name=self.name,
+            import_name=self.import_name,
+            purpose=self.purpose,
+            available=importlib.util.find_spec(self.import_name) is not None,
+        )
+
+    def require(self) -> Any:
+        """Import and return the optional module or raise a clear error."""
+        if not self.status().available:
+            raise MicrosimulationAdapterError(
+                f"Optional dependency {self.name!r} is not installed; "
+                f"install it to enable {self.purpose}.",
+            )
+        return importlib.import_module(self.import_name)
+
+
+OPTIONAL_DEPENDENCIES = (
+    OptionalDependency(
+        name="open_social_data",
+        import_name="open_social_data",
+        purpose="population cohort source",
+    ),
+    OptionalDependency(
+        name="voiage",
+        import_name="voiage",
+        purpose="value-of-information analysis",
+    ),
+    OptionalDependency(
+        name="mars",
+        import_name="mars",
+        purpose="spline-regression summaries",
+    ),
+    OptionalDependency(
+        name="innovate",
+        import_name="innovate",
+        purpose="policy-diffusion modelling",
+    ),
+)
+
+
+def adapter_statuses() -> list[AdapterStatus]:
+    """Return availability for optional microsimulation integrations."""
+    return [dependency.status() for dependency in OPTIONAL_DEPENDENCIES]
 
 
 class BoundedBatchRunner:
