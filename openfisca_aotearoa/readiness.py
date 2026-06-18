@@ -54,6 +54,8 @@ class ReadinessManifest(BaseModel):
     title: str = Field(min_length=1)
     source_path: str = Field(min_length=1)
     readiness_status: ReadinessStatus
+    metadata_status: str | None = None
+    registry_status: str | None = None
     manual_checkpoints: list[ManualCheckpoint] = Field(default_factory=list)
     required_evidence: list[str] = Field(
         default_factory=lambda: list(REQUIRED_EVIDENCE)
@@ -90,12 +92,14 @@ def build_readiness_manifest(
     *,
     archived: bool = False,
     git_notes: dict[str, str] | None = None,
+    registry_status: str | None = None,
 ) -> ReadinessManifest:
     """Build a readiness manifest from a Conductor track directory."""
     path = Path(track_path)
     metadata = _read_metadata(path)
     plan_text = _read_text(path / "plan.md")
     track_id = str(metadata.get("track_id") or path.name)
+    metadata_status = _metadata_status(metadata)
     title = _title(plan_text, track_id)
     checkpoints = _manual_checkpoints(plan_text)
     available = _available_evidence(path, plan_text)
@@ -108,9 +112,19 @@ def build_readiness_manifest(
     notes_present = sorted(
         commit for commit in commits if git_notes and commit in git_notes
     )
-    risks = _risks(plan_text, checkpoints, missing, commits, notes_present)
+    risks = _risks(
+        plan_text,
+        checkpoints,
+        missing,
+        commits,
+        notes_present,
+        metadata_status,
+        registry_status,
+    )
     status = _readiness_status(
         archived=archived,
+        metadata_status=metadata_status,
+        registry_status=registry_status,
         plan_text=plan_text,
         checkpoints=checkpoints,
         missing=missing,
@@ -124,6 +138,8 @@ def build_readiness_manifest(
         title=title,
         source_path=path.as_posix(),
         readiness_status=status,
+        metadata_status=metadata_status,
+        registry_status=registry_status,
         manual_checkpoints=checkpoints,
         available_evidence=available,
         missing_evidence=[] if status == "publish_ready" else missing,
@@ -221,48 +237,6 @@ def _manual_checkpoints(plan_text: str) -> list[ManualCheckpoint]:
 
 def _available_evidence(path: Path, plan_text: str) -> list[EvidenceItem]:
     evidence: list[EvidenceItem] = []
-    lower = plan_text.lower()
-    if "legislation.govt.nz" in lower or "citation" in lower:
-        evidence.append(
-            EvidenceItem(
-                kind="citations",
-                source="plan.md",
-                detail="Plan references citations or legislation sources.",
-            ),
-        )
-    if "parameter" in lower:
-        evidence.append(
-            EvidenceItem(
-                kind="parameters",
-                source="plan.md",
-                detail="Plan references parameter work.",
-            ),
-        )
-    if "variable" in lower or "formula" in lower:
-        evidence.append(
-            EvidenceItem(
-                kind="formulas",
-                source="plan.md",
-                detail="Plan references variable or formula work.",
-            ),
-        )
-    if "test" in lower or "situation" in lower:
-        evidence.append(
-            EvidenceItem(
-                kind="situation_tests",
-                source="plan.md",
-                detail="Plan references situation or test evidence.",
-            ),
-        )
-    if "work_done" in lower:
-        evidence.append(
-            EvidenceItem(
-                kind="manual_verification",
-                source="plan.md",
-                detail="Plan contains completed manual verification.",
-            ),
-        )
-
     evidence_files = [
         candidate
         for candidate in path.iterdir()
@@ -270,6 +244,69 @@ def _available_evidence(path: Path, plan_text: str) -> list[EvidenceItem]:
         and candidate.suffix.lower() in {".md", ".json"}
         and candidate.name not in {"plan.md", "metadata.json", "spec.md"}
     ]
+    names = {candidate.name.lower() for candidate in evidence_files}
+    stems = {candidate.stem.lower() for candidate in evidence_files}
+
+    if _has_evidence(names, stems, "citation", "citations"):
+        evidence.append(
+            EvidenceItem(
+                kind="citations",
+                source=_evidence_sources(
+                    evidence_files, "citation", "citations"
+                ),
+                detail="Track has citation evidence artifact.",
+            ),
+        )
+    if _has_evidence(names, stems, "parameter", "parameters"):
+        evidence.append(
+            EvidenceItem(
+                kind="parameters",
+                source=_evidence_sources(
+                    evidence_files, "parameter", "parameters"
+                ),
+                detail="Track has parameter evidence artifact.",
+            ),
+        )
+    if _has_evidence(
+        names, stems, "formula", "formulas", "variable", "variables"
+    ):
+        evidence.append(
+            EvidenceItem(
+                kind="formulas",
+                source=_evidence_sources(
+                    evidence_files,
+                    "formula",
+                    "formulas",
+                    "variable",
+                    "variables",
+                ),
+                detail="Track has formula evidence artifact.",
+            ),
+        )
+    if _has_evidence(
+        names, stems, "test", "tests", "situation", "situation_tests"
+    ):
+        evidence.append(
+            EvidenceItem(
+                kind="situation_tests",
+                source=_evidence_sources(
+                    evidence_files,
+                    "test",
+                    "tests",
+                    "situation",
+                    "situation_tests",
+                ),
+                detail="Track has situation-test evidence artifact.",
+            ),
+        )
+    if "work_done" in plan_text.lower():
+        evidence.append(
+            EvidenceItem(
+                kind="manual_verification",
+                source="plan.md",
+                detail="Plan contains completed manual verification.",
+            ),
+        )
     if evidence_files:
         evidence.append(
             EvidenceItem(
@@ -279,6 +316,22 @@ def _available_evidence(path: Path, plan_text: str) -> list[EvidenceItem]:
             ),
         )
     return evidence
+
+
+def _has_evidence(names: set[str], stems: set[str], *patterns: str) -> bool:
+    return any(
+        pattern in name for pattern in patterns for name in names | stems
+    )
+
+
+def _evidence_sources(evidence_files: list[Path], *patterns: str) -> str:
+    matches = [
+        candidate.name
+        for candidate in evidence_files
+        if any(pattern in candidate.name.lower() for pattern in patterns)
+        or any(pattern in candidate.stem.lower() for pattern in patterns)
+    ]
+    return ", ".join(sorted(matches)) or "unknown"
 
 
 def _commit_refs(plan_text: str) -> list[str]:
@@ -291,8 +344,16 @@ def _risks(
     missing: list[str],
     commits: list[str],
     notes_present: list[str],
+    metadata_status: str | None,
+    registry_status: str | None,
 ) -> list[str]:
     risks: list[str] = []
+    if metadata_status and metadata_status != "completed":
+        risks.append(
+            f"Track metadata status is {metadata_status}, not completed."
+        )
+    if registry_status and registry_status != "x":
+        risks.append(f"Track registry status is {registry_status}, not x.")
     if "[ ]" in plan_text:
         risks.append("Plan has incomplete tasks.")
     for checkpoint in checkpoints:
@@ -309,6 +370,8 @@ def _risks(
 def _readiness_status(
     *,
     archived: bool,
+    metadata_status: str | None,
+    registry_status: str | None,
     plan_text: str,
     checkpoints: list[ManualCheckpoint],
     missing: list[str],
@@ -326,6 +389,17 @@ def _readiness_status(
         checkpoint.status == "work_done" for checkpoint in checkpoints
     ):
         base_status = "legally_reviewed"
+    if metadata_status and metadata_status != "completed":
+        return base_status
+    if registry_status and registry_status != "x":
+        return base_status
     if not missing and not risks:
         return "publish_ready"
     return base_status
+
+
+def _metadata_status(metadata: dict[str, Any]) -> str | None:
+    status = metadata.get("status")
+    if status is None:
+        return None
+    return str(status)

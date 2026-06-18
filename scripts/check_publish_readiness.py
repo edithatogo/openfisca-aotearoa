@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 from pathlib import Path
 
@@ -25,8 +26,13 @@ def main() -> int:
     args = parser.parse_args()
 
     git_notes = _git_notes()
+    registry_statuses = _registry_statuses(Path("conductor/tracks.md"))
     manifests = [
-        build_readiness_manifest(track, git_notes=git_notes)
+        build_readiness_manifest(
+            track,
+            git_notes=git_notes,
+            registry_status=registry_statuses.get(Path(track).name),
+        )
         for track in args.tracks
     ]
     report = render_readiness_report(manifests)
@@ -63,6 +69,25 @@ def _git_notes() -> dict[str, str]:
             notes[commit_hash[:7]] = note_hash
             notes[commit_hash[:8]] = note_hash
     return notes
+
+
+def _registry_statuses(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    statuses: dict[str, str] = {}
+    current_status: str | None = None
+    heading = re.compile(r"^## \[([ x~])\] Track ")
+    link = re.compile(r"\./conductor/tracks/([^/]+)/")
+    for line in path.read_text(encoding="utf-8").splitlines():
+        heading_match = heading.search(line)
+        if heading_match:
+            current_status = heading_match.group(1)
+            continue
+        link_match = link.search(line)
+        if current_status is not None and link_match:
+            statuses[link_match.group(1)] = current_status
+            current_status = None
+    return statuses
 
 
 if __name__ == "__main__":

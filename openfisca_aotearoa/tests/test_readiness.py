@@ -45,6 +45,33 @@ def test_completed_fixture_track_is_publish_ready() -> None:
     assert manifest.missing_evidence == []
 
 
+def test_non_completed_metadata_blocks_publish_ready() -> None:
+    manifest = build_readiness_manifest(
+        FIXTURE_DIR / "phase1_track",
+        registry_status=" ",
+        git_notes={"abc1234": "Implemented and reviewed."},
+    )
+
+    assert manifest.readiness_status == "legally_reviewed"
+    assert manifest.publish_ready is False
+    assert "Track metadata status is phase1_done, not completed." in (
+        manifest.unresolved_risks
+    )
+    assert "Track registry status is  , not x." in manifest.unresolved_risks
+
+
+def test_plan_keywords_do_not_satisfy_artifact_evidence() -> None:
+    manifest = build_readiness_manifest(
+        FIXTURE_DIR / "plan_only_track",
+        git_notes={"abc1234": "Implemented and reviewed."},
+    )
+
+    assert manifest.readiness_status == "legally_reviewed"
+    assert manifest.publish_ready is False
+    assert "citations" in manifest.missing_evidence
+    assert "situation_tests" in manifest.missing_evidence
+
+
 def test_pending_manual_checkpoint_blocks_publish_ready() -> None:
     manifest = build_readiness_manifest(FIXTURE_DIR / "pending_track")
 
