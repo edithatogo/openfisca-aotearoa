@@ -65,6 +65,37 @@ def test_bounded_runner_rejects_oversized_cohort() -> None:
         runner.run(cohort)
 
 
+def test_bounded_runner_wraps_malformed_cohort_errors() -> None:
+    runner = BoundedBatchRunner(max_records=2)
+
+    with pytest.raises(MicrosimulationError, match="invalid cohort"):
+        runner.run(
+            {
+                "period": "2025",
+                "variables": ["age"],
+                "people": [],
+            },
+        )
+
+
+def test_bounded_runner_wraps_unknown_variable_errors() -> None:
+    runner = BoundedBatchRunner(max_records=2)
+    cohort = fixture_cohort()
+    cohort["variables"] = ["missing_variable"]
+
+    with pytest.raises(MicrosimulationError, match="calculation failed"):
+        runner.run(cohort)
+
+
+def test_bounded_runner_wraps_unsupported_period_errors() -> None:
+    runner = BoundedBatchRunner(max_records=2)
+    cohort = fixture_cohort()
+    cohort["period"] = "not-a-period"
+
+    with pytest.raises(MicrosimulationError, match="calculation failed"):
+        runner.run(cohort)
+
+
 def test_bounded_runner_exports_json_and_csv(tmp_path) -> None:
     runner = BoundedBatchRunner(max_records=2)
     output = runner.run(fixture_cohort())

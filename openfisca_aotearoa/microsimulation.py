@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 import polars as pl
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, ValidationError, model_validator
 
 from openfisca_aotearoa.simulation import BatchSimulator
 
@@ -115,12 +115,17 @@ class BoundedBatchRunner:
                 f"({len(validated.people)} > {self.max_records})",
             )
 
-        result = self.simulator.run(
-            validated.to_batch_records(),
-            validated.period,
-            validated.variables,
-            families=validated.to_openfisca_families() or None,
-        )
+        try:
+            result = self.simulator.run(
+                validated.to_batch_records(),
+                validated.period,
+                validated.variables,
+                families=validated.to_openfisca_families() or None,
+            )
+        except Exception as error:
+            raise MicrosimulationError(
+                f"calculation failed: {error}",
+            ) from error
         return SimulationOutput(
             period=validated.period,
             variables=validated.variables,
@@ -136,7 +141,10 @@ class BoundedBatchRunner:
         """Validate or return an existing cohort contract."""
         if isinstance(cohort, CohortInput):
             return cohort
-        return CohortInput.model_validate(cohort)
+        try:
+            return CohortInput.model_validate(cohort)
+        except ValidationError as error:
+            raise MicrosimulationError(f"invalid cohort: {error}") from error
 
     def _records(
         self,
