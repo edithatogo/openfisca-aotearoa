@@ -41,6 +41,9 @@ jobs:
       - name: Check Cognitive Complexity with Complexipy
         run: uv run complexipy openfisca_aotearoa --max-complexity-allowed 15
 
+      - name: Run Accepted AI-Generated Tests
+        run: uv run pytest openfisca_aotearoa/tests/test_ai_test_automation.py --strict-markers --strict-config -W error
+
       - name: Run Test Suite
         run: uv run pytest --cov=openfisca_aotearoa --cov-report=xml --strict-markers --strict-config -W error
 

@@ -1,0 +1,14 @@
+{
+  "candidate_id": "age_boundary_2025",
+  "source_track": "ai_test_automation_20260618",
+  "source_document": "openfisca_aotearoa/variables/demographics/ages.py",
+  "prompt": "Generate a deterministic boundary test for the age variable on 2025-01-01.",
+  "generator": "offline-template",
+  "generated_at": "2026-06-18T00:00:00Z",
+  "review_status": "quarantined",
+  "reviewer": null,
+  "reviewed_at": null,
+  "notes": [
+    "Quarantined fixture used to test metadata validation."
+  ]
+}

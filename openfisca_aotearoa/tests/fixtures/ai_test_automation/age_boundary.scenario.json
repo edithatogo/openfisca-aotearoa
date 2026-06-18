@@ -1,0 +1,23 @@
+{
+  "scenario_id": "age_boundary_2025",
+  "title": "Age boundary candidate generated from reviewed prompt",
+  "period": "2025-01-01",
+  "inputs": [
+    {
+      "id": "person_a",
+      "date_of_birth": {
+        "ETERNITY": "1995-01-01"
+      }
+    }
+  ],
+  "output_variables": [
+    "age"
+  ],
+  "expected_results": [
+    {
+      "id": "person_a",
+      "age": 30
+    }
+  ],
+  "source_reference": "openfisca_aotearoa/variables/demographics/ages.py"
+}
