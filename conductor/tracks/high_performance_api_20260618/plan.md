@@ -19,6 +19,6 @@
 
 - [x] Task: Add unit tests for Pydantic models and validation errors. (`64e451f`)
 - [x] Task: Add API smoke tests for health, metadata, and a representative calculation. (`33775d4`, `90b45a8`)
-- [~] Task: Add CI-safe server startup/shutdown validation.
+- [x] Task: Add CI-safe server startup/shutdown validation. (`a122e68`)
 - [ ] Task: Document API usage, example payloads, and limitations.
 - [ ] Task: Conductor - User Manual Verification 'High-performance API smoke test' [checkpoint: pending].
