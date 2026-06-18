@@ -2,7 +2,7 @@
 
 ## Phase 1: Data Contract and Dependency Audit
 
-- [~] Task: Audit existing simulation helper code and Track 8 artifacts.
+- [x] Task: Audit existing simulation helper code and Track 8 artifacts. (`4d54361`)
 - [ ] Task: Define canonical JSON schema for people, families, periods, variables, and outputs.
 - [ ] Task: Audit availability and import paths for `open_social_data`, `voiage`, `mars`, and `innovate`.
 - [ ] Task: Conductor - User Manual Verification 'Microsimulation contract review' [checkpoint: pending].
