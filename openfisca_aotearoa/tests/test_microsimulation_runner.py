@@ -1,6 +1,7 @@
 """Tests for bounded microsimulation runner behavior."""
 
 import json
+from pathlib import Path
 
 import pytest
 
@@ -9,6 +10,8 @@ from openfisca_aotearoa.microsimulation import (
     CohortInput,
     MicrosimulationError,
 )
+
+FIXTURES = Path(__file__).parent / "fixtures"
 
 
 def fixture_cohort() -> dict:
@@ -107,3 +110,15 @@ def test_bounded_runner_exports_json_and_csv(tmp_path) -> None:
 
     assert json.loads(json_path.read_text()) == output.records
     assert csv_path.read_text().splitlines() == ["id,age", "person_a,30"]
+
+
+def test_bounded_runner_loads_offline_fixture_cohort() -> None:
+    runner = BoundedBatchRunner(max_records=10)
+    fixture_path = FIXTURES / "microsimulation_cohort.json"
+
+    output = runner.run(json.loads(fixture_path.read_text()))
+
+    assert output.records == [
+        {"id": "person_a", "age": 30},
+        {"id": "person_b", "age": 15},
+    ]

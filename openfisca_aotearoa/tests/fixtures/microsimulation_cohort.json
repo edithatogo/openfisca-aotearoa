@@ -1,0 +1,34 @@
+{
+  "period": "2025-01-01",
+  "variables": [
+    "age"
+  ],
+  "people": [
+    {
+      "id": "person_a",
+      "variables": {
+        "date_of_birth": {
+          "ETERNITY": "1995-01-01"
+        }
+      }
+    },
+    {
+      "id": "person_b",
+      "variables": {
+        "date_of_birth": {
+          "ETERNITY": "2010-01-01"
+        }
+      }
+    }
+  ],
+  "families": [
+    {
+      "id": "family_a",
+      "principal": "person_a",
+      "children": [
+        "person_b"
+      ]
+    }
+  ],
+  "source": "offline-fixture"
+}
