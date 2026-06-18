@@ -11,7 +11,7 @@
 
 - [x] Task: Implement or extend a batch simulation runner for bounded cohort inputs. (`a29eaf6`)
 - [x] Task: Add validation and clear errors for missing variables, malformed entities, and unsupported periods. (`50a9f5b`)
-- [ ] Task: Add deterministic JSON and CSV export paths.
+- [x] Task: Add deterministic JSON and CSV export paths. (`a29eaf6`)
 - [ ] Task: Add small offline fixture cohorts that do not require large external datasets.
 
 ## Phase 3: Analytics Adapter Boundaries
