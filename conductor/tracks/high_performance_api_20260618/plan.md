@@ -21,4 +21,4 @@
 - [x] Task: Add API smoke tests for health, metadata, and a representative calculation. (`33775d4`, `90b45a8`)
 - [x] Task: Add CI-safe server startup/shutdown validation. (`a122e68`)
 - [x] Task: Document API usage, example payloads, and limitations. (`e7a6b90`)
-- [ ] Task: Conductor - User Manual Verification 'High-performance API smoke test' [checkpoint: pending].
+- [x] Task: Conductor - User Manual Verification 'High-performance API smoke test' [checkpoint: work_done]. (122e68, e7a6b90)
