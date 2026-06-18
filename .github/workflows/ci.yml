@@ -27,6 +27,9 @@ jobs:
       - name: Check uv and una workspace integration
         run: uv run --extra dev python scripts/smoke_workspace.py
 
+      - name: Smoke high-performance API server
+        run: uv run python scripts/smoke_api_server.py
+
       - name: Run Ruff Lint Checks
         uses: astral-sh/ruff-action@v1
         with:
