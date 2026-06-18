@@ -2,9 +2,14 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
+import pandas as pd
+import polars as pl
 from pydantic import BaseModel, Field, model_validator
+
+from openfisca_aotearoa.simulation import BatchSimulator
 
 
 class PersonRecord(BaseModel):
@@ -82,3 +87,62 @@ class SimulationOutput(BaseModel):
     period: str
     variables: list[str]
     records: list[dict[str, Any]]
+
+
+class MicrosimulationError(ValueError):
+    """Raised when a bounded microsimulation request is invalid."""
+
+
+class BoundedBatchRunner:
+    """Run validated microsimulation cohorts with explicit row bounds."""
+
+    def __init__(
+        self,
+        max_records: int = 10000,
+        simulator: BatchSimulator | None = None,
+    ) -> None:
+        if max_records < 1:
+            raise ValueError("max_records must be at least 1")
+        self.max_records = max_records
+        self.simulator = simulator or BatchSimulator()
+
+    def run(self, cohort: CohortInput | dict[str, Any]) -> SimulationOutput:
+        """Run a validated cohort and return canonical output records."""
+        validated = self._cohort(cohort)
+        if len(validated.people) > self.max_records:
+            raise MicrosimulationError(
+                "cohort size exceeds max_records "
+                f"({len(validated.people)} > {self.max_records})",
+            )
+
+        result = self.simulator.run(
+            validated.to_batch_records(),
+            validated.period,
+            validated.variables,
+            families=validated.to_openfisca_families() or None,
+        )
+        return SimulationOutput(
+            period=validated.period,
+            variables=validated.variables,
+            records=self._records(result),
+        )
+
+    def export(self, output: SimulationOutput, path: str | Path) -> Path:
+        """Export canonical output records to JSON or CSV."""
+        dataframe = pl.DataFrame(output.records)
+        return BatchSimulator.export(dataframe, path)
+
+    def _cohort(self, cohort: CohortInput | dict[str, Any]) -> CohortInput:
+        """Validate or return an existing cohort contract."""
+        if isinstance(cohort, CohortInput):
+            return cohort
+        return CohortInput.model_validate(cohort)
+
+    def _records(
+        self,
+        dataframe: pl.DataFrame | pd.DataFrame,
+    ) -> list[dict[str, Any]]:
+        """Convert supported dataframe outputs to record dictionaries."""
+        if isinstance(dataframe, pd.DataFrame):
+            return dataframe.to_dict(orient="records")
+        return dataframe.to_dicts()

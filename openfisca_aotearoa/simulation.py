@@ -10,6 +10,7 @@ from openfisca_core.simulation_builder import SimulationBuilder
 from openfisca_aotearoa.aotearoa_legislationmodel import AotearoaLegislationModel
 
 CohortData = list[dict[str, Any]] | pl.DataFrame | pd.DataFrame
+FamilyData = list[dict[str, Any]] | None
 OutputFormat = Literal["polars", "pandas"]
 ExportFormat = Literal["csv", "json"]
 
@@ -26,6 +27,7 @@ class BatchSimulator:
         period: str,
         output_variables: list[str],
         output_format: OutputFormat = "polars",
+        families: FamilyData = None,
     ) -> pl.DataFrame | pd.DataFrame:
         """Run batch simulation on a cohort of individuals.
 
@@ -36,6 +38,7 @@ class BatchSimulator:
                 ``"2025-01-01"``.
             output_variables: OpenFisca person variables to calculate.
             output_format: Return ``"polars"`` or ``"pandas"`` dataframes.
+            families: Optional OpenFisca family entity records.
 
         Returns:
             A dataframe containing person IDs and calculated variables.
@@ -47,7 +50,7 @@ class BatchSimulator:
         if output_format not in ("polars", "pandas"):
             raise ValueError("output_format must be 'polars' or 'pandas'")
 
-        situation = self._build_situation(records, period)
+        situation = self._build_situation(records, period, families)
         simulation = SimulationBuilder().build_from_entities(
             self.system,
             situation,
@@ -114,6 +117,7 @@ class BatchSimulator:
         self,
         records: list[dict[str, Any]],
         period: str,
+        families: FamilyData = None,
     ) -> dict[str, dict[str, Any]]:
         """Build a fully specified OpenFisca entity situation."""
         persons = {}
@@ -129,12 +133,21 @@ class BatchSimulator:
                     person_data[variable] = {period: value}
             persons[person_id] = person_data
 
-        return {
-            "persons": persons,
-            "families": {
+        if families:
+            family_entities = {
+                family["id"]: {
+                    key: value
+                    for key, value in family.items()
+                    if key != "id"
+                }
+                for family in families
+            }
+        else:
+            family_entities = {
                 "family_0": {
                     "principal": [next(iter(persons))],
                     "children": list(persons.keys())[1:],
                 },
-            },
-        }
+            }
+
+        return {"persons": persons, "families": family_entities}

@@ -9,7 +9,7 @@
 
 ## Phase 2: Batch Simulation Runner
 
-- [ ] Task: Implement or extend a batch simulation runner for bounded cohort inputs.
+- [~] Task: Implement or extend a batch simulation runner for bounded cohort inputs.
 - [ ] Task: Add validation and clear errors for missing variables, malformed entities, and unsupported periods.
 - [ ] Task: Add deterministic JSON and CSV export paths.
 - [ ] Task: Add small offline fixture cohorts that do not require large external datasets.
