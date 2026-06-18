@@ -1,0 +1,1 @@
+Track 18 data contract evidence: added Pydantic cohort/person/family/output models and data_contract.md; red phase failed with missing openfisca_aotearoa.microsimulation module; uv run pytest openfisca_aotearoa/tests/test_microsimulation_contract.py passed; focused ruff passed; git diff --check passed.
