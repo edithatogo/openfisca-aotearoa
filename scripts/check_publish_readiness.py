@@ -1,0 +1,69 @@
+"""Validate Conductor track legal audit and publish readiness."""
+
+from __future__ import annotations
+
+import argparse
+import subprocess
+from pathlib import Path
+
+from openfisca_aotearoa.readiness import (
+    ReadinessGateError,
+    build_readiness_manifest,
+    render_readiness_report,
+    require_publish_ready,
+)
+
+
+def main() -> int:
+    """Run the publish-readiness gate for one or more tracks."""
+    parser = argparse.ArgumentParser(
+        description="Check legal audit and publish-readiness evidence.",
+    )
+    parser.add_argument("tracks", nargs="+")
+    parser.add_argument("--report", default=None)
+    parser.add_argument("--allow-not-ready", action="store_true")
+    args = parser.parse_args()
+
+    git_notes = _git_notes()
+    manifests = [
+        build_readiness_manifest(track, git_notes=git_notes)
+        for track in args.tracks
+    ]
+    report = render_readiness_report(manifests)
+    if args.report:
+        Path(args.report).write_text(report, encoding="utf-8")
+    else:
+        print(report)
+
+    if args.allow_not_ready:
+        return 0
+    try:
+        require_publish_ready(manifests)
+    except ReadinessGateError as error:
+        print(str(error))
+        return 1
+    return 0
+
+
+def _git_notes() -> dict[str, str]:
+    try:
+        result = subprocess.run(
+            ["git", "notes", "list"],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    notes: dict[str, str] = {}
+    for line in result.stdout.splitlines():
+        parts = line.split()
+        if len(parts) == 2:
+            note_hash, commit_hash = parts
+            notes[commit_hash[:7]] = note_hash
+            notes[commit_hash[:8]] = note_hash
+    return notes
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
