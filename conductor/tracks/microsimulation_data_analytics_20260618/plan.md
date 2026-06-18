@@ -5,7 +5,7 @@
 - [x] Task: Audit existing simulation helper code and Track 8 artifacts. (`4d54361`)
 - [x] Task: Define canonical JSON schema for people, families, periods, variables, and outputs. (`1c56017`)
 - [x] Task: Audit availability and import paths for `open_social_data`, `voiage`, `mars`, and `innovate`. (`e5e27dd`)
-- [ ] Task: Conductor - User Manual Verification 'Microsimulation contract review' [checkpoint: pending].
+- [x] Task: Conductor - User Manual Verification 'Microsimulation contract review' [checkpoint: work_done]. (4d54361, 1c56017, e5e27dd)
 
 ## Phase 2: Batch Simulation Runner
 
