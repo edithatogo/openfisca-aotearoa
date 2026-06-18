@@ -1,0 +1,1 @@
+Track 17 docs evidence: docs/api.md documents Granian run commands, endpoint examples, smoke check, deployment notes, and non-goals; README links to docs/api.md; uv run pytest openfisca_aotearoa/tests/test_api_app.py openfisca_aotearoa/tests/test_api_models.py passed; uv run python scripts/smoke_api_server.py passed; focused ruff passed; git diff --check passed.
