@@ -1,0 +1,1 @@
+Track 17 server smoke evidence: uv run python scripts/smoke_api_server.py started Granian on an ephemeral localhost port, verified /health and POST /calculate, and terminated the server; uv run ruff check scripts/smoke_api_server.py passed; git diff --check passed.
