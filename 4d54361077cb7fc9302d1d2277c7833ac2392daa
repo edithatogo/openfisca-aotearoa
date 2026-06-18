@@ -1,0 +1,1 @@
+Track 18 simulation audit evidence: inspected openfisca_aotearoa/simulation.py, openfisca_aotearoa/tests/test_simulation.py, and archived Track 8 plan/spec; documented current batch simulator capabilities and Track 18 gaps in simulation_audit.md; git diff --check passed.
