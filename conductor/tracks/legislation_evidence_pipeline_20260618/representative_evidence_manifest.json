@@ -1,0 +1,63 @@
+{
+  "track": "legislation_evidence_pipeline_20260618",
+  "generated_at": "2026-06-18T00:00:00Z",
+  "references": [
+    {
+      "reference_id": "openfisca_aotearoa/tests/fixtures/evidence/representative_variable.py:8:1",
+      "source_path": "openfisca_aotearoa/tests/fixtures/evidence/representative_variable.py",
+      "line_number": 8,
+      "source_type": "legislation",
+      "title": "New Zealand Act 2018/0032",
+      "citation": "reference = \"https://www.legislation.govt.nz/act/public/2018/0032/latest/DLM6784850.html\"",
+      "url": "https://www.legislation.govt.nz/act/public/2018/0032/latest/DLM6784850.html",
+      "retrieved_at": null,
+      "verification_status": "unverified",
+      "notes": []
+    }
+  ],
+  "tool_boundaries": [
+    {
+      "name": "nz-legislation",
+      "command": "nz-legislation",
+      "purpose": "retrieve New Zealand Act and regulation text",
+      "available": false,
+      "machine_readable_output": true,
+      "live_operations": "optional",
+      "requires_credentials": false,
+      "notes": []
+    },
+    {
+      "name": "sourceright",
+      "command": "sourceright",
+      "purpose": "validate and report citation metadata",
+      "available": true,
+      "machine_readable_output": true,
+      "live_operations": "optional",
+      "requires_credentials": false,
+      "notes": []
+    },
+    {
+      "name": "nlp-policy-nz",
+      "command": "nlp-policy-nz",
+      "purpose": "search Hansard and policy-intent corpora",
+      "available": false,
+      "machine_readable_output": true,
+      "live_operations": "optional",
+      "requires_credentials": false,
+      "notes": []
+    },
+    {
+      "name": "fyi-cli",
+      "command": "fyi-cli",
+      "purpose": "look up OIA and disclosure evidence",
+      "available": false,
+      "machine_readable_output": true,
+      "live_operations": "manual",
+      "requires_credentials": true,
+      "notes": [
+        "Live OIA requests and authenticated lookups must be operator-initiated."
+      ]
+    }
+  ],
+  "summary": "Offline manifest generated from local variables, parameters, specifications, and roadmap documents."
+}
