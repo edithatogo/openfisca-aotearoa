@@ -81,7 +81,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [~] Track 14: Codify Income Tax Act 2007 Core Tax and Family Scheme Rules
+## [x] Track 14: Codify Income Tax Act 2007 Core Tax and Family Scheme Rules
 *Link: [./conductor/tracks/codify_income_tax_core_20260615/](./conductor/tracks/codify_income_tax_core_20260615/)*
 *Description:* Audit and codify missing Income Tax Act 2007 core tax, family scheme, and Working for Families rules, separating core Act coverage from Tax Administration Act compliance work.
 
