@@ -1,6 +1,7 @@
 # OpenFisca Core v44+ Compatibility Assessment
 
 Generated: 2026-06-18
+Updated: 2026-06-19
 
 ## Sources Checked
 
@@ -37,7 +38,7 @@ the v43 enum validation changes that materially affect local YAML tests.
 - Period constants and `periods.DateUnit` imports remain available.
 - `populations.ADD` remains available for group-to-person aggregation.
 
-### Requires code or test-data changes
+### Implemented compatibility changes
 
 1. **Enum formula outputs**
 
@@ -49,10 +50,9 @@ the v43 enum validation changes that materially affect local YAML tests.
    EnumEncodingError: Failed to encode "[0 0 0 0 0]" of type 'int'
    ```
 
-   Required change: formula paths returning enum values should return typed enum
-   members, string enum names, or integer arrays with an integer dtype that
-   OpenFisca Core can encode. Object-dtype arrays containing integers are not a
-   stable v44+ output contract.
+   Implemented change: `accommodation_supplement__situation` now returns
+   integer enum indices consistently from `numpy.select`, avoiding an
+   object-dtype array that mixes enum objects and integer fallback values.
 
 2. **YAML test encoding on Windows**
 
@@ -60,9 +60,9 @@ the v43 enum validation changes that materially affect local YAML tests.
    On Windows, that is `cp1252` in this environment, which cannot decode Maori
    macron names in family-scheme YAML tests.
 
-   Required change: provide a project-owned UTF-8 YAML test entry point for
-   Windows, or configure the environment for `PYTHONUTF8=1` wherever YAML tests
-   are run locally.
+   Implemented change: `scripts/run_openfisca_yaml_tests.py` resolves the
+   installed OpenFisca YAML runner and runs it with `PYTHONUTF8=1` and
+   `PYTHONIOENCODING=utf-8`.
 
 3. **OpenFisca Web API smoke on Windows**
 
@@ -70,8 +70,8 @@ the v43 enum validation changes that materially affect local YAML tests.
    modules such as `grp`. This is not a country formula compatibility issue, but
    it means the API smoke test cannot be a mandatory Windows local gate.
 
-   Required change: keep the smoke active on Linux CI and skip it on Windows,
-   which is now implemented in `openfisca_aotearoa/tests/test_api.py`.
+   Implemented change: keep the smoke active on Linux CI and skip it on Windows,
+   as implemented in `openfisca_aotearoa/tests/test_api.py`.
 
 4. **OpenFisca YAML runner target**
 
@@ -79,26 +79,37 @@ the v43 enum validation changes that materially affect local YAML tests.
    collects both YAML and Python tests in this checkout. On Windows, this mixes
    YAML compatibility failures with the web API platform limitation.
 
-   Required change: add a YAML-only runner command or script that targets YAML
-   files explicitly and avoids Python smoke-test collection.
+   Implemented change: the project-owned YAML runner targets explicit YAML
+   files or directories and is wired into the focused compatibility CI gate.
 
-## Required Code Changes
+## Verification
 
-The next compatibility implementation should be ordered as follows:
+Focused compatibility tests now pass:
 
-1. Fix accommodation supplement enum formula outputs so they return
-   OpenFisca-encodable enum values under 44.7.0.
-2. Investigate and fix the `family_tax_credit__eldest` invalid option `a`
-   failure surfaced by the UTF-8 OpenFisca YAML run.
-3. Add a UTF-8-safe YAML test command for Windows and document it beside the
-   existing pytest command.
-4. Add focused regression tests for enum formula output dtype and family tax
-   credit option handling before changing the broader YAML suite.
+```text
+uv run python scripts/run_openfisca_yaml_tests.py openfisca_aotearoa/tests/social_security/accommodation_supplement/2018/situation.yaml openfisca_aotearoa/tests/income_tax/family_scheme/family_tax_credit.yaml
+```
+
+Result on 2026-06-19:
+
+```text
+9 passed in 1.49s
+```
+
+The `family_tax_credit__eldest` invalid option failure was resolved by the
+current branch's use of `populations.ADD` for the group-to-person aggregation
+call. The focused `family_tax_credit.yaml` fixture passes under the UTF-8-safe
+runner.
 
 ## Deferrals
 
 - No dependency upgrade beyond `openfisca-core==44.7.0` is required for v44+
   compatibility because the project is already resolved on the v44 line.
-- Strict Basedpyright expansion into `openfisca_aotearoa/variables` should remain
-  a separate Phase 3 task. It is related to quality gates, not a blocker for the
-  v44 runtime compatibility fixes above.
+- Strict Basedpyright expansion into `openfisca_aotearoa/variables` remains a
+  separate typed-formula migration. Track 15 enforces Basedpyright for the
+  non-variable package and keeps the variable tree as an explicit scoped
+  exclusion.
+- Full legacy OpenFisca YAML suite remediation remains out of scope for Track
+  15. The focused v44 compatibility fixtures pass; broader accommodation
+  supplement fixture mismatches should be handled in a formula/test-data
+  remediation track.

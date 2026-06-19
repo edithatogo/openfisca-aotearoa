@@ -39,7 +39,13 @@ jobs:
         run: uv run basedpyright openfisca_aotearoa
 
       - name: Check Cognitive Complexity with Complexipy
-        run: uv run complexipy openfisca_aotearoa --max-complexity-allowed 15
+        run: uv run python scripts/run_complexity_gate.py
+
+      - name: Run OpenFisca Core v44 Compatibility YAML Tests
+        run: |
+          uv run python scripts/run_openfisca_yaml_tests.py \
+            openfisca_aotearoa/tests/social_security/accommodation_supplement/2018/situation.yaml \
+            openfisca_aotearoa/tests/income_tax/family_scheme/family_tax_credit.yaml
 
       - name: Run Accepted AI-Generated Tests
         run: uv run pytest openfisca_aotearoa/tests/test_ai_test_automation.py --strict-markers --strict-config -W error

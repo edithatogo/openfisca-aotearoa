@@ -73,7 +73,9 @@ class accommodation_supplement__situation(variables.Variable):
             *ssa2018_sched_4_part_7_1_to_3,
             *ssa2018_sched_4_part_7_4_to_6,
             )
-        situations = tuple(AccommodationSupplement__Situation)[1:]
+        situations = tuple(
+            situation.index for situation in AccommodationSupplement__Situation
+        )[1:]
         fallback = AccommodationSupplement__Situation.unknown
 
         # And we return the situations corresponding to the conditions.

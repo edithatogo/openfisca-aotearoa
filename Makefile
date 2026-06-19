@@ -1,4 +1,12 @@
-all: lint test
+PYTHON ?= python
+UV ?= uv
+OPENFISCA_YAML_TESTS ?= openfisca_aotearoa/tests
+
+COMPATIBILITY_YAML_TESTS = \
+	openfisca_aotearoa/tests/social_security/accommodation_supplement/2018/situation.yaml \
+	openfisca_aotearoa/tests/income_tax/family_scheme/family_tax_credit.yaml
+
+all: quality
 
 uninstall:
 	pip freeze | grep -v "^-e" | sed "s/@.*//" | xargs pip uninstall -y
@@ -24,30 +32,35 @@ build: clean deps
 	find dist -name "*.whl" -exec pip install --force-reinstall {}[dev] \;
 
 check-syntax-errors:
-	python -m compileall -q .
+	$(PYTHON) -m compileall -q .
 
 format:
-	@# Do not analyse .gitignored files.
-	@# `make` needs `$$` to output `$`. Ref: http://stackoverflow.com/questions/2382764.
-	isort `git ls-files | grep "\.py$$"`
-	autopep8 `git ls-files | grep "\.py$$"`
-	pyupgrade --py39-plus `git ls-files | grep "\.py$$"`
+	$(UV) run ruff format .
+	$(UV) run ruff check --fix .
 
 lint:
-	@# Do not analyse .gitignored files.
-	@# `make` needs `$$` to output `$`. Ref: http://stackoverflow.com/questions/2382764.
-	flake8 `git ls-files | grep "\.py$$"`
-	pylint `git ls-files | grep "\.py$$"`
-	yamllint `git ls-files | grep "\.yaml$$"`
+	$(UV) run ruff check .
+	$(UV) run basedpyright openfisca_aotearoa
+	$(UV) run python scripts/run_complexity_gate.py
 
-test: clean check-syntax-errors lint qtest
+quality: lint test compatibility-yaml
+
+test: clean check-syntax-errors pytest
+
+full-test: test qtest
+
+pytest:
+	$(UV) run pytest --cov=openfisca_aotearoa --cov-report=term-missing
 
 qtest:
 ifdef yaml
-	openfisca test -c openfisca_aotearoa openfisca_aotearoa/tests/$(yaml)
+	$(UV) run python scripts/run_openfisca_yaml_tests.py openfisca_aotearoa/tests/$(yaml)
 else
-	openfisca test --country-package openfisca_aotearoa openfisca_aotearoa/tests
+	$(UV) run python scripts/run_openfisca_yaml_tests.py $(OPENFISCA_YAML_TESTS)
 endif
 
+compatibility-yaml:
+	$(UV) run python scripts/run_openfisca_yaml_tests.py $(COMPATIBILITY_YAML_TESTS)
+
 serve: build
-	openfisca serve --country-package openfisca_aotearoa -b 0.0.0.0:5000 --reload
+	$(UV) run openfisca serve --country-package openfisca_aotearoa -b 0.0.0.0:5000 --reload

@@ -87,7 +87,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 15: Upgrade OpenFisca Core Compatibility and Strict Quality Gates
+## [x] Track 15: Upgrade OpenFisca Core Compatibility and Strict Quality Gates
 *Link: [./conductor/tracks/openfisca_core_strict_quality_20260618/](./conductor/tracks/openfisca_core_strict_quality_20260618/)*
 *Description:* Audit and implement the OpenFisca Core v44+ upgrade path, tighten strict typing, and make Ruff, Basedpyright, Complexipy, and coverage gates reproducible locally and in CI.
 
