@@ -5,7 +5,7 @@
 - [x] Task: Evaluate TestSprite installation, configuration, local execution, and CI compatibility. (0bed806)
 - [x] Task: Define generated-test storage locations, metadata requirements, and review gates. (0bed806)
 - [x] Task: Identify candidate source documents for first generated tests. (0bed806)
-- [ ] Task: Conductor - User Manual Verification 'AI test workflow safety review' [checkpoint: pending].
+- [x] Task: Conductor - User Manual Verification 'AI test workflow safety review' [checkpoint: work_done].
 
 ## Phase 2: Candidate Generation Workflow
 
@@ -19,4 +19,4 @@
 - [x] Task: Promote a small reviewed candidate set into the normal OpenFisca test suite. (0bed806)
 - [x] Task: Add deterministic CI checks for accepted generated tests. (0bed806)
 - [x] Task: Document when generated tests should be regenerated or retired. (0bed806)
-- [ ] Task: Conductor - User Manual Verification 'Accepted AI-generated tests pass' [checkpoint: pending].
+- [x] Task: Conductor - User Manual Verification 'Accepted AI-generated tests pass' [checkpoint: work_done].

@@ -9,7 +9,7 @@ from openfisca_aotearoa.ai_test_automation import (
     CandidateMetadata,
     GeneratedTestCandidate,
     ReviewGateError,
-    TestScenario,
+    TestScenario as CandidateScenario,
     ToolEvaluation,
     load_candidate,
     require_accepted_candidate,
@@ -80,7 +80,11 @@ def test_accepted_generated_test_runs_deterministically() -> None:
     assert result.to_dicts() == candidate.scenario.expected_results
 
 
-def test_tool_evaluation_marks_testsprite_unavailable_without_network() -> None:
+def test_tool_evaluation_marks_testsprite_unavailable_without_network(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr("shutil.which", lambda _: None)
+
     evaluation = ToolEvaluation.from_command("testsprite", command_path=None)
 
     assert evaluation.available is False
@@ -90,7 +94,7 @@ def test_tool_evaluation_marks_testsprite_unavailable_without_network() -> None:
 
 def test_candidate_fixture_contract_round_trips() -> None:
     candidate = GeneratedTestCandidate(
-        scenario=TestScenario.model_validate_json(
+        scenario=CandidateScenario.model_validate_json(
             (FIXTURE_DIR / "age_boundary.scenario.json").read_text(),
         ),
         metadata=CandidateMetadata.model_validate_json(

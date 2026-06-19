@@ -117,7 +117,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 20: Add AI-Assisted Test Automation with Review Gates
+## [x] Track 20: Add AI-Assisted Test Automation with Review Gates
 *Link: [./conductor/tracks/ai_test_automation_20260618/](./conductor/tracks/ai_test_automation_20260618/)*
 *Description:* Evaluate and integrate TestSprite or an equivalent AI-assisted test workflow with quarantined candidate tests, metadata sidecars, and mandatory review before acceptance.
 
