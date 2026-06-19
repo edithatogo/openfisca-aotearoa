@@ -129,6 +129,6 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 22: Refresh Recent Legislative Amendments Across Completed Track 9-12 Surfaces
-*Link: [./conductor/tracks/legislative_freshness_refresh_20260619/](./conductor/tracks/legislative_freshness_refresh_20260619/)*
+## [x] Track 22: Refresh Recent Legislative Amendments Across Completed Track 9-12 Surfaces
+*Archived: [./conductor/archive/legislative_freshness_refresh_20260619/](./conductor/archive/legislative_freshness_refresh_20260619/)*
 *Description:* Use Track 19's evidence pipeline to refresh Pae Ora, Public and Community Housing Management, Tax Administration, and ACC earners' levy amendments, then update model code, parameters, citations, tests, and currentness evidence where recent amendments affect implemented behavior.

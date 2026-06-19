@@ -1,6 +1,6 @@
 ---
-- name: "ACC earners levy applies the current rate below the cap"
-  period: 2023
+- name: ACC earners levy applies the 2025/26 rate below the cap
+  period: 2026
   absolute_error_margin: 0.01
   input:
     persons:
@@ -8,15 +8,48 @@
         income_tax__annual_gross_income: 100000
   output:
     acc__earners_levy_liable_income: 100000
-    acc__earners_levy: 1460
+    acc__earners_levy: 1450
 
-- name: "ACC earners levy liable income is capped at the maximum threshold"
-  period: 2023
+- name: ACC earners levy liable income is capped at the 2025/26 maximum threshold
+  period: 2026
   absolute_error_margin: 0.01
   input:
     persons:
       High_Income_Worker:
         income_tax__annual_gross_income: 200000
   output:
-    acc__earners_levy_liable_income: 136544
-    acc__earners_levy: 1993.54
+    acc__earners_levy_liable_income: 152790
+    acc__earners_levy: 2215.46
+
+- name: ACC earners levy uses 2024/25 rate and maximum liable earnings
+  period: 2025
+  absolute_error_margin: 0.01
+  input:
+    persons:
+      Worker:
+        income_tax__annual_gross_income: 200000
+  output:
+    acc__earners_levy_liable_income: 142283
+    acc__earners_levy: 1977.73
+
+- name: ACC earners levy uses 2026/27 rate and maximum liable earnings
+  period: 2027
+  absolute_error_margin: 0.01
+  input:
+    persons:
+      Worker:
+        income_tax__annual_gross_income: 200000
+  output:
+    acc__earners_levy_liable_income: 156641
+    acc__earners_levy: 2380.94
+
+- name: ACC earners levy uses 2027/28 and later rate and maximum liable earnings
+  period: 2028
+  absolute_error_margin: 0.01
+  input:
+    persons:
+      Worker:
+        income_tax__annual_gross_income: 200000
+  output:
+    acc__earners_levy_liable_income: 160244
+    acc__earners_levy: 2547.88

@@ -12,7 +12,7 @@ class pae_ora__primary_health_organization_eligible(Variable):
     definition_period = MONTH
     default_value = True
     label = "Is the person eligible for primary health services under a PHO"
-    reference = "https://www.legislation.govt.nz/act/public/2022/0030/latest/LMS521034.html"
+    reference = "https://www.legislation.govt.nz/act/public/2022/30/en/latest/"
 
 
 class pae_ora__primary_care_copayment_subsidy(Variable):
@@ -20,7 +20,7 @@ class pae_ora__primary_care_copayment_subsidy(Variable):
     entity = Person
     definition_period = MONTH
     label = "Primary care copayment subsidy amount"
-    reference = "https://www.legislation.govt.nz/act/public/2022/0030/latest/LMS521034.html"
+    reference = "https://www.legislation.govt.nz/act/public/2022/30/en/latest/"
 
     def formula(person, period, parameters):
         eligible = person("pae_ora__primary_health_organization_eligible", period)

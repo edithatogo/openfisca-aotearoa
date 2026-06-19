@@ -12,7 +12,7 @@ class acc__earners_levy_liable_income(Variable):
     entity = Person
     definition_period = YEAR
     label = "Income liable for the ACC Earners' Levy"
-    reference = "https://www.legislation.govt.nz/regulation/public/2023/0017/latest/whole.html"
+    reference = "https://www.legislation.govt.nz/secondary-legislation/pco-drafted/2025/18/en/latest/"
 
     def formula(person, period, parameters):
         gross_income = person("income_tax__annual_gross_income", period)
@@ -26,7 +26,7 @@ class acc__earners_levy(Variable):
     entity = Person
     definition_period = YEAR
     label = "Calculated ACC Earners' Levy amount"
-    reference = "https://www.legislation.govt.nz/regulation/public/2023/0017/latest/whole.html"
+    reference = "https://www.legislation.govt.nz/secondary-legislation/pco-drafted/2025/18/en/latest/"
 
     def formula(person, period, parameters):
         liable_income = person("acc__earners_levy_liable_income", period)

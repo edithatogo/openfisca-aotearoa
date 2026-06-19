@@ -1,0 +1,13 @@
+# Amendment Decisions
+
+| Surface | Amendment or freshness item | Decision | Model impact | Evidence |
+| --- | --- | --- | --- | --- |
+| Pae Ora | Section 46A Mental Health and Wellbeing Strategy inserted by 2024 amendment | no model impact | Current model is a narrow primary-care copayment subsidy and does not model health strategy duties | Official Pae Ora section 46A, latest as at 15 January 2026 |
+| Pae Ora | Current title and Pae Ora namespace | implemented/no change | Existing variable namespace remains backwards-compatible; citations remain to Pae Ora Act primary-care surface | Current Act title remains Pae Ora (Healthy Futures) Act 2022 on official page |
+| Public and Community Housing Management | Current Act title replacing older Housing Restructuring framing | implemented as evidence; code alias deferred | Existing variable names are preserved for compatibility; currentness note documents current Act title | Official current title Public and Community Housing Management Act 1992 |
+| Public and Community Housing Management | Sections 106 and 107 amendments and 2 March 2026 transitional application | partial coverage | Existing formula remains a simplified monthly 25 percent scaffold and is not claimed to cover current weekly higher-rent, market-rent, family-tax-credit, additional-resident, or transitional machinery | Official sections 104, 106, 107, 109, Schedule 4 clauses 24-27 |
+| Tax Administration | Deposit Takers Act 2023 bank account/licensed-bank consequential amendments | out of scope/no model impact | Local variables model automatic assessment and manual filing deadline only; bank-account definition changes do not alter those variables | Existing official-source freshness review and Track 11 scope |
+| Tax Administration | Unincorporated and recent annual tax amendments | reviewed; no implemented behavior change | No amendment identified in current evidence affects automatic assessment default or the three-month manual filing scaffold | Existing official-source freshness review and local compliance variables |
+| ACC earners levy | 2024/25 rate and maximum liable earnings from 2022 regulations | implemented | Parameter values and YAML tests updated for 2024/25 | 2022 regulations, regs 4 and 5 |
+| ACC earners levy | 2025/26, 2026/27, 2027/28 and later rates and maximum liable earnings from 2025 regulations | implemented | Parameter values and YAML tests updated for 2025/26-2027/28+ | 2025 regulations, regs 4 and 5 |
+| ACC earners levy | Low-earner and self-employed formulas | out of scope | Current model covers employee-style gross-income levy capping only; self-employed minimum and weekly-compensation purchase formulas are not implemented variables | 2022 and 2025 regulations, regs 6 and 7 |

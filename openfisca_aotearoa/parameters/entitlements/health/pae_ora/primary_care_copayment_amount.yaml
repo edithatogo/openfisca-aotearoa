@@ -1,6 +1,6 @@
 ---
 description: Primary care copayment subsidy amount
-reference: "https://www.legislation.govt.nz/act/public/2022/0030/latest/LMS521034.html"
+reference: "https://www.legislation.govt.nz/act/public/2022/30/en/latest/"
 values:
   2022-07-01:
     value: 15.0
