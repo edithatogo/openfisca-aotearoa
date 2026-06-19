@@ -56,15 +56,15 @@ uv run --extra dev python scripts/smoke_workspace.py
 
 ```sh
 uv run ruff check .
-uv run basedpyright
-uv run complexipy openfisca_aotearoa --max-complexity 15
+uv run basedpyright openfisca_aotearoa
+uv run python scripts/run_complexity_gate.py
 ```
 
 ### Test
 
 ```sh
 uv run pytest
-uv run openfisca test openfisca_aotearoa/tests
+uv run python scripts/run_openfisca_yaml_tests.py openfisca_aotearoa/tests
 ```
 
 ### Docs
@@ -103,15 +103,15 @@ uv --directory openfisca-aotearoa run --extra dev una --help
 
 ```sh
 uv --directory openfisca-aotearoa run ruff check .
-uv --directory openfisca-aotearoa run basedpyright
-uv --directory openfisca-aotearoa run complexipy openfisca_aotearoa --max-complexity 15
+uv --directory openfisca-aotearoa run basedpyright openfisca_aotearoa
+uv --directory openfisca-aotearoa run python scripts/run_complexity_gate.py
 ```
 
 ### Test
 
 ```sh
 uv --directory openfisca-aotearoa run pytest
-uv --directory openfisca-aotearoa run openfisca test openfisca_aotearoa/tests
+uv --directory openfisca-aotearoa run python scripts/run_openfisca_yaml_tests.py openfisca_aotearoa/tests
 ```
 
 ### Docs

@@ -1,8 +1,8 @@
 {
   "track_id": "una_workspace_integration_20260618",
   "type": "feature",
-  "status": "pending",
+  "status": "completed",
   "created_at": "2026-06-18T00:00:00Z",
-  "updated_at": "2026-06-18T00:00:00Z",
+  "updated_at": "2026-06-19T00:00:00Z",
   "description": "Add Una and uv workspace integration for the legal-nz monorepo context"
 }

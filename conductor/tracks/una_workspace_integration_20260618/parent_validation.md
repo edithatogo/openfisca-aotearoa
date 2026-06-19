@@ -1,6 +1,7 @@
 # Parent-Root Validation
 
 Generated: 2026-06-18
+Updated: 2026-06-19
 
 ## Commands run from `legal-nz`
 
@@ -12,6 +13,10 @@ Generated: 2026-06-18
 ## Result
 
 All parent-root commands passed.
+
+`uv run --extra dev python scripts/smoke_workspace.py` was rerun from the nested
+repository on 2026-06-19 and again verified the parent-style
+`uv --directory openfisca-aotearoa ...` command path.
 
 The smoke script verified that `uv --directory openfisca-aotearoa` changes the
 working directory into the submodule before running path-sensitive tools.

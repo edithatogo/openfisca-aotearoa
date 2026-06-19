@@ -1,6 +1,7 @@
 # Standalone Validation
 
 Generated: 2026-06-18
+Updated: 2026-06-19
 
 ## Commands
 
@@ -12,6 +13,13 @@ Generated: 2026-06-18
 ## Result
 
 All commands passed.
+
+The workspace smoke command was rerun on 2026-06-19 and passed:
+
+- `uv lock --check`
+- `uv run --extra dev una --help`
+- local package import and `una` version check
+- parent-style `uv --directory openfisca-aotearoa ...` checks
 
 The focused pytest run collected five tests:
 

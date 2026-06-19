@@ -93,7 +93,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 16: Add Una and UV Workspace Integration
+## [x] Track 16: Add Una and UV Workspace Integration
 *Link: [./conductor/tracks/una_workspace_integration_20260618/](./conductor/tracks/una_workspace_integration_20260618/)*
 *Description:* Implement the roadmap's `una` and `uv` workspace requirements while preserving standalone package development and explicit parent-workspace boundaries.
 
