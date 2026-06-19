@@ -40,3 +40,7 @@
 
 ## Performance Profiling
 - **scalene:** High-performance CPU/GPU/memory profiler.
+
+## CI Runtime Baseline
+
+- **GitHub Actions on Node 24-generation actions:** Workflow actions should stay on current major versions that run on GitHub's latest Node runtime, including actions/checkout@v7, actions/setup-python@v6, actions/cache@v5, and astral-sh/setup-uv@v8.

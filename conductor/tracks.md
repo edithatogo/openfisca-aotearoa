@@ -132,3 +132,9 @@ This file tracks all major tracks for the project. Each track has its own detail
 ## [x] Track 22: Refresh Recent Legislative Amendments Across Completed Track 9-12 Surfaces
 *Archived: [./conductor/archive/legislative_freshness_refresh_20260619/](./conductor/archive/legislative_freshness_refresh_20260619/)*
 *Description:* Use Track 19's evidence pipeline to refresh Pae Ora, Public and Community Housing Management, Tax Administration, and ACC earners' levy amendments, then update model code, parameters, citations, tests, and currentness evidence where recent amendments affect implemented behavior.
+
+---
+
+## [ ] Track 23: Implement Full Public and Community Housing Income-Related Rent Coverage
+*Path: [./conductor/tracks/public_community_housing_full_irr_20260619/](./conductor/tracks/public_community_housing_full_irr_20260619/)*
+*Description:* Implement the remaining full current-law Public and Community Housing Management Act 1992 income-related rent logic, including assessment-person, household, prescribed-proportion, higher-rent, market-rent-cap, transition, evidence, and situation-test coverage.

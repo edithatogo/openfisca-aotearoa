@@ -16,11 +16,11 @@ jobs:
     outputs:
       status: ${{ steps.stop-early.outputs.status }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0 # Fetch all the tags
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: 3.11.9
       - id: stop-early
@@ -50,18 +50,18 @@ jobs:
     needs: [ validate, check-for-functional-changes, check-pypi-token ]
     if: startsWith(github.ref, 'refs/tags/v') && needs.check-pypi-token.outputs.pypi_token_present == 'true'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: 3.11.9
       - name: Restore build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.pythonLocation }}
           key: build-${{ env.pythonLocation }}-${{ hashFiles('pyproject.toml') }}-${{ github.sha }}
       - name: Restore built package
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: dist
           key: release-${{ env.pythonLocation }}-${{ hashFiles('pyproject.toml') }}-${{ github.sha }}
