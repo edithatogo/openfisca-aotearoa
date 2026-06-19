@@ -181,6 +181,16 @@ def test_parameters_applies_limit() -> None:
     assert response["body"]["truncated"] is True
 
 
+def test_parameters_returns_validation_error_for_invalid_limit() -> None:
+    response = asyncio.run(
+        call_app("GET", "/parameters", query_string=b"limit=not-an-int"),
+    )
+
+    assert response["status"] == 422
+    assert response["body"]["error"]["code"] == "validation_error"
+    assert response["body"]["error"]["message"] == "limit must be an integer"
+
+
 def test_parameters_returns_not_found_for_missing_path() -> None:
     response = asyncio.run(
         call_app("GET", "/parameters", query_string=b"path=missing.path"),

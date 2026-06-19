@@ -33,7 +33,7 @@ Response `200`:
 {
   "country_package": "openfisca-aotearoa",
   "model": "AotearoaLegislationModel",
-  "openfisca_core_version": "44.6.0",
+  "openfisca_core_version": "44.x",
   "api_version": "1"
 }
 ```
@@ -95,7 +95,7 @@ Response `200`:
 }
 ```
 
-Unknown parameter paths return `404`.
+Invalid `limit` values return `422`. Unknown parameter paths return `404`.
 
 ## Error Envelope
 

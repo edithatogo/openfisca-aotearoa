@@ -59,7 +59,7 @@ Response:
 {
   "country_package": "openfisca-aotearoa",
   "model": "AotearoaLegislationModel",
-  "openfisca_core_version": "44.6.0",
+  "openfisca_core_version": "44.x",
   "api_version": "1"
 }
 ```
@@ -123,7 +123,7 @@ Response:
 ```
 
 `path` defaults to `root`. `limit` defaults to `50` and is capped at `200`.
-Unknown paths return `404`.
+Invalid `limit` values return `422`. Unknown paths return `404`.
 
 ## Error Shape
 

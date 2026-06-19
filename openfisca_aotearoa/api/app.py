@@ -119,9 +119,9 @@ async def _handle_parameters(scope: Scope, send: Send) -> None:
     """Return bounded parameter child names for a parameter path."""
     query = parse_qs(scope.get("query_string", b"").decode("utf-8"))
     path = query.get("path", ["root"])[0] or "root"
-    limit = _bounded_limit(query.get("limit", ["50"])[0])
 
     try:
+        limit = _bounded_limit(query.get("limit", ["50"])[0])
         node = _parameter_node(path)
     except KeyError:
         await _send_error(

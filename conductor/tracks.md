@@ -99,7 +99,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 17: Add High-Performance Web API Serving
+## [x] Track 17: Add High-Performance Web API Serving
 *Link: [./conductor/tracks/high_performance_api_20260618/](./conductor/tracks/high_performance_api_20260618/)*
 *Description:* Expose OpenFisca Aotearoa through a validated Granian or Robyn API with Pydantic request/response schemas, health checks, calculation endpoints, and CI-safe smoke tests.
 
