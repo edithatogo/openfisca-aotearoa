@@ -105,7 +105,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 18: Integrate Microsimulation Data and Analytics Adapters
+## [x] Track 18: Integrate Microsimulation Data and Analytics Adapters
 *Link: [./conductor/tracks/microsimulation_data_analytics_20260618/](./conductor/tracks/microsimulation_data_analytics_20260618/)*
 *Description:* Define population-cohort inputs, batch simulation outputs, and optional adapter boundaries for `open_social_data`, `voiage`, `mars`, and `innovate`.
 

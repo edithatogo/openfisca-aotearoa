@@ -20,4 +20,4 @@
 - [x] Task: Add optional adapter interfaces for spline-regression summaries. (`254c9a9`)
 - [x] Task: Add optional adapter interfaces for policy-diffusion modelling. (`254c9a9`)
 - [x] Task: Add tests that prove graceful skip or degradation when optional packages are absent. (`254c9a9`)
-- [ ] Task: Conductor - User Manual Verification 'Analytics adapters smoke test' [checkpoint: pending].
+- [x] Task: Conductor - User Manual Verification 'Analytics adapters smoke test' [checkpoint: work_done].
