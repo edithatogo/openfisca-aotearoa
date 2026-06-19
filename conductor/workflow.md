@@ -50,10 +50,10 @@ All tasks follow a strict lifecycle:
 9. **Attach Task Summary with Git Notes:**
    - **Step 9.1: Get Commit Hash:** Obtain the hash of the *just-completed commit* (`git log -1 --format="%H"`).
    - **Step 9.2: Draft Note Content:** Create a detailed summary for the completed task. This should include the task name, a summary of changes, a list of all created/modified files, and the core "why" for the change.
-   - **Step 9.3: Attach Note:** Use the `git notes` command to attach the summary to the commit.
+   - **Step 9.3: Attach Note:** Use the `scripts/attach_git_note.py` helper to attach multiline summaries without passing note content through shell quoting.
      ```bash
-     # The note content from the previous step is passed via the -m flag.
-     git notes add -m "<note content>" <commit_hash>
+     # Write the note body to a UTF-8 text file, then attach it by path.
+     uv run python scripts/attach_git_note.py path/to/note.md <commit_hash>
      ```
 
 10. **Get and Record Task Commit SHA:**
