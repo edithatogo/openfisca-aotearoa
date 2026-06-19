@@ -5,7 +5,7 @@
 - [x] Task: Inventory completed and active legislation tracks and their current evidence artifacts. (96cef49)
 - [x] Task: Define readiness statuses for draft, implemented, tested, legally reviewed, publish-ready, and archived. (96cef49)
 - [x] Task: Define a machine-readable readiness manifest schema. (96cef49)
-- [ ] Task: Conductor - User Manual Verification 'Readiness model review' [checkpoint: pending].
+- [x] Task: Conductor - User Manual Verification 'Readiness model review' [checkpoint: work_done].
 
 ## Phase 2: Report and Validation Tooling
 
@@ -19,4 +19,4 @@
 - [x] Task: Add docs explaining archive and publish-readiness criteria. (96cef49)
 - [x] Task: Add a non-interactive command that fails when required readiness evidence is missing. (96cef49)
 - [x] Task: Run the gate against Tracks 9-14 and record exact residual gaps. (96cef49)
-- [ ] Task: Conductor - User Manual Verification 'Publish readiness gate review' [checkpoint: pending].
+- [x] Task: Conductor - User Manual Verification 'Publish readiness gate review' [checkpoint: work_done].
