@@ -111,7 +111,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 19: Integrate the Legislation Evidence Pipeline
+## [x] Track 19: Integrate the Legislation Evidence Pipeline
 *Link: [./conductor/tracks/legislation_evidence_pipeline_20260618/](./conductor/tracks/legislation_evidence_pipeline_20260618/)*
 *Description:* Add auditable integration points for `nz-legislation`, `sourceright`, `nlp-policy-nz`, and `fyi-cli`, producing citation and evidence manifests for legislation tracks.
 

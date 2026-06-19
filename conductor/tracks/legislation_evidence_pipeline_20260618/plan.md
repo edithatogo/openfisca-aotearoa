@@ -5,7 +5,7 @@
 - [x] Task: Inventory current citations in variables, parameters, specs, and roadmap documents.
 - [x] Task: Define an evidence manifest schema for legislation references, source documents, retrieval dates, and verification status.
 - [x] Task: Define tool boundaries for `nz-legislation`, `sourceright`, `nlp-policy-nz`, and `fyi-cli`.
-- [ ] Task: Conductor - User Manual Verification 'Evidence manifest schema review' [checkpoint: pending].
+- [x] Task: Conductor - User Manual Verification 'Evidence manifest schema review' [checkpoint: work_done].
 
 ## Phase 2: Citation and Legislation Retrieval
 
@@ -20,4 +20,4 @@
 - [x] Task: Add optional `fyi-cli` evidence adapter with credential-safe boundaries.
 - [x] Task: Generate a combined evidence report for a representative Act track.
 - [x] Task: Document manual review steps for evidence that cannot be verified locally.
-- [ ] Task: Conductor - User Manual Verification 'Evidence pipeline smoke test' [checkpoint: pending].
+- [x] Task: Conductor - User Manual Verification 'Evidence pipeline smoke test' [checkpoint: work_done].
