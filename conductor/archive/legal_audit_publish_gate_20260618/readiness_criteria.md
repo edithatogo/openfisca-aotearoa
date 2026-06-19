@@ -52,7 +52,7 @@ Use the non-interactive command:
 
 ```powershell
 .venv\Scripts\python.exe scripts\check_publish_readiness.py `
-  conductor\tracks\codify_social_security_core_20260615
+  conductor\archive\codify_social_security_core_20260615
 ```
 
 The command exits with a non-zero status when required readiness evidence is

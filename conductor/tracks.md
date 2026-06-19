@@ -76,53 +76,53 @@ This file tracks all major tracks for the project. Each track has its own detail
 ---
 
 ## [x] Track 13: Codify Social Security Act 2018 Core Entitlements and Income Tests
-*Link: [./conductor/tracks/codify_social_security_core_20260615/](./conductor/tracks/codify_social_security_core_20260615/)*
+*Archived: [./conductor/archive/codify_social_security_core_20260615/](./conductor/archive/codify_social_security_core_20260615/)*
 *Description:* Audit and codify missing Social Security Act 2018 entitlement, income-test, and assistance rules, reconciling existing benefit modules with current legislative structure.
 
 ---
 
 ## [x] Track 14: Codify Income Tax Act 2007 Core Tax and Family Scheme Rules
-*Link: [./conductor/tracks/codify_income_tax_core_20260615/](./conductor/tracks/codify_income_tax_core_20260615/)*
+*Archived: [./conductor/archive/codify_income_tax_core_20260615/](./conductor/archive/codify_income_tax_core_20260615/)*
 *Description:* Audit and codify missing Income Tax Act 2007 core tax, family scheme, and Working for Families rules, separating core Act coverage from Tax Administration Act compliance work.
 
 ---
 
 ## [x] Track 15: Upgrade OpenFisca Core Compatibility and Strict Quality Gates
-*Link: [./conductor/tracks/openfisca_core_strict_quality_20260618/](./conductor/tracks/openfisca_core_strict_quality_20260618/)*
+*Archived: [./conductor/archive/openfisca_core_strict_quality_20260618/](./conductor/archive/openfisca_core_strict_quality_20260618/)*
 *Description:* Audit and implement the OpenFisca Core v44+ upgrade path, tighten strict typing, and make Ruff, Basedpyright, Complexipy, and coverage gates reproducible locally and in CI.
 
 ---
 
 ## [x] Track 16: Add Una and UV Workspace Integration
-*Link: [./conductor/tracks/una_workspace_integration_20260618/](./conductor/tracks/una_workspace_integration_20260618/)*
+*Archived: [./conductor/archive/una_workspace_integration_20260618/](./conductor/archive/una_workspace_integration_20260618/)*
 *Description:* Implement the roadmap's `una` and `uv` workspace requirements while preserving standalone package development and explicit parent-workspace boundaries.
 
 ---
 
 ## [x] Track 17: Add High-Performance Web API Serving
-*Link: [./conductor/tracks/high_performance_api_20260618/](./conductor/tracks/high_performance_api_20260618/)*
+*Archived: [./conductor/archive/high_performance_api_20260618/](./conductor/archive/high_performance_api_20260618/)*
 *Description:* Expose OpenFisca Aotearoa through a validated Granian or Robyn API with Pydantic request/response schemas, health checks, calculation endpoints, and CI-safe smoke tests.
 
 ---
 
 ## [x] Track 18: Integrate Microsimulation Data and Analytics Adapters
-*Link: [./conductor/tracks/microsimulation_data_analytics_20260618/](./conductor/tracks/microsimulation_data_analytics_20260618/)*
+*Archived: [./conductor/archive/microsimulation_data_analytics_20260618/](./conductor/archive/microsimulation_data_analytics_20260618/)*
 *Description:* Define population-cohort inputs, batch simulation outputs, and optional adapter boundaries for `open_social_data`, `voiage`, `mars`, and `innovate`.
 
 ---
 
 ## [x] Track 19: Integrate the Legislation Evidence Pipeline
-*Link: [./conductor/tracks/legislation_evidence_pipeline_20260618/](./conductor/tracks/legislation_evidence_pipeline_20260618/)*
+*Archived: [./conductor/archive/legislation_evidence_pipeline_20260618/](./conductor/archive/legislation_evidence_pipeline_20260618/)*
 *Description:* Add auditable integration points for `nz-legislation`, `sourceright`, `nlp-policy-nz`, and `fyi-cli`, producing citation and evidence manifests for legislation tracks.
 
 ---
 
 ## [x] Track 20: Add AI-Assisted Test Automation with Review Gates
-*Link: [./conductor/tracks/ai_test_automation_20260618/](./conductor/tracks/ai_test_automation_20260618/)*
+*Archived: [./conductor/archive/ai_test_automation_20260618/](./conductor/archive/ai_test_automation_20260618/)*
 *Description:* Evaluate and integrate TestSprite or an equivalent AI-assisted test workflow with quarantined candidate tests, metadata sidecars, and mandatory review before acceptance.
 
 ---
 
 ## [x] Track 21: Create Legal Audit and Publish Readiness Gates
-*Link: [./conductor/tracks/legal_audit_publish_gate_20260618/](./conductor/tracks/legal_audit_publish_gate_20260618/)*
+*Archived: [./conductor/archive/legal_audit_publish_gate_20260618/](./conductor/archive/legal_audit_publish_gate_20260618/)*
 *Description:* Define machine-readable readiness manifests, human-readable reports, and fail-fast publish gates for completed legislation tracks before archival or release.
