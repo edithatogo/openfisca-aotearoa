@@ -126,3 +126,9 @@ This file tracks all major tracks for the project. Each track has its own detail
 ## [x] Track 21: Create Legal Audit and Publish Readiness Gates
 *Archived: [./conductor/archive/legal_audit_publish_gate_20260618/](./conductor/archive/legal_audit_publish_gate_20260618/)*
 *Description:* Define machine-readable readiness manifests, human-readable reports, and fail-fast publish gates for completed legislation tracks before archival or release.
+
+---
+
+## [ ] Track 22: Refresh Recent Legislative Amendments Across Completed Track 9-12 Surfaces
+*Link: [./conductor/tracks/legislative_freshness_refresh_20260619/](./conductor/tracks/legislative_freshness_refresh_20260619/)*
+*Description:* Use Track 19's evidence pipeline to refresh Pae Ora, Public and Community Housing Management, Tax Administration, and ACC earners' levy amendments, then update model code, parameters, citations, tests, and currentness evidence where recent amendments affect implemented behavior.
