@@ -75,7 +75,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track 13: Codify Social Security Act 2018 Core Entitlements and Income Tests
+## [x] Track 13: Codify Social Security Act 2018 Core Entitlements and Income Tests
 *Link: [./conductor/tracks/codify_social_security_core_20260615/](./conductor/tracks/codify_social_security_core_20260615/)*
 *Description:* Audit and codify missing Social Security Act 2018 entitlement, income-test, and assistance rules, reconciling existing benefit modules with current legislative structure.
 
