@@ -1,0 +1,20 @@
+---
+- name: "Automatically assessed person has no manual filing deadline"
+  period: 2023
+  absolute_error_margin: 0
+  input:
+    persons:
+      Auto_Assessed:
+        tax_admin__automatic_tax_assessment: true
+  output:
+    tax_admin__filing_deadline_months_after_year_end: 0
+
+- name: "Manual filer has a three-month filing deadline"
+  period: 2023
+  absolute_error_margin: 0
+  input:
+    persons:
+      Manual_Filer:
+        tax_admin__automatic_tax_assessment: false
+  output:
+    tax_admin__filing_deadline_months_after_year_end: 3

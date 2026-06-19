@@ -1,0 +1,24 @@
+---
+- name: "Eligible tenant pays 25 percent of monthly annual gross income"
+  period: 2023-06
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible: true
+        income_tax__annual_gross_income:
+          2023: 60000
+  output:
+    housing_restructuring__income_related_rent: 1250
+
+- name: "Ineligible person has no income-related rent result"
+  period: 2023-06
+  absolute_error_margin: 0
+  input:
+    persons:
+      Applicant:
+        housing_restructuring__social_housing_eligible: false
+        income_tax__annual_gross_income:
+          2023: 60000
+  output:
+    housing_restructuring__income_related_rent: 0
