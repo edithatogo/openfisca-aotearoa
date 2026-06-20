@@ -136,5 +136,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 ---
 
 ## [x] Track 23: Implement Full Public and Community Housing Income-Related Rent Coverage
-*Path: [./conductor/tracks/public_community_housing_full_irr_20260619/](./conductor/tracks/public_community_housing_full_irr_20260619/)*
+*Archived: [./conductor/archive/public_community_housing_full_irr_20260619/](./conductor/archive/public_community_housing_full_irr_20260619/)*
 *Description:* Implement the remaining full current-law Public and Community Housing Management Act 1992 income-related rent logic, including assessment-person, household, prescribed-proportion, higher-rent, market-rent-cap, transition, evidence, and situation-test coverage.
