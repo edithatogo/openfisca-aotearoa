@@ -146,6 +146,25 @@
   output:
     housing_restructuring__income_related_rent_weekly: 300
 
+- name: "Insufficient information and unresolved discrepancy do not double market rent"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__income_related_rent_information_sufficient:
+          2026-W10: false
+        housing_restructuring__income_related_rent_discrepancy_unresolved:
+          2026-W10: true
+        housing_restructuring__assessable_income:
+          2026-W10: 650
+        housing_restructuring__weekly_market_rent:
+          2026-W10: 300
+  output:
+    housing_restructuring__income_related_rent_weekly: 300
+
 - name: "Pre-2026 transitional calculation keeps old 25 percent scaffold"
   period: 2026-W10
   absolute_error_margin: 0

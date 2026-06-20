@@ -278,8 +278,9 @@ class housing_restructuring__income_related_rent_weekly(Variable):
             pre_2026_calculation * old_law_scaffold
             + (1 - pre_2026_calculation) * current_law_rent
         )
-        market_rent_notice = market_rent * (
-            (1 - information_sufficient) + discrepancy_unresolved
+        market_rent_notice = market_rent * numpy.maximum(
+            1 - information_sufficient,
+            discrepancy_unresolved,
         )
         assessed_rent = (
             information_sufficient
