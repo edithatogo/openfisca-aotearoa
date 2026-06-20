@@ -13,4 +13,4 @@
 - `formulas`: Track has formula evidence artifact. (formulas.md)
 - `situation_tests`: Track has situation-test evidence artifact. (situation_tests.md)
 - `manual_verification`: Plan contains completed manual verification. (plan.md)
-- `traceability`: Track has supporting evidence artifacts. (citations.md, formulas.md, manual_verification.md, parameters.md, situation_tests.md, source_manifest.json, traceability.md)
+- `traceability`: Track has supporting evidence artifacts. (citations.md, formulas.md, manual_verification.md, parameters.md, readiness_report.md, situation_tests.md, source_manifest.json, traceability.md)

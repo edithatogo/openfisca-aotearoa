@@ -9,7 +9,8 @@ Current-law weekly formula from 2 March 2026:
 1. Check `housing_restructuring__social_housing_eligible`; ineligible people
    receive zero.
 2. If required information is insufficient, or an income-related rent
-   discrepancy remains unresolved, return the market-rent notice amount.
+   discrepancy remains unresolved, return the market-rent notice amount once,
+   capped at market rent even when both notice flags are true.
 3. Compute the income formula:
    - 25% of household assessable income up to the applicable threshold.
    - 50% of household assessable income above the threshold.

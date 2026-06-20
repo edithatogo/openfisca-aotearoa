@@ -21,5 +21,5 @@ Focused validation passed:
 
 ```text
 uv run openfisca test openfisca_aotearoa\tests\housing_restructuring\social_housing.yaml
-12 passed
+13 passed
 ```

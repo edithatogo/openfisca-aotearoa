@@ -15,6 +15,8 @@ Covered branches:
 - market-rent cap.
 - minimum-rent floor.
 - insufficient-information market-rent notice.
+- combined insufficient-information and unresolved-discrepancy market-rent
+  notice cap.
 - pre-2026 transitional old-scaffold calculation.
 - monthly public-variable compatibility wrapper.
 - ineligible applicant zero result.
@@ -28,5 +30,5 @@ uv run openfisca test openfisca_aotearoa\tests\housing_restructuring\social_hous
 Result:
 
 ```text
-12 passed
+13 passed
 ```
