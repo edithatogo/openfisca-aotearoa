@@ -1,0 +1,9 @@
+description: Weekly family tax credit amount capped before applying the income-related rent proportion
+metadata:
+  unit: currency-NZD
+  reference:
+    title: Work and Income, Calculating your rent payments, family tax credits
+    href: https://www.workandincome.govt.nz/housing/live-in-home/live-in-public-housing/calculating-rent-payments.html
+values:
+  2026-03-02:
+    value: 151.88

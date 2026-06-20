@@ -1,24 +1,189 @@
 ---
-- name: "Eligible tenant pays 25 percent of monthly annual gross income"
-  period: 2023-06
+- name: "Current-law IRR uses 25 percent below weekly threshold"
+  period: 2026-W10
   absolute_error_margin: 0
   input:
     persons:
       Tenant:
-        housing_restructuring__social_housing_eligible: true
-        income_tax__annual_gross_income:
-          2023: 60000
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__assessable_income:
+          2026-W10: 650
+        housing_restructuring__minimum_weekly_rent:
+          2026-W10: 0
   output:
-    housing_restructuring__income_related_rent: 1250
+    housing_restructuring__income_related_rent_weekly: 162
+
+- name: "Current-law IRR uses 25 percent below threshold and 50 percent above threshold"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__assessable_income:
+          2026-W10: 900
+        housing_restructuring__minimum_weekly_rent:
+          2026-W10: 0
+  output:
+    housing_restructuring__income_related_rent_weekly: 236
+
+- name: "Sole-without-children threshold branch applies lower official threshold"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__sole_without_children_threshold_applies:
+          2026-W10: true
+        housing_restructuring__assessable_income:
+          2026-W10: 562.50
+        housing_restructuring__minimum_weekly_rent:
+          2026-W10: 0
+  output:
+    housing_restructuring__income_related_rent_weekly: 142
+
+- name: "Family tax credit cap adds only the capped 25 percent amount"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__assessable_income:
+          2026-W10: 521.52
+        housing_restructuring__weekly_family_tax_credit_entitlement:
+          2026-W10: 151.91
+        housing_restructuring__minimum_weekly_rent:
+          2026-W10: 0
+  output:
+    housing_restructuring__income_related_rent_weekly: 168
+
+- name: "Additional resident contributions add 62 percent from 2 March 2026"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__assessable_income:
+          2026-W10: 650
+        housing_restructuring__additional_resident_contributions:
+          2026-W10: 100
+        housing_restructuring__minimum_weekly_rent:
+          2026-W10: 0
+  output:
+    housing_restructuring__income_related_rent_weekly: 224
+
+- name: "Jobseeker Support floor can produce the higher weekly rent"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__assessable_income:
+          2026-W10: 200
+        housing_restructuring__jobseeker_support_floor:
+          2026-W10: 500
+        housing_restructuring__minimum_weekly_rent:
+          2026-W10: 0
+  output:
+    housing_restructuring__income_related_rent_weekly: 125
+
+- name: "Market rent caps calculated income-related rent"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__assessable_income:
+          2026-W10: 900
+        housing_restructuring__weekly_market_rent:
+          2026-W10: 220
+        housing_restructuring__minimum_weekly_rent:
+          2026-W10: 0
+  output:
+    housing_restructuring__income_related_rent_weekly: 220
+
+- name: "Minimum rent floor applies before the market rent cap"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__assessable_income:
+          2026-W10: 400
+        housing_restructuring__minimum_weekly_rent:
+          2026-W10: 168
+  output:
+    housing_restructuring__income_related_rent_weekly: 168
+
+- name: "Insufficient rent information produces market rent notice result"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__income_related_rent_information_sufficient:
+          2026-W10: false
+        housing_restructuring__assessable_income:
+          2026-W10: 650
+        housing_restructuring__weekly_market_rent:
+          2026-W10: 300
+  output:
+    housing_restructuring__income_related_rent_weekly: 300
+
+- name: "Pre-2026 transitional calculation keeps old 25 percent scaffold"
+  period: 2026-W10
+  absolute_error_margin: 0
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible:
+          2026-03: true
+        housing_restructuring__pre_2026_amendment_calculation:
+          2026-W10: true
+        housing_restructuring__assessable_income:
+          2026-W10: 900
+  output:
+    housing_restructuring__income_related_rent_weekly: 225
+
+- name: "Monthly compatibility variable converts weekly rent to a monthly equivalent"
+  period: 2026-03
+  absolute_error_margin: 0.01
+  input:
+    persons:
+      Tenant:
+        housing_restructuring__social_housing_eligible: true
+        housing_restructuring__assessable_income:
+          2026-W10: 650
+        housing_restructuring__minimum_weekly_rent:
+          2026-W10: 0
+  output:
+    housing_restructuring__income_related_rent: 702
 
 - name: "Ineligible person has no income-related rent result"
-  period: 2023-06
+  period: 2026-W10
   absolute_error_margin: 0
   input:
     persons:
       Applicant:
-        housing_restructuring__social_housing_eligible: false
-        income_tax__annual_gross_income:
-          2023: 60000
+        housing_restructuring__social_housing_eligible:
+          2026-03: false
+        housing_restructuring__assessable_income:
+          2026-W10: 650
   output:
-    housing_restructuring__income_related_rent: 0
+    housing_restructuring__income_related_rent_weekly: 0

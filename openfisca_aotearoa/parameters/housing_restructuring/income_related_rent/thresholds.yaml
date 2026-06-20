@@ -1,0 +1,14 @@
+description: Weekly public housing income thresholds after tax used in income-related rent guidance
+metadata:
+  unit: currency-NZD
+  reference:
+    title: Work and Income, Calculating your rent payments, weekly income threshold table
+    href: https://www.workandincome.govt.nz/housing/live-in-home/live-in-public-housing/calculating-rent-payments.html
+sole_without_children:
+  values:
+    2026-03-02:
+      value: 555.15
+other_households:
+  values:
+    2026-03-02:
+      value: 854.08

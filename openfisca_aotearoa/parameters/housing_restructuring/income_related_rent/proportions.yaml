@@ -1,0 +1,30 @@
+description: Prescribed proportions for public and community housing income-related rent
+metadata:
+  unit: /1
+  reference:
+    title: Public and Community Housing Management (Prescribed Elements of Calculation Mechanism) Regulations 2018, regulations 5, 7, 8, and 10
+    href: https://www.legislation.govt.nz/regulation/public/2018/0173/latest/whole.html
+income_up_to_threshold:
+  values:
+    2018-10-01:
+      value: 0.25
+income_above_threshold:
+  values:
+    2018-10-01:
+      value: 0.50
+family_tax_credit:
+  values:
+    2018-10-01:
+      value: 0.25
+benefit:
+  values:
+    2018-10-01:
+      value: 0.25
+additional_resident_contribution:
+  values:
+    2026-03-02:
+      value: 0.62
+      metadata:
+        reference:
+          title: Public and Community Housing Management Act 1992, section 107(2)(d) and section 107(3)(c)
+          href: https://www.legislation.govt.nz/act/public/1992/0076/latest/whole.html

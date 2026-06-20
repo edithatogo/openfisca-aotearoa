@@ -1,0 +1,9 @@
+description: Start date for the 2026 income-related rent amendments
+metadata:
+  unit: date
+  reference:
+    title: Public and Community Housing Management Act 1992, Schedule 4, clause 25
+    href: https://www.legislation.govt.nz/act/public/1992/0076/latest/whole.html
+values:
+  2026-03-02:
+    value: 2026-03-02

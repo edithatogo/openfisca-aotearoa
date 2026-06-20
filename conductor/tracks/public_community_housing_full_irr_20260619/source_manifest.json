@@ -1,0 +1,29 @@
+{
+  "track_id": "public_community_housing_full_irr_20260619",
+  "sources": [
+    {
+      "id": "pachma1992_latest",
+      "title": "Public and Community Housing Management Act 1992",
+      "url": "https://www.legislation.govt.nz/act/public/1992/0076/latest/whole.html",
+      "publisher": "New Zealand Legislation",
+      "retrieved": "2026-06-20",
+      "purpose": "current Act title, income-related rent calculation, market-rent notification, discrepancy, and transition provisions"
+    },
+    {
+      "id": "pachm_prescribed_elements_2018_latest",
+      "title": "Public and Community Housing Management (Prescribed Elements of Calculation Mechanism) Regulations 2018",
+      "url": "https://www.legislation.govt.nz/regulation/public/2018/0173/latest/whole.html",
+      "publisher": "New Zealand Legislation",
+      "retrieved": "2026-06-20",
+      "purpose": "prescribed percentages, threshold source rule, family tax credit cap source rule, benefit floor percentage, and 2026 transition provisions"
+    },
+    {
+      "id": "msd_rent_guidance",
+      "title": "Calculating your rent payments",
+      "url": "https://www.workandincome.govt.nz/housing/live-in-home/live-in-public-housing/calculating-rent-payments.html",
+      "publisher": "Work and Income, Ministry of Social Development",
+      "retrieved": "2026-06-20",
+      "purpose": "current operational weekly thresholds, examples, family tax credit cap amount, boarder contribution treatment, rounding, market-rent cap, and minimum-rent table"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "track_id": "public_community_housing_full_irr_20260619",
   "type": "feature",
-  "status": "pending",
+  "status": "completed",
   "created_at": "2026-06-19T00:00:00Z",
-  "updated_at": "2026-06-19T00:00:00Z",
+  "updated_at": "2026-06-20T00:00:00Z",
   "description": "Implement full Public and Community Housing Management Act 1992 income-related rent coverage beyond the freshness closeout scaffold"
 }

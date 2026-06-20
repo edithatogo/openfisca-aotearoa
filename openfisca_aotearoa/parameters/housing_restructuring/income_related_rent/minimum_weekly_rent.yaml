@@ -1,0 +1,26 @@
+description: Minimum weekly public housing rent amounts in official guidance
+metadata:
+  unit: currency-NZD
+  reference:
+    title: Work and Income, Calculating your rent payments, minimum rent table
+    href: https://www.workandincome.govt.nz/housing/live-in-home/live-in-public-housing/calculating-rent-payments.html
+single_under_25:
+  values:
+    2026-03-02:
+      value: 81
+single_25_or_older:
+  values:
+    2026-03-02:
+      value: 93
+single_with_children:
+  values:
+    2026-03-02:
+      value: 168
+two_or_more_adults_no_children:
+  values:
+    2026-03-02:
+      value: 158
+two_or_more_adults_with_children:
+  values:
+    2026-03-02:
+      value: 205
