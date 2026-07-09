@@ -6,6 +6,8 @@ holidays, ESCT, Crown contributions, and opted-up employee rates are out of
 scope.
 """
 
+import numpy
+
 from openfisca_core.periods import YEAR
 from openfisca_core.variables import Variable
 
@@ -13,6 +15,11 @@ from openfisca_aotearoa.entities import Person
 from openfisca_aotearoa.variables.acts.income_tax.individual import (
     _nz_tax_year_april_instant,
     )
+
+
+def max_(left, right):
+    """Element-wise maximum compatible with OpenFisca vector formulas."""
+    return numpy.maximum(left, right)
 
 
 class kiwisaver__gross_salary_or_wages(Variable):
@@ -40,7 +47,8 @@ class kiwisaver__employee_minimum_contribution(Variable):
         rate = parameters(
             _nz_tax_year_april_instant(period)
             ).kiwisaver.employee_minimum_contribution_rate
-        return earnings * rate
+        # Contributions are never negative; clamp base like RuleSpec companion tests.
+        return max_(earnings, 0) * rate
 
 
 class kiwisaver__employer_minimum_contribution(Variable):
@@ -59,4 +67,4 @@ class kiwisaver__employer_minimum_contribution(Variable):
         rate = parameters(
             _nz_tax_year_april_instant(period)
             ).kiwisaver.employer_minimum_contribution_rate
-        return earnings * rate
+        return max_(earnings, 0) * rate
