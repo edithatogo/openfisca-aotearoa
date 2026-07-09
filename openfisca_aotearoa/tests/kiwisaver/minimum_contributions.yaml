@@ -28,3 +28,12 @@
   output:
     kiwisaver__employee_minimum_contribution: 4000
     kiwisaver__employer_minimum_contribution: 4000
+
+- name: kiwisaver_negative_salary_does_not_create_contributions
+  period: 2026
+  absolute_error_margin: 0.01
+  input:
+    kiwisaver__gross_salary_or_wages: -100
+  output:
+    kiwisaver__employee_minimum_contribution: 0
+    kiwisaver__employer_minimum_contribution: 0
