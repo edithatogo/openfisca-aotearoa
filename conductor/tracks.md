@@ -150,8 +150,9 @@ This file tracks all major tracks for the project. Each track has its own detail
 The entries below provide machine-discoverable aliases for the historical
 heading-form registry above; the underlying archived tracks are unchanged.
 
-- [~] **Track: Conductor registry normalization (#4)**
-  *Link: [./tracks/conductor_registry_normalization_20260719/index.md](./tracks/conductor_registry_normalization_20260719/index.md)*
+- [x] **Track: Conductor registry normalization (#4)**
+  *Link: [./archive/conductor_registry_normalization_20260719/index.md](./archive/conductor_registry_normalization_20260719/index.md)*
+  *Issue: [#4](https://github.com/edithatogo/openfisca-aotearoa/issues/4); PR: [#5](https://github.com/edithatogo/openfisca-aotearoa/pull/5).*
 
 - [x] **Track: Legacy archive modernize_tooling_20260615**
   *Link: [./archive/modernize_tooling_20260615/index.md](./archive/modernize_tooling_20260615/index.md)*
