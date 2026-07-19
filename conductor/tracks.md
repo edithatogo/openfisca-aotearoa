@@ -138,3 +138,9 @@ This file tracks all major tracks for the project. Each track has its own detail
 ## [x] Track 23: Implement Full Public and Community Housing Income-Related Rent Coverage
 *Archived: [./conductor/archive/public_community_housing_full_irr_20260619/](./conductor/archive/public_community_housing_full_irr_20260619/)*
 *Description:* Implement the remaining full current-law Public and Community Housing Management Act 1992 income-related rent logic, including assessment-person, household, prescribed-proportion, higher-rent, market-rent-cap, transition, evidence, and situation-test coverage.
+
+---
+
+- [x] **Track: KiwiSaver minimum contribution coverage**
+  *Link: [./archive/kiwisaver_minimum_contributions_20260719/index.md](./archive/kiwisaver_minimum_contributions_20260719/index.md)*
+  *Issue: [#1](https://github.com/edithatogo/openfisca-aotearoa/issues/1); PR: [#2](https://github.com/edithatogo/openfisca-aotearoa/pull/2).*
