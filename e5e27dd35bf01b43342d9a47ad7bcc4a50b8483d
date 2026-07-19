@@ -1,0 +1,1 @@
+Track 18 optional dependency audit evidence: importlib.util.find_spec returned false for open_social_data, voiage, mars, and innovate; pyproject.toml/uv.lock contain no direct optional analytics dependencies; sibling open_social_data checkout exists but is dirty, so Track 18 keeps integrations optional; git diff --check passed.

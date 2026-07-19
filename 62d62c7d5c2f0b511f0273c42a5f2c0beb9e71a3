@@ -1,0 +1,1 @@
+Track 17 endpoint contract: defined JSON/HTTP ASGI contract for GET /health, GET /metadata, POST /calculate, GET /parameters, plus shared error envelope and non-goals.

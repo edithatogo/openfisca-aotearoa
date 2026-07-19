@@ -1,0 +1,6 @@
+Track 16 una integration decision evidence:
+- Added conductor/tracks/una_workspace_integration_20260618/una_integration_decision.md.
+- Checked primary Una docs and uv workspace docs.
+- Decided not to make this nested repo the parent legal-nz workspace root.
+- Decided safe surface: self workspace members=["."], una in dev extra only, no hatch-una until parent owns a true monorepo build decision.
+- Validation: git diff --check passed.

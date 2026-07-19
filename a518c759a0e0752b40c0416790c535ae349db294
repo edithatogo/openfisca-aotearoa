@@ -1,0 +1,5 @@
+Track 14 implementation: added Income Tax Act core income and deduction component variables feeding annual gross income and total deductions; fixed duplicate individual income tax bracket activation so ordinary years are not double counted and 2024/2025 year-level tests use the repo convention; added representative component-to-tax test.
+
+Validation: uv --no-cache run openfisca test -c openfisca_aotearoa openfisca_aotearoa\tests\individual_income_tax_rate.yaml openfisca_aotearoa\tests\income_tax\family_scheme\working_for_families_entitlement.yaml -> 14 passed; uv --no-cache run ruff check openfisca_aotearoa\variables\acts\income_tax\individual.py -> passed with cache write warning only.
+
+Full family_scheme directory collection remains blocked by existing UTF-8 YAML decoded as cp1252 on Windows.

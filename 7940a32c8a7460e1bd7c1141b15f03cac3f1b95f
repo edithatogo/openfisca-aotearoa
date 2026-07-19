@@ -1,0 +1,13 @@
+Track 23 review fix: market-rent notice cap and audit trail.
+
+Summary:
+- Fixed the income-related rent notice branch so insufficient information and unresolved discrepancy flags return market rent once instead of adding the same market-rent notice twice.
+- Added a regression YAML situation test for the combined flag case.
+- Reran the focused housing situation tests.
+
+Key files:
+- openfisca_aotearoa/variables/acts/housing_restructuring/social_housing.py
+- openfisca_aotearoa/tests/housing_restructuring/social_housing.yaml
+
+Validation:
+- uv run openfisca test openfisca_aotearoa\tests\housing_restructuring\social_housing.yaml

@@ -1,0 +1,1 @@
+Track 16 standalone validation evidence: uv sync --extra dev --locked passed; uv run --extra dev python scripts/smoke_workspace.py passed; focused pytest test_simulation.py and test_api.py returned 4 passed, 1 skipped; uv build produced sdist and wheel under ignored dist output.

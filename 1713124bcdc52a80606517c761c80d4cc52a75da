@@ -1,0 +1,11 @@
+Task: Track 22 legislative freshness closeout
+
+Summary:
+- Refreshed ACC earners levy rates and maximum liable earnings through 2027/28+ from official 2022 and 2025 regulations.
+- Added Track 22 source manifest, amendment decisions, currentness report, and validation evidence.
+- Recorded Pae Ora and Tax Administration no-model-impact decisions, and Public and Community Housing partial-coverage limits.
+- Archived Track 22 and removed the stale completed modernize_tooling active-track duplicate.
+
+Validation:
+- Focused affected YAML suites passed for ACC, Pae Ora, housing, and Tax Administration.
+- Full local suite passed outside sandbox: 65 passed, 1 skipped, coverage.xml written.

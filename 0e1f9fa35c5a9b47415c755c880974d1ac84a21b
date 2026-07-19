@@ -1,0 +1,1 @@
+Track 16 metadata task validation: uv lock --check; git diff --check; uv run --extra dev una --help; uv run --extra dev python import smoke returned una 0.7.0 and AotearoaLegislationModel; uv sync --extra dev --locked. Added [tool.uv.workspace] members=[.] and una>=0.7.0 as a dev extra. No hatch-una build hook added because this repository has no local member dependency graph.

@@ -1,0 +1,20 @@
+Track 23 implementation: full public and community housing income-related rent.
+
+Summary:
+- Added current-law weekly income-related rent formulas for the 2 March 2026 public and community housing amendments.
+- Preserved the existing monthly public variable as a compatibility wrapper.
+- Added parameters for prescribed proportions, thresholds, family tax credit cap, transition date, and minimum weekly rent guidance.
+- Added Track 23 citations, source manifest, formulas, parameters, traceability, situation-test, manual-verification, and readiness artifacts.
+- Added focused housing YAML tests and ran the broad CI-equivalent pytest suite.
+
+Key files:
+- openfisca_aotearoa/variables/acts/housing_restructuring/social_housing.py
+- openfisca_aotearoa/tests/housing_restructuring/social_housing.yaml
+- openfisca_aotearoa/parameters/housing_restructuring/income_related_rent/
+- conductor/tracks/public_community_housing_full_irr_20260619/
+
+Validation:
+- uv run openfisca test openfisca_aotearoa\tests\housing_restructuring\social_housing.yaml
+- uv run pytest --cov=openfisca_aotearoa --cov-report=xml --strict-markers --strict-config -W error
+- uv run ruff check openfisca_aotearoa\variables\acts\housing_restructuring\social_housing.py
+- uv run python scripts\check_publish_readiness.py conductor\tracks\public_community_housing_full_irr_20260619 --report conductor\tracks\public_community_housing_full_irr_20260619\readiness_report.md
