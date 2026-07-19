@@ -1,0 +1,9 @@
+{
+  "track_id": "conductor_registry_normalization_20260719",
+  "type": "chore",
+  "status": "in_progress",
+  "created_at": "2026-07-19T05:12:00Z",
+  "updated_at": "2026-07-19T05:12:00Z",
+  "description": "Normalize historical archive entrypoints and registry aliases.",
+  "issue": "https://github.com/edithatogo/openfisca-aotearoa/issues/4"
+}

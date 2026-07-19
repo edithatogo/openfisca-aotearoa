@@ -144,3 +144,80 @@ This file tracks all major tracks for the project. Each track has its own detail
 - [x] **Track: KiwiSaver minimum contribution coverage**
   *Link: [./archive/kiwisaver_minimum_contributions_20260719/index.md](./archive/kiwisaver_minimum_contributions_20260719/index.md)*
   *Issue: [#1](https://github.com/edithatogo/openfisca-aotearoa/issues/1); PR: [#2](https://github.com/edithatogo/openfisca-aotearoa/pull/2).*
+
+## Canonical Archive Registry
+
+The entries below provide machine-discoverable aliases for the historical
+heading-form registry above; the underlying archived tracks are unchanged.
+
+- [~] **Track: Conductor registry normalization (#4)**
+  *Link: [./tracks/conductor_registry_normalization_20260719/index.md](./tracks/conductor_registry_normalization_20260719/index.md)*
+
+- [x] **Track: Legacy archive modernize_tooling_20260615**
+  *Link: [./archive/modernize_tooling_20260615/index.md](./archive/modernize_tooling_20260615/index.md)*
+
+- [x] **Track: Legacy archive upstream_governance_20260615**
+  *Link: [./archive/upstream_governance_20260615/index.md](./archive/upstream_governance_20260615/index.md)*
+
+- [x] **Track: Legacy archive integrate_nztaxmicrosim_20260615**
+  *Link: [./archive/integrate_nztaxmicrosim_20260615/index.md](./archive/integrate_nztaxmicrosim_20260615/index.md)*
+
+- [x] **Track: Legacy archive legislation_audit_20260615**
+  *Link: [./archive/legislation_audit_20260615/index.md](./archive/legislation_audit_20260615/index.md)*
+
+- [x] **Track: Legacy archive github_actions_20260615**
+  *Link: [./archive/github_actions_20260615/index.md](./archive/github_actions_20260615/index.md)*
+
+- [x] **Track: Legacy archive github_pages_20260615**
+  *Link: [./archive/github_pages_20260615/index.md](./archive/github_pages_20260615/index.md)*
+
+- [x] **Track: Legacy archive release_lifecycle_20260615**
+  *Link: [./archive/release_lifecycle_20260615/index.md](./archive/release_lifecycle_20260615/index.md)*
+
+- [x] **Track: Legacy archive simulation_analytics_20260615**
+  *Link: [./archive/simulation_analytics_20260615/index.md](./archive/simulation_analytics_20260615/index.md)*
+
+- [x] **Track: Legacy archive codify_pae_ora_20260615**
+  *Link: [./archive/codify_pae_ora_20260615/index.md](./archive/codify_pae_ora_20260615/index.md)*
+
+- [x] **Track: Legacy archive codify_housing_restructuring_20260615**
+  *Link: [./archive/codify_housing_restructuring_20260615/index.md](./archive/codify_housing_restructuring_20260615/index.md)*
+
+- [x] **Track: Legacy archive codify_tax_admin_20260615**
+  *Link: [./archive/codify_tax_admin_20260615/index.md](./archive/codify_tax_admin_20260615/index.md)*
+
+- [x] **Track: Legacy archive codify_acc_levy_regs_20260615**
+  *Link: [./archive/codify_acc_levy_regs_20260615/index.md](./archive/codify_acc_levy_regs_20260615/index.md)*
+
+- [x] **Track: Legacy archive codify_social_security_core_20260615**
+  *Link: [./archive/codify_social_security_core_20260615/index.md](./archive/codify_social_security_core_20260615/index.md)*
+
+- [x] **Track: Legacy archive codify_income_tax_core_20260615**
+  *Link: [./archive/codify_income_tax_core_20260615/index.md](./archive/codify_income_tax_core_20260615/index.md)*
+
+- [x] **Track: Legacy archive openfisca_core_strict_quality_20260618**
+  *Link: [./archive/openfisca_core_strict_quality_20260618/index.md](./archive/openfisca_core_strict_quality_20260618/index.md)*
+
+- [x] **Track: Legacy archive una_workspace_integration_20260618**
+  *Link: [./archive/una_workspace_integration_20260618/index.md](./archive/una_workspace_integration_20260618/index.md)*
+
+- [x] **Track: Legacy archive high_performance_api_20260618**
+  *Link: [./archive/high_performance_api_20260618/index.md](./archive/high_performance_api_20260618/index.md)*
+
+- [x] **Track: Legacy archive microsimulation_data_analytics_20260618**
+  *Link: [./archive/microsimulation_data_analytics_20260618/index.md](./archive/microsimulation_data_analytics_20260618/index.md)*
+
+- [x] **Track: Legacy archive legislation_evidence_pipeline_20260618**
+  *Link: [./archive/legislation_evidence_pipeline_20260618/index.md](./archive/legislation_evidence_pipeline_20260618/index.md)*
+
+- [x] **Track: Legacy archive ai_test_automation_20260618**
+  *Link: [./archive/ai_test_automation_20260618/index.md](./archive/ai_test_automation_20260618/index.md)*
+
+- [x] **Track: Legacy archive legal_audit_publish_gate_20260618**
+  *Link: [./archive/legal_audit_publish_gate_20260618/index.md](./archive/legal_audit_publish_gate_20260618/index.md)*
+
+- [x] **Track: Legacy archive legislative_freshness_refresh_20260619**
+  *Link: [./archive/legislative_freshness_refresh_20260619/index.md](./archive/legislative_freshness_refresh_20260619/index.md)*
+
+- [x] **Track: Legacy archive public_community_housing_full_irr_20260619**
+  *Link: [./archive/public_community_housing_full_irr_20260619/index.md](./archive/public_community_housing_full_irr_20260619/index.md)*
