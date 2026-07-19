@@ -1,5 +1,20 @@
 # Changelog
 
+### Unreleased - KiwiSaver contribution coverage
+
+* Tax and benefit system evolution.
+* Impacted periods: 2013-04 / 2026-04 / 2028-04.
+* Impacted areas:
+  - `parameters/kiwisaver/`
+  - `variables/acts/kiwisaver/contributions.py`
+* Added variables:
+  - `kiwisaver__gross_salary_or_wages`
+  - `kiwisaver__employee_minimum_contribution`
+  - `kiwisaver__employer_minimum_contribution`
+* Notes:
+  - YEAR formulas look up 1 April parameters for the calendar year of the period.
+  - Rates are cited from IRD public guidance.
+
 ### 22.0.0 - [69](https://github.com/digitalaotearoa/openfisca-aotearoa/pull/64)
 
 * Tax and benefit system evolution.
