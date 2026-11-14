@@ -1,3 +1,8 @@
+---
+name: Bug report
+about: Report a reproducible issue with OpenFisca Aotearoa.
+---
+
 Hi there!
 
 While utilising OpenFisca Aotearoa I recently encountered an issue.
