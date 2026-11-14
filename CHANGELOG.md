@@ -1,5 +1,10 @@
 # Changelog
 
+### Unreleased - Citation metadata
+
+* Minor change.
+* Add `CITATION.cff` metadata for citing this repository fork.
+
 ### Unreleased - KiwiSaver contribution coverage
 
 * Tax and benefit system evolution.
