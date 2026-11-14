@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: If you use this fork, please cite it using the metadata in this file. For upstream
+  work, also follow the citation guidance at https://github.com/digitalaotearoa/openfisca-aotearoa.
+title: OpenFisca Aotearoa (edithatogo fork)
+authors:
+- family-names: Kazi
+  given-names: Asghar Hussain
+- family-names: Wallace
+  given-names: Brenda
+- family-names: Fraser
+  given-names: Hamish
+- family-names: Duckles
+  given-names: Jonah
+- family-names: Calvert
+  given-names: Mark
+- family-names: Quiroga Alvarado
+  given-names: Mauko
+- family-names: Macleod
+  given-names: Merrin
+- family-names: Andrews
+  given-names: Pia
+repository-code: https://github.com/edithatogo/openfisca-aotearoa
