@@ -1,9 +1,13 @@
 # Changelog
 
+### Unreleased - Citation metadata
+
+* Minor change.
+* Add `CITATION.cff` metadata for citing this repository fork.
+
 ### Unreleased - Issue template migration
 
 * Minor change: move the existing bug report into GitHub's supported issue template directory, preserving its reproduction and contributor-context prompts.
-
 ### Unreleased - KiwiSaver contribution coverage
 
 * Tax and benefit system evolution.
